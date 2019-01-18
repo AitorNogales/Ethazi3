@@ -1,9 +1,14 @@
 package controlador;
 
+import java.sql.Connection;
+
 import modelo.konexioa;
 
 public class nagusia {
-//hola buenas no me funciona ahora el syso
-	// cambio
-	konexioa bd =new konexioa("ethazi");
+
+	public static void main(String[] args) {
+	String nombreBase = "ethazi";
+	konexioa bd = new konexioa(nombreBase);
+	Connection kon = konexioa.getConexion();
+	}
 }
