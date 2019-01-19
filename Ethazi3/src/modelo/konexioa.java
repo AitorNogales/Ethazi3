@@ -18,7 +18,7 @@ public class konexioa {
 	// Recibe el nombre de la base de datos
 	public konexioa(String baseDatos) {
 
-		String fichero = "src\\modelo\\Fitxeroa.txt";
+		/*String fichero = "src\\modelo\\Fitxeroa.txt";
 		int kontagailua = 0;
 		String server = "jdbc:mysql://";
 		try {
@@ -49,7 +49,7 @@ public class konexioa {
 			fr.close();
 		} catch (Exception e) {
 			System.out.println("Excepcion leyendo fichero " + fichero + ": " + e);
-		}
+		}*/
 
 		this.servidor = "jdbc:mysql://" + this.maquina + ":" + this.puerto + "/" + baseDatos;
 
@@ -58,7 +58,7 @@ public class konexioa {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
-			System.err.println("ERROR AL REGISTRAR EL DRIVER");
+			System.err.println("ERROR AL REGISTRAR EL DRIVER");//mensage error
 			System.exit(0); // parar la ejecución
 		}
 
