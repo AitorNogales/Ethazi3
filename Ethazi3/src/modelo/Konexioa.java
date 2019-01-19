@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class konexioa {
+public class Konexioa {
 	private String maquina="localhost";
 	private String usuario= "root";
 	private String clave="";
@@ -16,7 +16,7 @@ public class konexioa {
 
 	// CONSTRUCTOR
 	// Recibe el nombre de la base de datos
-	public konexioa(String baseDatos) {
+	public Konexioa(String baseDatos) {
 
 		/*String fichero = "src\\modelo\\Fitxeroa.txt";
 		int kontagailua = 0;

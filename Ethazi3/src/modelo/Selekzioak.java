@@ -4,10 +4,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class Seleksioak {
+public class Selekzioak {
 	
-	public static Statement datuakBezeroa(Connection kon) {
+	public static ResultSet datuakBezeroa(Connection kon) {
 		Statement sta=null;
+		 ResultSet rs =null;
 		//Connection kon=konexioa.getConexion();
 		try {
 		// Se crea un Statement, para realizar la consulta
@@ -15,7 +16,7 @@ public class Seleksioak {
         
         // Se realiza la consulta. Los resultados se guardan en el ResultSet rs
         
-        ResultSet rs = sta.executeQuery("select * from cliente");
+         rs = sta.executeQuery("SELECT * FROM `cliente`");
         
         // Se recorre el ResultSet, mostrando por pantalla los resultados.
         while (rs.next()) {
@@ -24,6 +25,6 @@ public class Seleksioak {
 		}catch(Exception e) {e.getMessage();}
 		
 		
-		return sta;
+		return rs;
 	}
 }
