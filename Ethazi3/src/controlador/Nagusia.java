@@ -1,22 +1,33 @@
 package controlador;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import modelo.Konexioa;
 import modelo.Selekzioak;
+import vista.InterfaseNagusia;
 
 public class Nagusia {
 
 	public static void main(String[] args) {
-	String nombreBase = "ethazi";
-	Konexioa bd = new Konexioa(nombreBase);
-	Connection kon = Konexioa.getConexion();
+	String nombreBase = "ethazi";//konektatuko garen datu basearen izena
+	Konexioa bd = new Konexioa(nombreBase);// zer datu baserekin konectatu behar den esaten diogui
+	Connection kon = Konexioa.getConexion();// Datu basearekin konexioa lortu
+	InterfaseNagusia window = new InterfaseNagusia();
 	
-	/*ResultSet rsBezeroa=Selekzioak.datuakBezeroa(kon);
-	try {
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	window.frame.setVisible(true);// leihoa bistaragarria egiten dugu
+	
+	ResultSet rsBezeroa=Selekzioak.datuakBezeroa(kon);
+	/*try {
 		
 		while(rsBezeroa.next()) {
 			String DNI=rsBezeroa.getString(0);
@@ -27,7 +38,7 @@ public class Nagusia {
 			System.out.println(DNI+Nombre+Apellido+Fecha+Sexo);
 		}
 	} catch (SQLException e) {
-		// TODO Auto-generated catch block
+		
 		e.printStackTrace();
 	}*/
 	}
