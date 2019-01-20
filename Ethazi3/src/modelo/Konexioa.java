@@ -18,7 +18,7 @@ public class Konexioa {
 	// Recibe el nombre de la base de datos
 	public Konexioa(String baseDatos) {
 
-	/*	String fichero = "Fitxeroa.txt";
+		String fichero = "Fitxeroa.txt";
 		int kontagailua = 0;
 		String server = "jdbc:mysql://";
 		try {
@@ -50,7 +50,7 @@ public class Konexioa {
 		} catch (Exception e) {
 			System.out.println("Excepcion leyendo fichero " + fichero + ": " + e);
 		}
-*/
+
 		this.servidor = "jdbc:mysql://" + this.maquina + ":" + this.puerto + "/" + baseDatos;
 
 
