@@ -18,9 +18,10 @@ public class Konexioa {
 	// Recibe el nombre de la base de datos
 	public Konexioa(String baseDatos) {
 
-		String fichero = "Fitxeroa.txt";
+		String fichero = "/Ethazi3/src/modelo/Fitxeroa.txt";
 		int kontagailua = 0;
-		String server = "jdbc:mysql://";
+		
+		String server = "jdbc:mysql:/";
 		try {
 			FileReader fr = new FileReader(fichero);
 			BufferedReader br = new BufferedReader(fr);

@@ -8,7 +8,7 @@ private String kolorea;
 /////////Builders/////////////
 
 public Autobusa(int kod_autobus, int eserleku_kop, double erregai_Km, String kolorea) {
-	super();
+	
 	this.kod_autobus = kod_autobus;
 	this.eserleku_kop = eserleku_kop;
 	this.erregai_Km = erregai_Km;
