@@ -18,7 +18,7 @@ public class Konexioa {
 	// Recibe el nombre de la base de datos
 	public Konexioa(String baseDatos) {
 
-		String fichero = "/Ethazi3/src/modelo/Fitxeroa.txt";
+		String fichero = "src//modelo//Fitxeroa.txt";
 		int kontagailua = 0;
 		
 		String server = "jdbc:mysql:/";
