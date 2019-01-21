@@ -8,6 +8,7 @@ import javax.swing.JList;
 import javax.swing.JScrollBar;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import com.toedter.calendar.JDateChooser;
 
 public class AukeratuLinea extends JPanel {
 	private JTextField txtAukeratuLinea;
@@ -43,12 +44,20 @@ public class AukeratuLinea extends JPanel {
 		add(btnJarraitu);
 		
 		JLabel lblJoanData = new JLabel("JOAN DATA: ");
-		lblJoanData.setBounds(57, 217, 64, 14);
+		lblJoanData.setBounds(47, 223, 64, 14);
 		add(lblJoanData);
 		
 		JLabel lblItzultzeData = new JLabel("ITZULTZE DATA: ");
-		lblItzultzeData.setBounds(244, 217, 83, 14);
+		lblItzultzeData.setBounds(233, 223, 83, 14);
 		add(lblItzultzeData);
+		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(121, 217, 76, 20);
+		add(dateChooser);
+		
+		JDateChooser dateChooser_1 = new JDateChooser();
+		dateChooser_1.setBounds(326, 217, 76, 20);
+		add(dateChooser_1);
 
 	}
 }
