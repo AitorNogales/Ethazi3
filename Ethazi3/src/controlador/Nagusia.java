@@ -17,13 +17,6 @@ public class Nagusia {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
 	window.frame.setVisible(true);// leihoa bistaragarria egiten dugu
 	
 	ResultSet rsBezeroa=Selekzioak.datuakBezeroa(kon);
