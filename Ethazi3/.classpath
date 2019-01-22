@@ -2,12 +2,10 @@
 <classpath>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
-
-	<classpathentry kind="lib" path="C:/Users/mañana.ORD26/Downloads/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47/mysql-connector-java-5.1.47-bin.jar"/>
-	<classpathentry kind="lib" path="C:/Users/mañana/Desktop/ETHAZI3/lib/jcalendar-1.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/mañana/Desktop/ETHAZI3/lib/jgoodies-common-1.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/Users/mañana/Desktop/ETHAZI3/lib/jgoodies-looks-2.4.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/mañana/Desktop/ETHAZI3/lib/junit-4.6.jar"/>
-
+	<classpathentry kind="lib" path="Jars/mysql-connector-java-5.1.45.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aitor/git/Ethazi3/Ethazi3/Jars/junit-4.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aitor/git/Ethazi3/Ethazi3/Jars/jgoodies-looks-2.4.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aitor/git/Ethazi3/Ethazi3/Jars/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Aitor/git/Ethazi3/Ethazi3/Jars/jgoodies-common-1.2.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
