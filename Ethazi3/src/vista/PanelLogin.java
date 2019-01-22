@@ -4,21 +4,27 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+
+import controlador.Bezeroa;
+
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class PanelLogin extends JPanel {
 	private JTextField textField;
 	private JPasswordField passwordField;
-
+	private ArrayList<Bezeroa> Bezeroak;
 	/**
 	 * Create the panel.
 	 */
 	public PanelLogin() {
+		this.setBounds(0,0,425,350); //limiteak
 		setBackground(Color.LIGHT_GRAY);
+		ArrayList<Bezeroa>bz=controlador.Bitartekoa.artuBezeroak();
 		setLayout(null);
 		
 		JLabel lblLogIn = new JLabel("LOG IN");

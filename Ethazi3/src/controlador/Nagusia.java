@@ -21,8 +21,5 @@ public class Nagusia {
 	window.frame.setVisible(true);// leihoa bistaragarria egiten dugu
 	InterfaseNagusia.changeScene(window.frame, agur);
 	
-	ResultSet rsBezeroa=Selekzioak.datuakBezeroa(kon,nombreBase);
-	Selekzioak.datuakGeltokiak(kon,nombreBase);
-	Selekzioak.datuakAutobusak(kon,nombreBase);
 	}
 }
