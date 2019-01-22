@@ -36,7 +36,7 @@ public class AukeratuLinea extends JPanel {
 		add(list);
 		
 		JButton btnAtzera = new JButton("ATZERA");
-		btnAtzera.setBounds(47, 266, 89, 23);
+		btnAtzera.setBounds(51, 266, 89, 23);
 		add(btnAtzera);
 		
 		JButton btnJarraitu = new JButton("JARRAITU");
