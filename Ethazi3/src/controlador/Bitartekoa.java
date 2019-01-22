@@ -14,8 +14,9 @@ import modelo.Selekzioak;
  *
  */
 public class Bitartekoa {
-	private final static String bdIzena = "ethazi";// konektatuko garen datu basearen izena
+	public final static String bdIzena = "ethazi";// konektatuko garen datu basearen izena
 	private final static Connection kon = Konexioa.getConexion();// Datu basearekin konexioa lortu
+	
 /**
  * konektatu garen datu bezetik bezero guztien zerrenda ateratze du 
  * @return bezero Guztien Zerrenda
