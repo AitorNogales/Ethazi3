@@ -11,7 +11,7 @@ private Date jaiotze_data;
 
 /////////Builders/////////////
 public Bezeroa(String NAN, String izen_abizen, String sexua, String pasahitza, Date jaiotze_data) {
-	super();
+	
 	this.NAN = NAN;
 	this.izen_abizen = izen_abizen;
 	this.sexua = sexua;

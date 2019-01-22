@@ -7,7 +7,7 @@ public class Geltokia {
 	
 /////////Builders/////////////
 	public Geltokia(int kod_geltoki, String kalea, String gel_izena, double latitudea, double longitudea) {
-		super();
+		
 		this.kod_geltoki = kod_geltoki;
 		this.kalea = kalea;
 		this.gel_izena = gel_izena;
