@@ -3,9 +3,9 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="Jars/mysql-connector-java-5.1.45.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aitor/git/Ethazi3/Ethazi3/Jars/junit-4.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aitor/git/Ethazi3/Ethazi3/Jars/jgoodies-looks-2.4.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aitor/git/Ethazi3/Ethazi3/Jars/jcalendar-1.4.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Aitor/git/Ethazi3/Ethazi3/Jars/jgoodies-common-1.2.0.jar"/>
+	<classpathentry kind="lib" path="Jars/junit-4.6.jar"/>
+	<classpathentry kind="lib" path="Jars/jgoodies-looks-2.4.1.jar"/>
+	<classpathentry kind="lib" path="Jars/jgoodies-common-1.2.0.jar"/>
+	<classpathentry kind="lib" path="Jars/jcalendar-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
