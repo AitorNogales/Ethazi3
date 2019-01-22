@@ -23,7 +23,7 @@ public class AukeratuLinea extends JPanel {
 		txtAukeratuLinea = new JTextField();
 		txtAukeratuLinea.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		txtAukeratuLinea.setText("AUKERATU LINEA");
-		txtAukeratuLinea.setBounds(136, 11, 169, 31);
+		txtAukeratuLinea.setBounds(133, 11, 169, 31);
 		add(txtAukeratuLinea);
 		txtAukeratuLinea.setColumns(10);
 		
