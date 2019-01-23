@@ -16,8 +16,8 @@ import modelo.Selekzioak;
  */
 public class Bitartekoa {
 	public final static String bdIzena = "ethazi";// konektatuko garen datu basearen izena
-	private final static Connection kon = Konexioa.getConexion();// Datu basearekin konexioa lortu
-
+	public final static Connection kon = Konexioa.getConexion();// Datu basearekin konexioa lortu
+	
 	/**
 	 * konprobatzen du erabiltzailea datu basean dagoela
 	 * @param dni erabiltzailearen dnia
@@ -59,11 +59,13 @@ public class Bitartekoa {
 		ArrayList<Geltokia> Geltokiak =new  ArrayList<Geltokia>();
 		ResultSet rs = Selekzioak.datuakGeltokiak(kon, bdIzena,kod_Linea);//datu basetik hartzen ditugu linea guztien datuak
 		try {
+			if(rs.next() == true)
 			while(rs.next()) {
 				String kodLinea=rs.getString(0);
 				String izLinea=rs.getString(1);
 				//Geltokia lin =new Linea(kodLinea,izLinea);
 				//Geltokiak.add(lin);
+			
 			}
 		} catch (SQLException e) {
 			
