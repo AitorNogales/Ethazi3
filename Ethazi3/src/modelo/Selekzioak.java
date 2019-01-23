@@ -41,7 +41,7 @@ Connection kon =Konexioa.getConexion();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			rs = sta.executeQuery("select * from " + bdIzena + ".linea");
+			rs = sta.executeQuery("select * from linea");
 
 			// Se recorre el ResultSet, mostrando por pantalla los resultados.
 			while (rs.next()) {
@@ -63,7 +63,7 @@ Connection kon =Konexioa.getConexion();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			rs = sta.executeQuery("select * from " + bdIzena + ".autobus");
+			rs = sta.executeQuery("select * from autobus");
 
 			// Se recorre el ResultSet, mostrando por pantalla los resultados.
 			while (rs.next()) {
@@ -106,7 +106,7 @@ Connection kon =Konexioa.getConexion();
 		try {
 			// Se crea un Statement, para realizar la consulta
 			sta = kon.createStatement();
-			rs = sta.executeQuery("select * from " + bdIzena + ".cliente where DNI LIKE("+dni+") AND Contraseña LIKE ("+pass+");");
+			rs = sta.executeQuery("select * from cliente where DNI LIKE("+dni+") AND Contraseña LIKE ("+pass+");");
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
