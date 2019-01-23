@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class Selekzioak {
 
-	public static ResultSet datuakBezeroa(String bdIzena) {
+	public static ResultSet datuakBezeroa() {
 		Statement sta = null;
 		ResultSet rs = null;
 Connection kon =Konexioa.getConexion();
@@ -31,7 +31,7 @@ Connection kon =Konexioa.getConexion();
 		return rs;
 	}
 
-	public static ResultSet datuakLineak(Connection kon, String bdIzena) {
+	public static ResultSet datuakLineak(Connection kon) {
 		Statement sta = null;
 		ResultSet rs = null;
 
@@ -53,7 +53,7 @@ Connection kon =Konexioa.getConexion();
 
 		return rs;
 	}
-	public static ResultSet datuakAutobusak(Connection kon, String bdIzena) {
+	public static ResultSet datuakAutobusak(Connection kon) {
 		Statement sta = null;
 		ResultSet rs = null;
 
@@ -76,7 +76,7 @@ Connection kon =Konexioa.getConexion();
 		return rs;
 	}
 
-	public static ResultSet datuakGeltokiak(Connection kon, String bdIzena, String kod_Linea) {
+	public static ResultSet datuakGeltokiak(Connection kon, String kod_Linea) {
 		Statement sta = null;
 		ResultSet rs = null;
 
@@ -86,7 +86,7 @@ Connection kon =Konexioa.getConexion();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			rs = sta.executeQuery("select * from parada where Cod_Parada in (select Cod_Parada from linea_parada where Cod_Linea like ('L1')");
+			rs = sta.executeQuery("select * from parada where Cod_Parada in (select Cod_Parada from linea_parada where Cod_Linea like "+"'"+kod_Linea+"'");
 			
 // Se recorre el ResultSet, mostrando por pantalla los resultados.
 			while (rs.next()) {
@@ -98,7 +98,7 @@ Connection kon =Konexioa.getConexion();
 
 		return rs;
 	}
-	public static ResultSet kontsultaBiz(String dni,String pass, String bdIzena ,Connection kon) {
+	public static ResultSet kontsultaBiz(String dni,String pass ,Connection kon) {
 		ResultSet rs = null;
 		
 		Statement sta = null;

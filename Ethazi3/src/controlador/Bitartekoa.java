@@ -26,7 +26,7 @@ public class Bitartekoa {
 	 */
 	public static boolean ceckBezeroa(String dni, String pass) {
 		boolean badago = false;
-		ResultSet rs = Selekzioak.kontsultaBiz(dni, pass, bdIzena, kon);//egiten dugu datu basean kontsulta bat 
+		ResultSet rs = Selekzioak.kontsultaBiz(dni, pass, kon);//egiten dugu datu basean kontsulta bat 
 		try {
 			if (rs.next()) {//zerbait bueltatzen badu erabiltzailea existitzen da 
 				badago = true;
@@ -39,8 +39,9 @@ public class Bitartekoa {
 	}
 	
 	public static ArrayList<Linea> artuLieneak(){
-		ArrayList<Linea> Lineak =new  ArrayList<Linea>();
-		ResultSet rs = Selekzioak.datuakLineak(kon, bdIzena);//datu basetik hartzen ditugu linea guztien datuak
+		ArrayList<Linea> Lineak =new   
+				ArrayList<Linea>();
+		ResultSet rs = Selekzioak.datuakLineak(kon);//datu basetik hartzen ditugu linea guztien datuak
 		try {
 			while(rs.next()) {
 				String kodLinea=rs.getString(0);
@@ -57,7 +58,7 @@ public class Bitartekoa {
 	}
 	public static ArrayList<Geltokia> linearenGeltokiak(String kod_Linea){
 		ArrayList<Geltokia> Geltokiak =new  ArrayList<Geltokia>();
-		ResultSet rs = Selekzioak.datuakGeltokiak(kon, bdIzena,kod_Linea);//datu basetik hartzen ditugu linea guztien datuak
+		ResultSet rs = Selekzioak.datuakGeltokiak(kon,kod_Linea);//datu basetik hartzen ditugu linea guztien datuak
 		try {
 			if(rs.next() == true )
 			while(rs.next()) {
