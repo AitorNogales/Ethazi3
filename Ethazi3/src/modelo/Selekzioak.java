@@ -22,7 +22,7 @@ Connection kon =Konexioa.getConexion();
 
 			// Se recorre el ResultSet, mostrando por pantalla los resultados.
 			while (rs.next()) {
-				System.out.println(rs.getString(1) + "\t\t " + rs.getString(2));
+				System.out.println(rs.getString(1) + "\t\t " + rs.getString(2)+ "\t\t " + rs.getString(3)+ "\t\t " + rs.getString(4)+ "\t\t " + rs.getString(5)+ "\t\t " + rs.getString(6));
 			}
 		} catch (Exception e) {
 			e.getMessage();
@@ -84,9 +84,10 @@ Connection kon =Konexioa.getConexion();
 			// Se crea un Statement, para realizar la consulta
 			sta = kon.createStatement();
 
-			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs 
 
-			rs = sta.executeQuery("select * from parada where Cod_Parada in (select Cod_Parada from linea_parada where Cod_Linea like "+"'"+kod_Linea+"'");
+			rs = sta.executeQuery("select * from parada where Cod_Parada in (select Cod_Parada from linea_parada where Cod_Linea like '"+kod_Linea+"') ");
+			//"+"'"+kod_Linea+"'
 			
 // Se recorre el ResultSet, mostrando por pantalla los resultados.
 			while (rs.next()) {
@@ -106,7 +107,7 @@ Connection kon =Konexioa.getConexion();
 		try {
 			// Se crea un Statement, para realizar la consulta
 			sta = kon.createStatement();
-			rs = sta.executeQuery("select * from cliente where DNI LIKE("+dni+") AND Contraseña LIKE ("+pass+");");
+			rs = sta.executeQuery("select * from cliente where DNI LIKE '"+dni+"' AND Contraseña LIKE '"+pass+"'");
 		} catch (SQLException e) {
 			
 			e.printStackTrace();

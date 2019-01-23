@@ -19,7 +19,7 @@ public class Agurra extends JPanel {
 		this.setBounds(0,0,425,300); //limiteak
 		ActionListener panelaAldatu = new ActionListener() { //panela aldatzen duen actionListenerra
 			public void actionPerformed(ActionEvent arg0) {
-			PanelLogin	Loging=new PanelLogin();
+			PanelLogin	Loging =new PanelLogin(window);
 				InterfaseNagusia.changeScene(window, Loging);
 			}
 		};

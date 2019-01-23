@@ -4,11 +4,20 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.Collections;
+
 import javax.swing.JList;
 import javax.swing.JScrollBar;
 import javax.swing.JLabel;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+
 import com.toedter.calendar.JDateChooser;
+
+import controlador.Bitartekoa;
+import controlador.Linea;
 
 public class AukeratuLinea extends JPanel {
 	private JTextField txtAukeratuLinea;
@@ -16,8 +25,11 @@ public class AukeratuLinea extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public AukeratuLinea() {
-		this.setBounds(200, 200, 450, 300);
+	public AukeratuLinea(JFrame window) {
+		ArrayList<Linea> Lineak=new ArrayList<Linea>();
+		
+		Collections.copy(Lineak, Bitartekoa.artuLieneak());
+		this.setBounds(200, 200, 450, 400);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
@@ -32,8 +44,15 @@ public class AukeratuLinea extends JPanel {
 		scrollBar.setBounds(385, 66, 17, 140);
 		add(scrollBar);
 		
-		JList list = new JList();
+		
+		JList<String> list = new JList<String>();
 		list.setBounds(47, 66, 355, 140);
+		DefaultListModel<String> modelo = new DefaultListModel<String>();
+		for(Linea li:Lineak) {
+			System.out.println(li.toString());
+			modelo.addElement(li.toString());
+		}
+		list.setModel(modelo);
 		add(list);
 		
 		JButton btnAtzera = new JButton("ATZERA");

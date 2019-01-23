@@ -76,4 +76,9 @@ public void removeHerria(int g) {
 	Herriak.remove(g);
 	
 }
+@Override
+public String toString() {
+	return kod_linea +"-" + nombre_linea ;
+}
+
 }
