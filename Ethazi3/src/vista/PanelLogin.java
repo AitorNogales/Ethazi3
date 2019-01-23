@@ -24,7 +24,7 @@ public class PanelLogin extends JPanel {
 	public PanelLogin() {
 		this.setBounds(0,0,425,350); //limiteak
 		setBackground(Color.LIGHT_GRAY);
-		ArrayList<Bezeroa>bz=controlador.Bitartekoa.artuBezeroak();
+		
 		setLayout(null);
 		
 		JLabel lblLogIn = new JLabel("LOG IN");
