@@ -15,6 +15,7 @@ public class AukeratuGeltokia extends JPanel {
 	 * Create the panel.
 	 */
 	public AukeratuGeltokia() {
+		this.setBounds(200, 200, 450, 300);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		

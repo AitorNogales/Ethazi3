@@ -22,7 +22,7 @@ public class PanelLogin extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelLogin() {
-		this.setBounds(0,0,425,350); //limiteak
+		this.setBounds(200, 200, 450, 300); //limiteak
 		setBackground(Color.LIGHT_GRAY);
 		ArrayList<Bezeroa>bz=controlador.Bitartekoa.artuBezeroak();
 		setLayout(null);

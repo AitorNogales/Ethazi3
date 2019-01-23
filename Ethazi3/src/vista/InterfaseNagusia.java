@@ -1,7 +1,14 @@
 package vista;
 
+//import java.util.Timer;
+import java.util.TimerTask;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+//import General.Globals;
+//import General.metodoak;
+//import interfaz.InterfaceMethods;
 
 public class InterfaseNagusia {
 	public JFrame frame;
@@ -20,11 +27,11 @@ public class InterfaseNagusia {
 	private void initialize() { // Jframe-a sortzen du 
 		frame = new JFrame(); 
 		frame.setBounds(200, 200, 450, 300); //limiteak
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// Jframe-a ixten tu X sakatzean
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// Jframe-a izten tu X sakatzean
 	}
 	/**
 	 * metodo honek frame bat eta panel hartzen ditu eta frame horren content pane
-	 * besala jartzen du panela
+	 * bezala jartzen du panela
 	 * 
 	 * @param frame
 	 *            hartutako framea
@@ -39,5 +46,28 @@ public class InterfaseNagusia {
 		frame.pack(); 
 
 		frame.setPreferredSize(null);
+	}
+	public static void timer() {
+
+		//Timer timer = new Timer();
+
+		TimerTask Task = new TimerTask() {
+
+			@Override
+			public void run() {
+
+				//Globals.time++;
+				//if (Globals.time > 0) {
+					//timer.cancel();
+				}
+				//metodoak.Reset();
+				//InterfaceMethods.changeScene(Globals.window.frame, Globals.panelAgurra);
+
+			//}
+
+		};
+
+		//timer.schedule(Task, (long) 5000, ((long) (500)));
+
 	}
 }
