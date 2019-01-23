@@ -28,11 +28,11 @@ public class PanelLogin extends JPanel {
 		setLayout(null);
 		
 		JLabel lblLogIn = new JLabel("LOG IN");
-		lblLogIn.setFont(new Font("Traditional Arabic", Font.PLAIN, 20));
-		lblLogIn.setBounds(177, 0, 70, 56);
+		lblLogIn.setFont(new Font("Batang", Font.BOLD, 20));
+		lblLogIn.setBounds(177, 0, 86, 56);
 		add(lblLogIn);
 		
-		JLabel lblErabiltzailea = new JLabel("ERABILTZAILEA");
+		JLabel lblErabiltzailea = new JLabel("DNI");
 		lblErabiltzailea.setBounds(91, 107, 93, 14);
 		add(lblErabiltzailea);
 		
@@ -50,11 +50,11 @@ public class PanelLogin extends JPanel {
 		add(passwordField);
 		
 		JButton btnAtzera = new JButton("ATZERA");
-		btnAtzera.setBounds(62, 266, 89, 23);
+		btnAtzera.setBounds(95, 266, 89, 23);
 		add(btnAtzera);
 		
 		JButton btnJarraitu = new JButton("JARRAITU");
-		btnJarraitu.setBounds(285, 266, 89, 23);
+		btnJarraitu.setBounds(222, 266, 93, 23);
 		add(btnJarraitu);
 
 	}
