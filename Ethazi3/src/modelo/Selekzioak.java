@@ -8,17 +8,17 @@ import java.sql.Statement;
 
 public class Selekzioak {
 
-	public static ResultSet datuakBezeroa(Connection kon, String bdIzena) {
+	public static ResultSet datuakBezeroa(String bdIzena) {
 		Statement sta = null;
 		ResultSet rs = null;
-
+Connection kon =Konexioa.getConexion();
 		try {
 			// Se crea un Statement, para realizar la consulta
 			sta = kon.createStatement();
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			rs = sta.executeQuery("select * from " +bdIzena+ ".cliente");
+			rs = sta.executeQuery("select * from cliente");
 
 			// Se recorre el ResultSet, mostrando por pantalla los resultados.
 			while (rs.next()) {
@@ -86,8 +86,7 @@ public class Selekzioak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			rs = sta.executeQuery("select * from " + bdIzena + ".parada  where Cod_Parada in (select Cod_Parada from "
-			+bdIzena+".linea_parada where Cod_Linea like "+kod_Linea+")");
+			rs = sta.executeQuery("select * from parada where Cod_Parada in (select Cod_Parada from linea_parada where Cod_Linea like ('L1')");
 			
 // Se recorre el ResultSet, mostrando por pantalla los resultados.
 			while (rs.next()) {

@@ -18,10 +18,10 @@ public class Konexioa {
 	// Recibe el nombre de la base de datos
 	public Konexioa(String baseDatos) {
 
-		String fichero = "src//modelo//Fitxeroa.txt";
+		String fichero = "src\\modelo\\Fitxeroa.txt";
 		int kontagailua = 0;
 		
-		String server = "jdbc:mysql:/";
+		String server = "jdbc:mysql://";
 		try {
 			FileReader fr = new FileReader(fichero);
 			BufferedReader br = new BufferedReader(fr);
@@ -52,7 +52,7 @@ public class Konexioa {
 			System.out.println("Excepcion leyendo fichero " + fichero + ": " + e);
 		}
 
-		this.servidor = "jdbc:mysql://" + this.maquina + ":" + this.puerto + "/" + baseDatos;
+		this.servidor = "jdbc:mysql://" + this.maquina + ":" + this.puerto + "/ethazi";
 
 
 		// Registrar el driver
@@ -65,6 +65,7 @@ public class Konexioa {
 
 		// Establecer la conexión con el servidor
 		try {
+			//conexion = DriverManager.getConnection("jdbc:mysql://" + this.maquina, this.usuario, this.clave);
 			conexion = DriverManager.getConnection("jdbc:mysql://" + this.maquina, this.usuario, this.clave);
 		} catch (SQLException e) {
 			System.err.println("ERROR AL CONECTAR CON EL SERVIDOR");
