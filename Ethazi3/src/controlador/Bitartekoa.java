@@ -43,9 +43,10 @@ public class Bitartekoa {
 				ArrayList<Linea>();
 		ResultSet rs = Selekzioak.datuakLineak(kon);//datu basetik hartzen ditugu linea guztien datuak
 		try {
+			rs.beforeFirst();
 			while(rs.next()) {
-				String kodLinea=rs.getString(0);
-				String izLinea=rs.getString(1);
+				String kodLinea = rs.getObject(1).toString();
+				String izLinea =  rs.getObject(2).toString();
 				Linea lin =new Linea(kodLinea,izLinea);
 				Lineak.add(lin);
 			}

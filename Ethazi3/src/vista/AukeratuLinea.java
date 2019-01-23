@@ -28,7 +28,7 @@ public class AukeratuLinea extends JPanel {
 	public AukeratuLinea(JFrame window) {
 		ArrayList<Linea> Lineak=new ArrayList<Linea>();
 		
-		Collections.copy(Lineak, Bitartekoa.artuLieneak());
+		Lineak= Bitartekoa.artuLieneak();
 		this.setBounds(200, 200, 450, 400);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
