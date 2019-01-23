@@ -59,7 +59,7 @@ public class Bitartekoa {
 		ArrayList<Geltokia> Geltokiak =new  ArrayList<Geltokia>();
 		ResultSet rs = Selekzioak.datuakGeltokiak(kon, bdIzena,kod_Linea);//datu basetik hartzen ditugu linea guztien datuak
 		try {
-			if(rs.next() == true)
+			if(rs.next() == true )
 			while(rs.next()) {
 				String kodLinea=rs.getString(0);
 				String izLinea=rs.getString(1);
