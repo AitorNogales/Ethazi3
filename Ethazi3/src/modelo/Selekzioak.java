@@ -2,6 +2,7 @@ package modelo;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Selekzioak {
@@ -29,6 +30,28 @@ public class Selekzioak {
 		return rs;
 	}
 
+	public static ResultSet datuakLineak(Connection kon, String bdIzena) {
+		Statement sta = null;
+		ResultSet rs = null;
+
+		try {
+			// Se crea un Statement, para realizar la consulta
+			sta = kon.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+
+			rs = sta.executeQuery("select * from " + bdIzena + ".linea");
+
+			// Se recorre el ResultSet, mostrando por pantalla los resultados.
+			while (rs.next()) {
+				System.out.println(rs.getString(1) + "\t\t " + rs.getString(2));
+			}
+		} catch (Exception e) {
+			e.getMessage();
+		}
+
+		return rs;
+	}
 	public static ResultSet datuakAutobusak(Connection kon, String bdIzena) {
 		Statement sta = null;
 		ResultSet rs = null;
@@ -52,7 +75,7 @@ public class Selekzioak {
 		return rs;
 	}
 
-	public static ResultSet datuakGeltokiak(Connection kon, String bdIzena) {
+	public static ResultSet datuakGeltokiak(Connection kon, String bdIzena, String kod_Linea) {
 		Statement sta = null;
 		ResultSet rs = null;
 
@@ -62,9 +85,10 @@ public class Selekzioak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			rs = sta.executeQuery("select * from " + bdIzena + ".parada");
-
-			// Se recorre el ResultSet, mostrando por pantalla los resultados.
+			rs = sta.executeQuery("select * from " + bdIzena + ".parada  WHERE parada.Cod_Parada LIKE (SELECT linea-parad.Cod_Parada FROM "
+			+bdIzena+".linea-parada WHERE linea-parada.Cod_Linea LIKE("+kod_Linea+"))");
+			
+// Se recorre el ResultSet, mostrando por pantalla los resultados.
 			while (rs.next()) {
 				System.out.println(rs.getString(1) + "\t\t " + rs.getString(2));
 			}
@@ -72,6 +96,21 @@ public class Selekzioak {
 			e.getMessage();
 		}
 
+		return rs;
+	}
+	public static ResultSet kontsultaBiz(String dni,String pass, String bdIzena ,Connection kon) {
+		ResultSet rs = null;
+		
+		Statement sta = null;
+		
+		try {
+			// Se crea un Statement, para realizar la consulta
+			sta = kon.createStatement();
+			rs = sta.executeQuery("select * from " + bdIzena + ".cliente where DNI LIKE("+dni+") AND Contraseña LIKE ("+pass+");");
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
 		return rs;
 	}
 }
