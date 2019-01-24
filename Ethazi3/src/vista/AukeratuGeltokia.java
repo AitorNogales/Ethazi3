@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
+import controlador.Autobusa;
 import controlador.Bitartekoa;
 import controlador.Geltokia;
 
@@ -30,6 +31,8 @@ public class AukeratuGeltokia extends JPanel {
 	public AukeratuGeltokia(JFrame window, String kodLinea) {
 
 		ArrayList<Geltokia> Geltokiak = Bitartekoa.linearenGeltokiak(kodLinea);
+		ArrayList<Autobusa> Autobusak=Bitartekoa.linearenAutobusak(kodLinea);
+		
 		this.setBounds(200, 200, 450, 400);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
