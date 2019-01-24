@@ -20,14 +20,15 @@ import com.toedter.calendar.JDateChooser;
 
 import controlador.Bitartekoa;
 import controlador.Linea;
+import javax.swing.JTextPane;
 
 public class AukeratuLinea extends JPanel {
-	private JTextField txtAukeratuLinea;
 
 	/**
 	 * Create the panel.
 	 */
 	public AukeratuLinea(JFrame window) {
+		
 		ArrayList<Linea> Lineak = new ArrayList<Linea>();
 
 		Lineak = Bitartekoa.artuLieneak();
@@ -35,20 +36,11 @@ public class AukeratuLinea extends JPanel {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 
-		txtAukeratuLinea = new JTextField();
-		txtAukeratuLinea.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		txtAukeratuLinea.setText("AUKERATU LINEA");
-		txtAukeratuLinea.setBounds(133, 11, 169, 31);
-		add(txtAukeratuLinea);
-		txtAukeratuLinea.setColumns(10);
-
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(385, 66, 17, 140);
-		add(scrollBar);
+		
 
 		// lista sortzen dugu
 		JList<String> list = new JList<String>();
-		list.setBounds(47, 66, 355, 140);
+		list.setBounds(47, 66, 355, 197);
 		DefaultListModel<String> modelo = new DefaultListModel<String>();
 		for (Linea li : Lineak) {
 			System.out.println(li.toString());
@@ -67,7 +59,7 @@ public class AukeratuLinea extends JPanel {
 		ActionListener panelaJarraitu = new ActionListener() { // panela aldatzen duen actionListenerra
 			public void actionPerformed(ActionEvent arg0) {
 				String autLinea = "";
-				autLinea = list.getSelectedValue();// listaren balioa hartzen dugu
+				autLinea = list.getSelectedValue().toString();// listaren balioa hartzen dugu
 				if (autLinea.length() > 0) {
 					autLinea = autLinea.substring(0, 2);// listaren lehenengo bi balioak hartzen ditugu hau da kodea
 					AukeratuGeltokia panGeltoki = new AukeratuGeltokia(window, autLinea);
@@ -77,31 +69,26 @@ public class AukeratuLinea extends JPanel {
 		};
 
 		JButton btnAtzera = new JButton("ATZERA");
-		btnAtzera.setBounds(51, 266, 89, 23);
+		btnAtzera.setBounds(47, 304, 89, 23);
 		btnAtzera.addActionListener(panelaAtzera);
 		add(btnAtzera);
 		btnAtzera.addActionListener(panelaAtzera);
 
 		JButton btnJarraitu = new JButton("JARRAITU");
-		btnJarraitu.setBounds(313, 266, 89, 23);
+		btnJarraitu.setBounds(313, 304, 89, 23);
 		add(btnJarraitu);
+		
+		JTextPane txtpnAukeratuLinea = new JTextPane();
+		txtpnAukeratuLinea.setEditable(false);
+		txtpnAukeratuLinea.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		txtpnAukeratuLinea.setText("AUKERATU LINEA");
+		txtpnAukeratuLinea.setBounds(133, 11, 169, 31);
+		add(txtpnAukeratuLinea);
 		btnJarraitu.addActionListener(panelaJarraitu);
 
-		JLabel lblJoanData = new JLabel("JOAN DATA: ");
-		lblJoanData.setBounds(47, 223, 64, 14);
-		add(lblJoanData);
+		
 
-		JLabel lblItzultzeData = new JLabel("ITZULTZE DATA: ");
-		lblItzultzeData.setBounds(233, 223, 83, 14);
-		add(lblItzultzeData);
-
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setBounds(121, 217, 76, 20);
-		add(dateChooser);
-
-		JDateChooser dateChooser_1 = new JDateChooser();
-		dateChooser_1.setBounds(326, 217, 76, 20);
-		add(dateChooser_1);
+		
 
 	}
 }

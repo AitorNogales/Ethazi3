@@ -40,5 +40,12 @@ public String getKolorea() {
 public void setKolorea(String kolorea) {
 	this.kolorea = kolorea;
 }
+///////////Methods///////////////////
+
+@Override
+public String toString() {
+	return kod_autobus + "-" + kolorea ;
+}
+
 
 }

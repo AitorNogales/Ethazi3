@@ -97,7 +97,7 @@ public class Selekzioak {
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
 			rs = sta.executeQuery(
-					"select * from autobus where Cod_Parada in (select Cod_bus from linea_autobus where Cod_linea like '"+ kod_Linea + "') ");
+					"select * from autobus where Cod_bus in (select Cod_bus from linea_autobus where Cod_linea like '"+ kod_Linea +"')");
 			
 
 			// Se recorre el ResultSet, mostrando por pantalla los resultados.
@@ -120,7 +120,7 @@ public class Selekzioak {
 			// Se crea un Statement, para realizar la consulta
 			sta = kon.createStatement();
 			rs = sta.executeQuery(
-					"select * from cliente where DNI LIKE '" + dni + "' AND Contraseña LIKE '" + pass + "'");
+					"select * from cliente where DNI LIKE '" + dni + "' AND Contraseña LIKE  MD5('" + pass + "')");
 		} catch (SQLException e) {
 
 			e.printStackTrace();

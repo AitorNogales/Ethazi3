@@ -13,9 +13,12 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
+import com.toedter.calendar.JDateChooser;
+
 import controlador.Autobusa;
 import controlador.Bitartekoa;
 import controlador.Geltokia;
+import javax.swing.JComboBox;
 
 public class AukeratuGeltokia extends JPanel {
 
@@ -33,7 +36,7 @@ public class AukeratuGeltokia extends JPanel {
 		ArrayList<Geltokia> Geltokiak = Bitartekoa.linearenGeltokiak(kodLinea);
 		ArrayList<Autobusa> Autobusak=Bitartekoa.linearenAutobusak(kodLinea);
 		
-		this.setBounds(200, 200, 450, 400);
+		this.setBounds(200, 200, 450, 425);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 
@@ -41,32 +44,57 @@ public class AukeratuGeltokia extends JPanel {
 		lblAukeratuGeltokia.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblAukeratuGeltokia.setBounds(125, 11, 204, 25);
 		add(lblAukeratuGeltokia);
-
-		// lista sortzen dugu
-		JList<String> list = new JList<String>();
-		list.setBounds(47, 66, 355, 140);
-		DefaultListModel<String> modelo = new DefaultListModel<String>();
+		DefaultListModel<String> model = new DefaultListModel<String>();
 		for (Geltokia gel : Geltokiak) {
 			System.out.println(gel.toString());
-			modelo.addElement(gel.toString());// modeloan jartzen dugu zein baio izango dituen listak
+			model.addElement(gel.toString());// modeloan jartzen dugu zein baio izango dituen listak
 		}
-		list.setModel(modelo);// listari balioak esleitzen dizkiogu
-		add(list);
-
-		list.setBounds(36, 48, 372, 154);
-		add(list);
-
-		JLabel lblZenbatTxartel = new JLabel("ZENBAT TXARTEL:");
-		lblZenbatTxartel.setBounds(46, 213, 92, 14);
-		add(lblZenbatTxartel);
-
+		
+		JList<String> listJatorria = new JList<String>();
+		listJatorria.setBounds(34, 68, 166, 189);
+		add(listJatorria);
+		listJatorria.setModel(model);
+		
+		JList<String> listHelmuga = new JList<String>();
+		listHelmuga.setBounds(242, 68, 166, 189);
+		add(listHelmuga);
+		listHelmuga.setModel(model);
+		
+		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setBounds(34, 281, 166, 25);
+		add(comboBox);
+		for(Autobusa aut: Autobusak) {
+			comboBox.addItem(aut.toString());
+		}
+		
+		JLabel lblJatorria = new JLabel("Jatorria");
+		lblJatorria.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblJatorria.setBounds(36, 43, 87, 14);
+		add(lblJatorria);
+		
+		JLabel lblHelmuga = new JLabel("Helmuga");
+		lblHelmuga.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblHelmuga.setBounds(242, 45, 87, 14);
+		add(lblHelmuga);
+		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setBounds(69, 317, 116, 20);
+		add(dateChooser);
+		
+		JLabel lblData = new JLabel("Data:");
+		lblData.setBounds(34, 314, 46, 23);
+		add(lblData);
+		
+		JLabel lblAutobusa = new JLabel("Autobusa:");
+		lblAutobusa.setBounds(34, 268, 65, 14);
+		add(lblAutobusa);
 		JLabel lblZenbatekoa = new JLabel("ZENBATEKOA: ");
-		lblZenbatekoa.setBounds(240, 213, 72, 14);
+		lblZenbatekoa.setBounds(253, 286, 72, 14);
 		add(lblZenbatekoa);
 		
 
 		lblNewLabel = new JLabel("dirua");
-		lblNewLabel.setBounds(322, 213, 46, 14);
+		lblNewLabel.setBounds(327, 286, 46, 14);
 		add(lblNewLabel);
 		
 		ActionListener panelaAtzera = new ActionListener() { // panela aldatzen duen actionListenerra
@@ -76,7 +104,7 @@ public class AukeratuGeltokia extends JPanel {
 			}
 		};
 		
-		ActionListener panelaJarraitu = new ActionListener() { // panela aldatzen duen actionListenerra
+	/*	ActionListener panelaJarraitu = new ActionListener() { // panela aldatzen duen actionListenerra
 			public void actionPerformed(ActionEvent arg0) {
 				String autLinea =list.getSelectedValue();//listaren balioa hartzen dugu
 				if(autLinea.length()>0) {
@@ -85,16 +113,22 @@ public class AukeratuGeltokia extends JPanel {
 				InterfaseNagusia.changeScene(window, panGeltoki);
 				}
 			}
-		};
+		};*/
 
 		JButton btnAtzera = new JButton("ATZERA");
-		btnAtzera.setBounds(97, 266, 89, 23);
+		btnAtzera.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnAtzera.setBounds(34, 348, 89, 23);
 		add(btnAtzera);
 
 		btnJarraitu = new JButton("JARRAITU");
-		btnJarraitu.setBounds(268, 266, 89, 23);
+		btnJarraitu.setBounds(319, 348, 89, 23);
 		add(btnJarraitu);
+		
+		
+	
 
 	}
-
 }
