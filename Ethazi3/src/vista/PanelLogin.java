@@ -17,8 +17,18 @@ import controlador.Bitartekoa;
 public class PanelLogin extends JPanel {
 	private JTextField textField;
 	private JPasswordField passwordField;
-	
-
+	private JLabel lblLogIn;
+	private JLabel lblErabiltzailea;
+	private JLabel lblPasahitza;
+	private ActionListener panelaLineak; 
+    private String pass;
+    private String dni;
+    private AukeratuLinea lineak;
+    private ActionListener panelaAtzera;
+    private Agurra agurra;
+    private JButton btnAtzera;
+    private JButton btnJarraitu;
+    
 	/**
 	 * Create the panel.
 	 */
@@ -28,16 +38,16 @@ public class PanelLogin extends JPanel {
 
 		setLayout(null);
 
-		JLabel lblLogIn = new JLabel("LOG IN");
+		lblLogIn = new JLabel("LOG IN");
 		lblLogIn.setFont(new Font("Batang", Font.BOLD, 20));
 		lblLogIn.setBounds(177, 0, 86, 56);
 		add(lblLogIn);
 
-		JLabel lblErabiltzailea = new JLabel("DNI");
+		lblErabiltzailea = new JLabel("DNI");
 		lblErabiltzailea.setBounds(91, 107, 93, 14);
 		add(lblErabiltzailea);
 
-		JLabel lblPasahitza = new JLabel("PASAHITZA");
+		lblPasahitza = new JLabel("PASAHITZA");
 		lblPasahitza.setBounds(91, 135, 93, 14);
 		add(lblPasahitza);
 
@@ -50,32 +60,32 @@ public class PanelLogin extends JPanel {
 		passwordField.setBounds(177, 132, 86, 20);
 		add(passwordField);
 
-		ActionListener panelaLineak = new ActionListener() { // panela aldatzen duen actionListenerra
+		panelaLineak = new ActionListener() { // panela aldatzen duen actionListenerra
 			public void actionPerformed(ActionEvent arg0) {
 				char[] arrayC = passwordField.getPassword(); // pasahitzan dagoena hartzen dugu char array moduan
-				String pass = new String(arrayC);// lortutako char arraya stringera pasatzen dugu
-				String dni = textField.getText();//erabiltzailearen dnia lortzen dugu
+				pass = new String(arrayC);// lortutako char arraya stringera pasatzen dugu
+				dni = textField.getText();//erabiltzailearen dnia lortzen dugu
 				if (Bitartekoa.ceckBezeroa(dni, pass)) {//dnia eta pasahitza DB badaude orduan lineak panelera aldatzen dugu
-					AukeratuLinea lineak= new AukeratuLinea(window);
+					lineak= new AukeratuLinea(window);
 					InterfaseNagusia.changeScene(window, lineak);
 				}
 			}
 		};
 
-		ActionListener panelaAtzera = new ActionListener() { // panela aldatzen duen actionListenerra
+		panelaAtzera = new ActionListener() { // panela aldatzen duen actionListenerra
 			public void actionPerformed(ActionEvent arg0) {
-				Agurra agurra = new Agurra(window);
+				agurra = new Agurra(window);
 				InterfaseNagusia.changeScene(window, agurra);
 			}
 		};
 
 		// atzera botoiaren parametroak
-		JButton btnAtzera = new JButton("ATZERA");
+		btnAtzera = new JButton("ATZERA");
 		btnAtzera.setBounds(95, 266, 89, 23);
 		add(btnAtzera);
 		btnAtzera.addActionListener(panelaAtzera);
 		// jarraitu botoiaren parametroak
-		JButton btnJarraitu = new JButton("JARRAITU");
+		btnJarraitu = new JButton("JARRAITU");
 		btnJarraitu.setBounds(222, 266, 93, 23);
 		add(btnJarraitu);
 		btnJarraitu.addActionListener(panelaLineak);

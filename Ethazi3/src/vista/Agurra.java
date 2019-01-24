@@ -10,16 +10,18 @@ import javax.swing.JPanel;
 
 
 public class Agurra extends JPanel {
-	public JButton btnNewButton = new JButton(""); 
+	public JButton btnNewButton = new JButton("");
+	private ActionListener panelaAldatu;
+	private PanelLogin	Loging;
 	/**
 	 * Create the panel.
 	 */
 	public Agurra( JFrame window) {
 		setLayout(null);
 		this.setBounds(0,0,425,300); //limiteak
-		ActionListener panelaAldatu = new ActionListener() { //panela aldatzen duen actionListenerra
+		panelaAldatu = new ActionListener() { //panela aldatzen duen actionListenerra
 			public void actionPerformed(ActionEvent arg0) {
-			PanelLogin	Loging =new PanelLogin(window);
+			Loging =new PanelLogin(window);
 				InterfaseNagusia.changeScene(window, Loging);
 			}
 		};
