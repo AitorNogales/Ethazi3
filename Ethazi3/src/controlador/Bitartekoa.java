@@ -57,16 +57,25 @@ public class Bitartekoa {
 		return Lineak;
 		
 	}
+	/**
+	 * linea bat emanda linea horretan dauden geltokien lista itzultzen du
+	 * @param kod_Linea autatutako linea
+	 * @return autatutako linean dauden  geltokien lista
+	 */
 	public static ArrayList<Geltokia> linearenGeltokiak(String kod_Linea){
 		ArrayList<Geltokia> Geltokiak =new  ArrayList<Geltokia>();
 		ResultSet rs = Selekzioak.datuakGeltokiak(kon,kod_Linea);//datu basetik hartzen ditugu linea guztien datuak
 		try {
-			if(rs.next() == true )
+			rs.beforeFirst();
 			while(rs.next()) {
-				String kodLinea=rs.getString(0);
-				String izLinea=rs.getString(1);
-				//Geltokia lin =new Linea(kodLinea,izLinea);
-				//Geltokiak.add(lin);
+				int kodGeltoki=rs.getInt(1);
+				String izGeltoki=rs.getString(2);
+				String kalea=rs.getString(3);
+				double latitudea=rs.getDouble(4);
+				double longitudea=rs.getDouble(5);
+				
+				Geltokia gel =new Geltokia(kodGeltoki,izGeltoki,kalea,latitudea,longitudea);//emandako datuekin geltoki objetua sortzen du
+				Geltokiak.add(gel);//geltoki objetua listare gehitzen diogu
 			
 			}
 		} catch (SQLException e) {

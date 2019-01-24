@@ -1,58 +1,97 @@
 package vista;
 
-import javax.swing.JPanel;
 import java.awt.Color;
-import javax.swing.JLabel;
 import java.awt.Font;
-import javax.swing.JList;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+
+import controlador.Bitartekoa;
+import controlador.Geltokia;
 
 public class AukeratuGeltokia extends JPanel {
 
+	private JButton btnJarraitu;
+	private JLabel lblNewLabel;
+
 	/**
 	 * Create the panel.
+	 * 
+	 * @param      window, String kodLinea zein da interfaseak erabiliko duen lehioa
+	 * @param zein lineako geltokiak agertuko diren panelean
 	 */
-	public AukeratuGeltokia() {
-		this.setBounds(200, 200, 450, 300);
+	public AukeratuGeltokia(JFrame window, String kodLinea) {
+
+		ArrayList<Geltokia> Geltokiak = Bitartekoa.linearenGeltokiak(kodLinea);
+		this.setBounds(200, 200, 450, 400);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		
+
 		JLabel lblAukeratuGeltokia = new JLabel("AUKERATU GELTOKIA");
 		lblAukeratuGeltokia.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblAukeratuGeltokia.setBounds(125, 11, 204, 25);
 		add(lblAukeratuGeltokia);
-		
-		JList list = new JList();
+
+		// lista sortzen dugu
+		JList<String> list = new JList<String>();
+		list.setBounds(47, 66, 355, 140);
+		DefaultListModel<String> modelo = new DefaultListModel<String>();
+		for (Geltokia gel : Geltokiak) {
+			System.out.println(gel.toString());
+			modelo.addElement(gel.toString());// modeloan jartzen dugu zein baio izango dituen listak
+		}
+		list.setModel(modelo);// listari balioak esleitzen dizkiogu
+		add(list);
+
 		list.setBounds(36, 48, 372, 154);
 		add(list);
-		
+
 		JLabel lblZenbatTxartel = new JLabel("ZENBAT TXARTEL:");
 		lblZenbatTxartel.setBounds(46, 213, 92, 14);
 		add(lblZenbatTxartel);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"--", "1", "2", "3", "4", "5"}));
-		comboBox.setToolTipText("");
-		comboBox.setBounds(141, 210, 33, 20);
-		add(comboBox);
-		
+
 		JLabel lblZenbatekoa = new JLabel("ZENBATEKOA: ");
 		lblZenbatekoa.setBounds(240, 213, 72, 14);
 		add(lblZenbatekoa);
 		
-		JLabel lblNewLabel = new JLabel("dirua");
+
+		lblNewLabel = new JLabel("dirua");
 		lblNewLabel.setBounds(322, 213, 46, 14);
 		add(lblNewLabel);
 		
+		ActionListener panelaAtzera = new ActionListener() { // panela aldatzen duen actionListenerra
+			public void actionPerformed(ActionEvent arg0) {
+				AukeratuLinea Linea =new AukeratuLinea(window);
+				InterfaseNagusia.changeScene(window, Linea);
+			}
+		};
+		
+		ActionListener panelaJarraitu = new ActionListener() { // panela aldatzen duen actionListenerra
+			public void actionPerformed(ActionEvent arg0) {
+				String autLinea =list.getSelectedValue();//listaren balioa hartzen dugu
+				if(autLinea.length()>0) {
+				autLinea =autLinea.substring(0, 2);//listaren lehenengo bi balioak hartzen ditugu hau da kodea
+				AukeratuGeltokia	panGeltoki =new AukeratuGeltokia(window,autLinea);
+				InterfaseNagusia.changeScene(window, panGeltoki);
+				}
+			}
+		};
+
 		JButton btnAtzera = new JButton("ATZERA");
 		btnAtzera.setBounds(97, 266, 89, 23);
 		add(btnAtzera);
-		
-		JButton btnJarraitu = new JButton("JARRAITU");
+
+		btnJarraitu = new JButton("JARRAITU");
 		btnJarraitu.setBounds(268, 266, 89, 23);
 		add(btnJarraitu);
 
 	}
+
 }

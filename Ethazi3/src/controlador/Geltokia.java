@@ -63,8 +63,14 @@ public class Geltokia {
 	public void setLongitudea(double longitudea) {
 		this.longitudea = longitudea;
 	}
+	
+	@Override
+	public String toString() {
+		return kod_geltoki + "-" + kalea ;
+	}
 
 
+	
 	
 	
 
