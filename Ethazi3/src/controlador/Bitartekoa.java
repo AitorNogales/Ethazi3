@@ -1,7 +1,6 @@
 package controlador;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -117,4 +116,21 @@ public class Bitartekoa {
 		}
 		return Autobusak;
 	}
+	/**
+	 * bidaiaren datuak emanda zenbat balioko duen tiketa buelktatzen du
+	 * @param jatorriGelt bidiaraan jatorrisko geltokia
+	 * @param helmugaGelt bidaiaren helmuga geltokia
+	 * @param auto zein autobuzean egingo da bidaia
+	 * @return zenbatekoa izango da bidaiaren prezioa
+	 */
+public static double kalkulatuPresioa(Geltokia jatorriGelt  ,Geltokia helmugaGelt, Autobusa auto) {
+		double diru=0,dist;
+		dist= jatorriGelt.geltokiArtekoDistantzia(helmugaGelt);
+		
+		 diru=dist/auto.getErregai_Km()/auto.getFuelarenPresioa()*1.2/auto.getEserleku_kop();
+		
+		
+		return diru;
+	}
+	
 }

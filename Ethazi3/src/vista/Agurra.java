@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 
 
 public class Agurra extends JPanel {
+	
 	public JButton btnNewButton = new JButton("");
 	private ActionListener panelaAldatu;
 	private PanelLogin	Loging;

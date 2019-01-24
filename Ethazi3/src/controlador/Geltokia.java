@@ -1,6 +1,6 @@
 package controlador;
 
-public class Geltokia {
+public class Geltokia implements Comparable<Geltokia> {
 	private static final double terLat = 43.261111, termLong = -2.949722;
 
 	private int kod_geltoki;
@@ -64,13 +64,7 @@ public class Geltokia {
 	}
 
 	///////////////////// Methods/////////////////
-	@Override
-	public String toString() {
-		return kod_geltoki + "-" + kalea;
-	}
-
 	private double distantziaKalkulatu() {
-
 		double lurrarenRadioa = 6371;// kilometrotan Lurraren radioa
 		double dLat = Math.toRadians(terLat - latitudea); //
 		double dLng = Math.toRadians(termLong - longitudea);
@@ -82,7 +76,37 @@ public class Geltokia {
 		double distancia = lurrarenRadioa * va2;
 
 		return distancia;
+	}
+	
+	public double geltokiArtekoDistantzia(Geltokia gel) {
+		
+		double lurrarenRadioa = 6371;// kilometrotan Lurraren radioa
+		double dLat = Math.toRadians(this.latitudea - gel.latitudea); 
+		double dLng = Math.toRadians(this.longitudea - gel.longitudea);
+		double sindLat = Math.sin(dLat / 2);
+		double sindLng = Math.sin(dLng / 2);
+		double va1 = Math.pow(sindLat, 2)
+				+ Math.pow(sindLng, 2) * Math.cos(Math.toRadians(this.latitudea)) * Math.cos(Math.toRadians(gel.latitudea));
+		double va2 = 2 * Math.atan2(Math.sqrt(va1), Math.sqrt(1 - va1));
+		double distancia = lurrarenRadioa * va2;
 
+		return distancia;
+	}
+	@Override
+	public String toString() {
+		return kod_geltoki + "-" + kalea;
 	}
 
+	
+	
+	@Override
+	 public int compareTo(Geltokia o) {
+         if (disTerm < o.disTerm) {
+             return -1;
+         }
+         if (disTerm > o.disTerm) {
+             return 1;
+         }
+         return 0;
+     }
 }

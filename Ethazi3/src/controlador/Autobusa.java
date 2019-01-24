@@ -1,6 +1,9 @@
 package controlador;
 
 public class Autobusa {
+	private final double fuelarenPresioa =0.8;
+
+
 private int  kod_autobus,eserleku_kop;
 private double erregai_Km;
 private String kolorea;
@@ -39,6 +42,9 @@ public String getKolorea() {
 }
 public void setKolorea(String kolorea) {
 	this.kolorea = kolorea;
+}
+public double getFuelarenPresioa() {
+	return fuelarenPresioa;
 }
 ///////////Methods///////////////////
 
