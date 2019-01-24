@@ -84,4 +84,31 @@ public class Bitartekoa {
 		}
 		return Geltokiak;
 	}
+	/**
+	 * linea bat emanda linea horretan dauden geltokien lista itzultzen du
+	 * @param kod_Linea autatutako linea
+	 * @return autatutako linean dauden  geltokien lista
+	 */
+	public static ArrayList<Autobusa> linearenAutobusak(String kod_Linea){
+		ArrayList<Autobusa> Autobusak =new  ArrayList<Autobusa>();
+		ResultSet rs = Selekzioak.datuakLineaAutobusa(kon,kod_Linea);//datu basetik hartzen ditugu lineak dauzkan autobusak
+		try {
+			rs.beforeFirst();
+			while(rs.next()) {
+				int kodAutobus=rs.getInt(1);
+				int n_plaz =rs.getInt(2);
+				double konsumo=rs.getDouble(3);
+				String kolore=rs.getString(4);
+				
+				
+				Autobusa gel =new Autobusa(kodAutobus,n_plaz,konsumo,kolore);//emandako datuekin objetua sortzen du
+				Autobusak.add(gel);//geltoki objetua listare gehitzen diogu
+			
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return Autobusak;
+	}
 }

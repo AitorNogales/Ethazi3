@@ -53,28 +53,7 @@ public class Selekzioak {
 		return rs;
 	}
 
-	public static ResultSet datuakAutobusak(Connection kon) {
-		Statement sta = null;
-		ResultSet rs = null;
-
-		try {
-			// Se crea un Statement, para realizar la consulta
-			sta = kon.createStatement();
-
-			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
-
-			rs = sta.executeQuery("select * from autobus");
-
-			// Se recorre el ResultSet, mostrando por pantalla los resultados.
-			while (rs.next()) {
-				System.out.println(rs.getString(1) + "\t\t " + rs.getString(2));
-			}
-		} catch (Exception e) {
-			e.getMessage();
-		}
-
-		return rs;
-	}
+	
 
 	public static ResultSet datuakGeltokiak(Connection kon, String kod_Linea) {
 		Statement sta = null;
@@ -89,6 +68,36 @@ public class Selekzioak {
 			rs = sta.executeQuery(
 					"select * from parada where Cod_Parada in (select Cod_Parada from linea_parada where Cod_Linea like '"
 							+ kod_Linea + "') ");
+			
+
+			// Se recorre el ResultSet, mostrando por pantalla los resultados.
+			while (rs.next()) {
+				System.out.println(rs.getString(1) + "\t\t " + rs.getString(2));
+			}
+		} catch (Exception e) {
+			e.getMessage();
+		}
+
+		return rs;
+	}
+	/**
+	 * 
+	 * @param kon la conexion en la que buscamos 
+	 * @param kod_Linea linea a la que pertenece el autobus
+	 * @return result set de autobus
+	 */
+	public static ResultSet datuakLineaAutobusa(Connection kon, String kod_Linea) {
+		Statement sta = null;
+		ResultSet rs = null;
+
+		try {
+			// Se crea un Statement, para realizar la consulta
+			sta = kon.createStatement();
+
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+
+			rs = sta.executeQuery(
+					"select * from autobus where Cod_Parada in (select Cod_bus from linea_autobus where Cod_linea like '"+ kod_Linea + "') ");
 			
 
 			// Se recorre el ResultSet, mostrando por pantalla los resultados.
