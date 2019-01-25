@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Timer;
@@ -19,10 +20,12 @@ import com.toedter.calendar.JDateChooser;
 import controlador.Autobusa;
 import controlador.Bitartekoa;
 import controlador.Geltokia;
+import javax.swing.JCheckBox;
 
 public class AukeratuGeltokia extends JPanel {
 
 	private JButton btnJarraitu;
+	private JButton btnAtzera;
 	private JLabel lblDirua;
 	private ArrayList<Geltokia> Geltokiak;
 	private ArrayList<Autobusa> Autobusak;
@@ -30,6 +33,10 @@ public class AukeratuGeltokia extends JPanel {
 	private JList<String> listJatorria;
 	private JList<String> listHelmuga;
 	private JComboBox<String> comboBoxAutobus;
+	private JCheckBox chckbxJoanEtorria;
+	private JDateChooser dateChooser;
+	private double dirua;
+	private Timer timer = new Timer();// denbora kontatzen du
 
 	/**
 	 * Create the panel.
@@ -92,7 +99,7 @@ public class AukeratuGeltokia extends JPanel {
 		lblHelmuga.setBounds(242, 45, 87, 14);
 		add(lblHelmuga);
 
-		JDateChooser dateChooser = new JDateChooser();
+		dateChooser = new JDateChooser();
 		dateChooser.setBounds(69, 317, 116, 20);
 		add(dateChooser);
 
@@ -115,56 +122,62 @@ public class AukeratuGeltokia extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				AukeratuLinea Linea = new AukeratuLinea(window);
 				InterfaseNagusia.changeScene(window, Linea);
+				timer.cancel();
 			}
 		};
 
-		/*
-		 * ActionListener panelaJarraitu = new ActionListener() { // panela aldatzen
-		 * duen actionListenerra public void actionPerformed(ActionEvent arg0) { String
-		 * autLinea =list.getSelectedValue();//listaren balioa hartzen dugu
-		 * if(autLinea.length()>0) { autLinea =autLinea.substring(0, 2);//listaren
-		 * lehenengo bi balioak hartzen ditugu hau da kodea AukeratuGeltokia panGeltoki
-		 * =new AukeratuGeltokia(window,autLinea); InterfaseNagusia.changeScene(window,
-		 * panGeltoki); } } };
-		 */
+		chckbxJoanEtorria = new JCheckBox("Joan Etorria");
+		chckbxJoanEtorria.setBounds(247, 314, 97, 23);
+		add(chckbxJoanEtorria);
 
-		JButton btnAtzera = new JButton("ATZERA");
+		ActionListener panelaJarraitu = new ActionListener() { // panela aldatzen duen actionListenerra
+			public void actionPerformed(ActionEvent arg0) { // panela aldatzen duen actionListenerra
+				Date bidaiDate = new Date(dateChooser.getDate().getTime());
+				if (dirua > 0 && bidaiDate != null) {
+					Ordainketa ordain = new Ordainketa(window, dirua);
+					InterfaseNagusia.changeScene(window, ordain);
+					timer.cancel();
+				}
+			}
+		};
+
+		btnAtzera = new JButton("ATZERA");
 		btnAtzera.addActionListener(panelaAtzera);
-
 		btnAtzera.setBounds(34, 348, 89, 23);
 		add(btnAtzera);
 
 		btnJarraitu = new JButton("JARRAITU");
 		btnJarraitu.setBounds(319, 348, 89, 23);
 		add(btnJarraitu);
+		btnJarraitu.addActionListener(panelaJarraitu);
+
 		timer.schedule(Task, (long) 500, ((long) (500)));// segundu erdiro comprobatzen du billetearen presioa
 
 	}
-
-	private Timer timer = new Timer();// denbora kontatzen du
 
 	TimerTask Task = new TimerTask() // ahu egingo du denbora bat pasa ostean
 	{
 
 		@Override
 		public void run() {
-			// System.out.println(listJatorria.getSelectedIndex()+"jatorria
-			// "+listHelmuga.getSelectedIndex());
+
 			int a = listJatorria.getSelectedIndex();
 			int b = listHelmuga.getSelectedIndex();
-			 int c= comboBoxAutobus.getSelectedIndex();
+
 			if (a >= 0 && b >= 0) {// gausak seleksionatuta baditugu
 				System.out.println("entre");
-				Geltokia jatorriGeltokia = Geltokiak.get(listJatorria.getSelectedIndex());
-				Geltokia helmugaGeltokia = Geltokiak.get(listHelmuga.getSelectedIndex());
+				Geltokia jatorriGeltokia = Geltokiak.get(a);
+				Geltokia helmugaGeltokia = Geltokiak.get(b);
 				Autobusa autobus = Autobusak.get(comboBoxAutobus.getSelectedIndex());
 
-				double diru = Bitartekoa.kalkulatuPresioa(jatorriGeltokia, helmugaGeltokia, autobus);
-				lblDirua.setText(diru + "€");
+				dirua = Bitartekoa.kalkulatuPresioa(jatorriGeltokia, helmugaGeltokia, autobus);
+				if (chckbxJoanEtorria.isSelected()) {
+					dirua *= 2;
+				}
+				lblDirua.setText(dirua + "€");
 			}
 
 		};
 
 	};
-
 }
