@@ -147,7 +147,7 @@ public class AukeratuGeltokia extends JPanel {
 		add(btnAtzera);
 
 		btnJarraitu = new JButton("JARRAITU");
-		btnJarraitu.setBounds(319, 348, 89, 23);
+		btnJarraitu.setBounds(310, 348, 98, 23);
 		add(btnJarraitu);
 		btnJarraitu.addActionListener(panelaJarraitu);
 

@@ -76,10 +76,11 @@ public class AukeratuLinea extends JPanel {
 		btnAtzera.addActionListener(panelaAtzera);
 
 		btnJarraitu = new JButton("JARRAITU");
-		btnJarraitu.setBounds(313, 304, 89, 23);
+		btnJarraitu.setBounds(303, 304, 99, 23);
 		add(btnJarraitu);
 
 		txtpnAukeratuLinea = new JTextPane();
+		txtpnAukeratuLinea.setBackground(Color.LIGHT_GRAY);
 		txtpnAukeratuLinea.setEditable(false);
 		txtpnAukeratuLinea.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		txtpnAukeratuLinea.setText("AUKERATU LINEA");
