@@ -68,11 +68,11 @@ public class Ordainketa extends JPanel {
 		itzuliak.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		//itzuliak.setText(itzul + "\u20AC");
 		itzuliak.setBackground(new Color(112, 128, 144));
-		itzuliak.setBounds(30, 55, 230, 44);//limiteak
+		itzuliak.setBounds(30, 43, 230, 44);//limiteak
 		add(itzuliak);
 
 		btn200 = new JButton("200\u20AC");
-		btn200.setBounds(30, 115, 70, 44);//limiteak
+		btn200.setBounds(30, 95, 70, 44);//limiteak
 		add(btn200);
 		action200 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -88,7 +88,7 @@ public class Ordainketa extends JPanel {
 			}
 		};
 		btn100.addActionListener(action100);
-		btn100.setBounds(110, 115, 70, 44);//limiteak
+		btn100.setBounds(110, 95, 70, 44);//limiteak
 		add(btn100);
 
 		btn50 = new JButton("50\u20AC");
@@ -98,7 +98,7 @@ public class Ordainketa extends JPanel {
 			}
 		};
 		btn50.addActionListener(action50);
-		btn50.setBounds(190, 115, 70, 44);//limiteak
+		btn50.setBounds(190, 95, 70, 44);//limiteak
 		add(btn50);
 
 		btn20 = new JButton("20\u20AC");
@@ -108,7 +108,7 @@ public class Ordainketa extends JPanel {
 			}
 		};
 		btn20.addActionListener(action20);
-		btn20.setBounds(270, 115, 70, 44);//limiteak
+		btn20.setBounds(270, 95, 70, 44);//limiteak
 		add(btn20);
 
 		btn10 = new JButton("10\u20AC");
@@ -118,7 +118,7 @@ public class Ordainketa extends JPanel {
 			}
 		};
 		btn10.addActionListener(action10);
-		btn10.setBounds(350, 115, 70, 44);
+		btn10.setBounds(350, 95, 70, 44);
 		add(btn10);
 
 		btn5 = new JButton("5\u20AC");
@@ -128,7 +128,7 @@ public class Ordainketa extends JPanel {
 			}
 		};
 		btn5.addActionListener(action5);
-		btn5.setBounds(30, 170, 70, 44);//limiteak
+		btn5.setBounds(30, 150, 70, 44);//limiteak
 		add(btn5);
 
 		btn2 = new JButton("2\u20AC");
@@ -138,7 +138,7 @@ public class Ordainketa extends JPanel {
 			}
 		};
 		btn2.addActionListener(action2);
-		btn2.setBounds(110, 170, 70, 44);//limiteak
+		btn2.setBounds(110, 150, 70, 44);//limiteak
 		add(btn2);
 
 		btn1 = new JButton("1\u20AC");
@@ -148,7 +148,7 @@ public class Ordainketa extends JPanel {
 			}
 		};
 		btn1.addActionListener(action1);
-		btn1.setBounds(190, 170, 70, 44);//limiteak
+		btn1.setBounds(190, 150, 70, 44);//limiteak
 		add(btn1);
 
 		btn50c = new JButton("50c");
@@ -158,7 +158,7 @@ public class Ordainketa extends JPanel {
 			}
 		};
 		btn50c.addActionListener(action050);
-		btn50c.setBounds(270, 170, 70, 44);//limiteak
+		btn50c.setBounds(270, 150, 70, 44);//limiteak
 		add(btn50c);
 
 		btn20c = new JButton("20c");
@@ -168,7 +168,7 @@ public class Ordainketa extends JPanel {
 			}
 		};
 		btn20c.addActionListener(action020);
-		btn20c.setBounds(350, 170, 70, 44);//limiteak
+		btn20c.setBounds(350, 150, 70, 44);//limiteak
 		add(btn20c);
 
 		btn10c = new JButton("10c");
@@ -178,7 +178,7 @@ public class Ordainketa extends JPanel {
 			}
 		};
 		btn10c.addActionListener(action010);
-		btn10c.setBounds(71, 225, 70, 44);//limiteak
+		btn10c.setBounds(71, 205, 70, 44);//limiteak
 		add(btn10c);
 
 		btn5c = new JButton("5c");
@@ -190,7 +190,7 @@ public class Ordainketa extends JPanel {
 		};
 		btn5c.addActionListener(action005);
 
-		btn5c.setBounds(151, 225, 70, 44);//limiteak
+		btn5c.setBounds(151, 205, 70, 44);//limiteak
 		add(btn5c);
 
 		btn2c = new JButton("2c");
@@ -201,7 +201,7 @@ public class Ordainketa extends JPanel {
 			}
 		};
 		btn2c.addActionListener(action002);
-		btn2c.setBounds(231, 225, 70, 44);//limiteak
+		btn2c.setBounds(231, 205, 70, 44);//limiteak
 		add(btn2c);
 
 		btn1c = new JButton("1c");
@@ -211,11 +211,12 @@ public class Ordainketa extends JPanel {
 			}
 		};
 		btn1c.addActionListener(action001);
-		btn1c.setBounds(311, 225, 70, 44);//limiteak
+		btn1c.setBounds(311, 205, 70, 44);//limiteak
 		add(btn1c);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(10, 273, 35, 23);
+		add(btnNewButton);
 
 	}
-
-	
-
 }

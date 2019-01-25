@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="irudiak"/>
 	<classpathentry exported="true" kind="lib" path="Jars/mysql-connector-java-5.1.45.jar"/>
 	<classpathentry exported="true" kind="lib" path="Jars/junit-4.6.jar"/>
 	<classpathentry exported="true" kind="lib" path="Jars/jgoodies-looks-2.4.1.jar"/>
