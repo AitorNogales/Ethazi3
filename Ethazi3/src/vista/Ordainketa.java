@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 
 //import General.Globals;
 //import interfaz.InterfaceMethods;
@@ -214,9 +215,10 @@ public class Ordainketa extends JPanel {
 		btn1c.setBounds(311, 205, 70, 44);//limiteak
 		add(btn1c);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(10, 273, 35, 23);
-		add(btnNewButton);
+		JButton btnBack = new JButton("");
+		btnBack.setIcon(new ImageIcon(Ordainketa.class.getResource("/irudiak/flecha atras.jpg")));
+		btnBack.setBounds(11, 270, 47, 39);
+		add(btnBack);
 
 	}
 }
