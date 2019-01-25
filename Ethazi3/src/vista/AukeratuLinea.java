@@ -17,7 +17,15 @@ import controlador.Bitartekoa;
 import controlador.Linea;
 
 public class AukeratuLinea extends JPanel {
-
+    private JList<String> list;
+    private DefaultListModel<String> modelo;
+    private ActionListener panelaAtzera;
+    private PanelLogin Loging;
+    private ActionListener panelaJarraitu;
+    private AukeratuGeltokia panGeltoki;
+    private JButton btnAtzera;
+    private JButton btnJarraitu;
+    private JTextPane txtpnAukeratuLinea;
 	/**
 	 * Create the panel.
 	 */
@@ -31,9 +39,9 @@ public class AukeratuLinea extends JPanel {
 		setLayout(null);
 
 		// lista sortzen dugu
-		JList<String> list = new JList<String>();
+		list = new JList<String>();
 		list.setBounds(47, 66, 355, 197);
-		DefaultListModel<String> modelo = new DefaultListModel<String>();
+		modelo = new DefaultListModel<String>();
 		for (Linea li : Lineak) {
 			System.out.println(li.toString());
 			modelo.addElement(li.toString());// modeloan jartzen dugu zein baio izango dituen listak
@@ -41,37 +49,37 @@ public class AukeratuLinea extends JPanel {
 		list.setModel(modelo);// listari balioak esleitzen dizkiogu
 		add(list);
 
-		ActionListener panelaAtzera = new ActionListener() { // panela aldatzen duen actionListenerra
+		panelaAtzera = new ActionListener() { // panela aldatzen duen actionListenerra
 			public void actionPerformed(ActionEvent arg0) {
-				PanelLogin Loging = new PanelLogin(window);
+				Loging = new PanelLogin(window);
 				InterfaseNagusia.changeScene(window, Loging);
 			}
 		};
 
-		ActionListener panelaJarraitu = new ActionListener() { // panela aldatzen duen actionListenerra
+		panelaJarraitu = new ActionListener() { // panela aldatzen duen actionListenerra
 			public void actionPerformed(ActionEvent arg0) {
-				if (!list.isSelectionEmpty()) {// serbait autatu badugu
+				if (!list.isSelectionEmpty()) {// Zerbait autatu badugu
 
 					String autLinea = list.getSelectedValue().toString();// listaren balioa hartzen dugu
 
-					autLinea = autLinea.substring(0, 2);// listaren lehenengo bi balioak hartzen ditugu hau da kodea
-					AukeratuGeltokia panGeltoki = new AukeratuGeltokia(window, autLinea);
+					autLinea = autLinea.substring(0, 2);// listaren lehenengo bi balioak hartzen ditugu
+					panGeltoki = new AukeratuGeltokia(window, autLinea);
 					InterfaseNagusia.changeScene(window, panGeltoki);
 				}
 			}
 		};
 
-		JButton btnAtzera = new JButton("ATZERA");
+		btnAtzera = new JButton("ATZERA");
 		btnAtzera.setBounds(47, 304, 89, 23);
 		btnAtzera.addActionListener(panelaAtzera);
 		add(btnAtzera);
 		btnAtzera.addActionListener(panelaAtzera);
 
-		JButton btnJarraitu = new JButton("JARRAITU");
+		btnJarraitu = new JButton("JARRAITU");
 		btnJarraitu.setBounds(313, 304, 89, 23);
 		add(btnJarraitu);
 
-		JTextPane txtpnAukeratuLinea = new JTextPane();
+		txtpnAukeratuLinea = new JTextPane();
 		txtpnAukeratuLinea.setEditable(false);
 		txtpnAukeratuLinea.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		txtpnAukeratuLinea.setText("AUKERATU LINEA");
