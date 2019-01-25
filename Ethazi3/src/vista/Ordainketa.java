@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.ImageIcon;
 
 //import General.Globals;
 //import interfaz.InterfaceMethods;
@@ -73,6 +74,7 @@ public class Ordainketa extends JPanel {
 		itzuliak.setText(diru + "\u20AC");
 		itzuliak.setBackground(new Color(112, 128, 144));
 		itzuliak.setBounds(30, 55, 230, 44);// limiteak
+		
 		add(itzuliak);
 
 		btn200 = new JButton("200\u20AC");
@@ -132,7 +134,9 @@ public class Ordainketa extends JPanel {
 			}
 		};
 		btn5.addActionListener(action5);
-		btn5.setBounds(30, 170, 70, 44);// limiteak
+		
+	
+		btn5.setBounds(30, 150, 70, 44);//limiteak
 		add(btn5);
 
 		btn2 = new JButton("2\u20AC");
@@ -216,6 +220,11 @@ public class Ordainketa extends JPanel {
 		btn1c.addActionListener(action001);
 		btn1c.setBounds(311, 225, 70, 44);// limiteak
 		add(btn1c);
+		
+		JButton btnBack = new JButton("");
+		btnBack.setIcon(new ImageIcon(Ordainketa.class.getResource("/irudiak/flecha atras.jpg")));
+		btnBack.setBounds(11, 270, 47, 39);
+		add(btnBack);
 
 	}
 
