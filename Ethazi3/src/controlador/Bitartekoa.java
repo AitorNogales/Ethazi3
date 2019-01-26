@@ -11,7 +11,7 @@ import modelo.Selekzioak;
 /**
  * 
  * @author Aitor
- *
+ * vista eta modeloaren arteko metodoak
  */
 public class Bitartekoa {
 	public final static String bdIzena = "ethazi";// konektatuko garen datu basearen izena
@@ -37,7 +37,10 @@ public class Bitartekoa {
 		}
 		return badago;
 	}
-
+/**
+ * linea gustiak hartzko resulseta bidaltzen diote modelotik result set horretatik linea objetuaen array lista egin eta bueltazen du
+ * @return linea gustiak dauzkan array lista
+ */
 	public static ArrayList<Linea> artuLieneak() {
 		ArrayList<Linea> Lineak = new ArrayList<Linea>();
 		ResultSet rs = Selekzioak.datuakLineak(kon);// datu basetik hartzen ditugu linea guztien datuak
@@ -116,21 +119,6 @@ public class Bitartekoa {
 		}
 		return Autobusak;
 	}
-	/**
-	 * bidaiaren datuak emanda zenbat balioko duen tiketa buelktatzen du
-	 * @param jatorriGelt bidiaraan jatorrisko geltokia
-	 * @param helmugaGelt bidaiaren helmuga geltokia
-	 * @param auto zein autobuzean egingo da bidaia
-	 * @return zenbatekoa izango da bidaiaren prezioa
-	 */
-public static double kalkulatuPresioa(Geltokia jatorriGelt  ,Geltokia helmugaGelt, Autobusa auto) {
-		double diru=0,dist;
-		dist= jatorriGelt.geltokiArtekoDistantzia(helmugaGelt);
-		
-		 diru=dist/auto.getErregai_Km()/auto.getFuelarenPresioa()*1.2/auto.getEserleku_kop();
-		
-		
-		return diru;
-	}
+
 	
 }

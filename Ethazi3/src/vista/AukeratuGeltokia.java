@@ -20,6 +20,8 @@ import com.toedter.calendar.JDateChooser;
 import controlador.Autobusa;
 import controlador.Bitartekoa;
 import controlador.Geltokia;
+import controlador.Metodoak;
+
 import javax.swing.JCheckBox;
 
 public class AukeratuGeltokia extends JPanel {
@@ -170,7 +172,7 @@ public class AukeratuGeltokia extends JPanel {
 				Geltokia helmugaGeltokia = Geltokiak.get(b);
 				Autobusa autobus = Autobusak.get(comboBoxAutobus.getSelectedIndex());
 
-				dirua = Bitartekoa.kalkulatuPresioa(jatorriGeltokia, helmugaGeltokia, autobus);
+				dirua = Metodoak.kalkulatuPresioa(jatorriGeltokia, helmugaGeltokia, autobus);
 				if (chckbxJoanEtorria.isSelected()) {
 					dirua *= 2;
 				}
