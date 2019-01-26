@@ -19,7 +19,7 @@ public class Bueltak extends JPanel {
 			this.setBounds(500,500,450,300);//limiteak
 			//setLayout(null);
 			String bueltas;
-			//bueltas = metodoak.itzuliakKalkulatu(Globals.dirua);
+			//bueltas = metodoak.itzuliakKalkulatu();
 			JTextArea txtItzuliak = new JTextArea(); 
 			//txtItzuliak.setText(bueltas);
 			txtItzuliak.setBounds(70, 42, 300, 100);//limiteak

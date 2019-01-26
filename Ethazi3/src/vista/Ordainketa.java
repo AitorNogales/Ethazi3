@@ -48,13 +48,15 @@ public class Ordainketa extends JPanel {
 	private JButton btn1c;
 	private ActionListener action001;
 	private double diru;
+	private JFrame window;
+	private JButton btnBack;
 
 	/**
 	 * Create the panel.
 	 */
 	public Ordainketa(JFrame window, double dirua) {
 		diru = dirua;
-
+		this.window = window;
 		// itzul = Double.toString(Globals.dirua);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
@@ -74,7 +76,7 @@ public class Ordainketa extends JPanel {
 		itzuliak.setText(diru + "\u20AC");
 		itzuliak.setBackground(new Color(112, 128, 144));
 		itzuliak.setBounds(30, 55, 230, 44);// limiteak
-		
+
 		add(itzuliak);
 
 		btn200 = new JButton("200\u20AC");
@@ -82,7 +84,7 @@ public class Ordainketa extends JPanel {
 		add(btn200);
 		action200 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				kenduDirua(200);
 			}
 		};
 		btn200.addActionListener(action200);
@@ -90,7 +92,7 @@ public class Ordainketa extends JPanel {
 		btn100 = new JButton("100\u20AC");
 		action100 = new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
+				kenduDirua(100);
 			}
 		};
 		btn100.addActionListener(action100);
@@ -100,7 +102,7 @@ public class Ordainketa extends JPanel {
 		btn50 = new JButton("50\u20AC");
 		action50 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				kenduDirua(50);
 			}
 		};
 		btn50.addActionListener(action50);
@@ -110,7 +112,7 @@ public class Ordainketa extends JPanel {
 		btn20 = new JButton("20\u20AC");
 		action20 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				kenduDirua(20);
 			}
 		};
 		btn20.addActionListener(action20);
@@ -120,7 +122,7 @@ public class Ordainketa extends JPanel {
 		btn10 = new JButton("10\u20AC");
 		action10 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				kenduDirua(10);
 			}
 		};
 		btn10.addActionListener(action10);
@@ -130,19 +132,18 @@ public class Ordainketa extends JPanel {
 		btn5 = new JButton("5\u20AC");
 		action5 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				kenduDirua(5);
 			}
 		};
 		btn5.addActionListener(action5);
-		
-	
-		btn5.setBounds(30, 150, 70, 44);//limiteak
+
+		btn5.setBounds(30, 150, 70, 44);// limiteak
 		add(btn5);
 
 		btn2 = new JButton("2\u20AC");
 		action2 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				kenduDirua(2);
 			}
 		};
 		btn2.addActionListener(action2);
@@ -152,7 +153,7 @@ public class Ordainketa extends JPanel {
 		btn1 = new JButton("1\u20AC");
 		action1 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				kenduDirua(1);
 			}
 		};
 		btn1.addActionListener(action1);
@@ -162,7 +163,7 @@ public class Ordainketa extends JPanel {
 		btn50c = new JButton("50c");
 		action050 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				kenduDirua(0.5);
 			}
 		};
 		btn50c.addActionListener(action050);
@@ -172,7 +173,7 @@ public class Ordainketa extends JPanel {
 		btn20c = new JButton("20c");
 		action020 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				kenduDirua(0.2);
 			}
 		};
 		btn20c.addActionListener(action020);
@@ -182,7 +183,7 @@ public class Ordainketa extends JPanel {
 		btn10c = new JButton("10c");
 		action010 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				kenduDirua(0.1);
 			}
 		};
 		btn10c.addActionListener(action010);
@@ -192,7 +193,7 @@ public class Ordainketa extends JPanel {
 		btn5c = new JButton("5c");
 		action005 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				kenduDirua(0.05);
 			}
 		};
 		btn5c.addActionListener(action005);
@@ -203,7 +204,7 @@ public class Ordainketa extends JPanel {
 		btn2c = new JButton("2c");
 		action002 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				kenduDirua(0.02);
 			}
 		};
 		btn2c.addActionListener(action002);
@@ -213,15 +214,15 @@ public class Ordainketa extends JPanel {
 		btn1c = new JButton("1c");
 		action001 = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				kenduDirua(0.01);
 			}
 		};
 
 		btn1c.addActionListener(action001);
 		btn1c.setBounds(311, 225, 70, 44);// limiteak
 		add(btn1c);
-		
-		JButton btnBack = new JButton("");
+
+		btnBack = new JButton("");
 		btnBack.setIcon(new ImageIcon(Ordainketa.class.getResource("/irudiak/flecha atras.jpg")));
 		btnBack.setBounds(11, 270, 47, 39);
 		add(btnBack);
@@ -233,11 +234,10 @@ public class Ordainketa extends JPanel {
 		diru -= kendu;
 		itzuliak.setText(diru + "\u20AC");
 		if (diru <= 0) {
+			diru = Math.abs(diru);
+			Bueltak buel = new Bueltak(window, diru);
 
-			
-			// Bueltak buel= new Bueltak (window, diru);
-
-			// InterfaseNagusia.changeScene(window, panel);
+			InterfaseNagusia.changeScene(window, buel);
 		}
 	}
 }
