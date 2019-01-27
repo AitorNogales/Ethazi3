@@ -2,6 +2,8 @@ package vista;
 
 import javax.swing.JPanel;
 import java.awt.Color;
+
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 
@@ -13,7 +15,7 @@ public class Imprimakia extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Imprimakia() {
+	public Imprimakia(JFrame window) {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
