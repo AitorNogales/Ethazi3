@@ -134,8 +134,9 @@ public class AukeratuGeltokia extends JPanel {
 
 		ActionListener panelaJarraitu = new ActionListener() { // panela aldatzen duen actionListenerra
 			public void actionPerformed(ActionEvent arg0) { // panela aldatzen duen actionListenerra
-				Date bidaiDate = new Date(dateChooser.getDate().getTime());
-				if (dirua > 0 && bidaiDate != null) {
+				
+				if (dirua > 0 ) {
+					Date bidaiDate = new Date(dateChooser.getDate().getTime());
 					Ordainketa ordain = new Ordainketa(window, dirua);
 					InterfaseNagusia.changeScene(window, ordain);
 					timer.cancel();

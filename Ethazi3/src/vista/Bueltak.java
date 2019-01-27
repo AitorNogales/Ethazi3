@@ -6,9 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
 import controlador.Metodoak;
-
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,7 +39,7 @@ public class Bueltak extends JPanel {
 			lblZureBueltak.setBounds(141, 14, 184, 20);//limiteak
 			add(lblZureBueltak);
 			
-			ActionListener panelaLineak = new ActionListener() { // panela aldatzen duen actionListenerra
+			ActionListener aldatuInprimakia = new ActionListener() { // panela aldatzen duen actionListenerra
 				public void actionPerformed(ActionEvent arg0) {
 					Imprimakia Loging = new Imprimakia(window);
 					InterfaseNagusia.changeScene(window, Loging);
@@ -57,6 +55,7 @@ public class Bueltak extends JPanel {
 			JButton btnJarraitu = new JButton("Jarraitu");
 			btnJarraitu.setBounds(170, 242, 89, 23);
 			add(btnJarraitu);
+			btnJarraitu.addActionListener(aldatuInprimakia);
 			
 		}
 	}
