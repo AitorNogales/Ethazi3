@@ -1,4 +1,7 @@
 package controlador;
+
+import java.util.ArrayList;
+
 /**
  * 
  * @author Aitor
@@ -10,11 +13,26 @@ public class Metodoak {
 	 * @param jatorriGelt bidiaraan jatorrisko geltokia
 	 * @param helmugaGelt bidaiaren helmuga geltokia
 	 * @param auto zein autobuzean egingo da bidaia
+	 * @param linean dauden geltokien arraya geltokien ordena adierasten du 
 	 * @return zenbatekoa izango da bidaiaren prezioa
 	 */
-public static double kalkulatuPresioa(Geltokia jatorriGelt  ,Geltokia helmugaGelt, Autobusa auto) {
-		double diru=0,dist;
-		dist= jatorriGelt.geltokiArtekoDistantzia(helmugaGelt);
+public static double kalkulatuPresioa(Geltokia jatorriGelt  ,Geltokia helmugaGelt, Autobusa auto, ArrayList<Geltokia>lineakoGelt) {
+		double diru=0,dist=0;
+		int a ,b;
+		a=lineakoGelt.indexOf(jatorriGelt);//jatorriko linearen posisioa
+		b=lineakoGelt.indexOf(helmugaGelt);//helmuga geltokiaren posisio
+		while (a!=b) {
+			
+			dist += lineakoGelt.get(a).geltokiArtekoDistantzia( lineakoGelt.get(b));
+			a++;
+			if(a>=lineakoGelt.size()){
+				a=0;
+			}
+			
+		}
+		
+		
+		
 		
 		 diru=dist/auto.getErregai_Km()/auto.getFuelarenPresioa()*1.2/auto.getEserleku_kop();
 		

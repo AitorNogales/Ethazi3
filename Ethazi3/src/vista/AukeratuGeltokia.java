@@ -173,7 +173,7 @@ public class AukeratuGeltokia extends JPanel {
 				Geltokia helmugaGeltokia = Geltokiak.get(b);
 				Autobusa autobus = Autobusak.get(comboBoxAutobus.getSelectedIndex());
 
-				dirua = Metodoak.kalkulatuPresioa(jatorriGeltokia, helmugaGeltokia, autobus);
+				dirua = Metodoak.kalkulatuPresioa(jatorriGeltokia, helmugaGeltokia, autobus,Geltokiak);
 				if (chckbxJoanEtorria.isSelected()) {
 					dirua *= 2;
 				}
