@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 public class Imprimakia extends JPanel {
+	
     private JLabel lblTxartela;
     private JLabel lblInprimatzen;
     private JLabel label;
@@ -16,6 +17,7 @@ public class Imprimakia extends JPanel {
 	 * Create the panel.
 	 */
 	public Imprimakia(JFrame window) {
+		this.setBounds(500,500,450,300);//limiteak
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		

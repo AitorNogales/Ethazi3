@@ -5,6 +5,9 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Timer;
@@ -103,8 +106,10 @@ public class AukeratuGeltokia extends JPanel {
 
 		dateChooser = new JDateChooser();
 		dateChooser.setBounds(69, 317, 116, 20);
-		add(dateChooser);
-
+		add(dateChooser); 
+		dateChooser.setDate(Date.valueOf(LocalDate.now())); //gaurko data jarri
+		dateChooser.setMinSelectableDate(Date.valueOf(LocalDate.now()));//gaur jarri data minimo moduan
+		
 		JLabel lblData = new JLabel("Data:");
 		lblData.setBounds(34, 314, 46, 23);
 		add(lblData);
@@ -134,8 +139,8 @@ public class AukeratuGeltokia extends JPanel {
 
 		ActionListener panelaJarraitu = new ActionListener() { // panela aldatzen duen actionListenerra
 			public void actionPerformed(ActionEvent arg0) { // panela aldatzen duen actionListenerra
-				
-				if (dirua > 0 ) {
+
+				if (dirua > 0) {
 					Date bidaiDate = new Date(dateChooser.getDate().getTime());
 					Ordainketa ordain = new Ordainketa(window, dirua);
 					InterfaseNagusia.changeScene(window, ordain);
@@ -168,12 +173,13 @@ public class AukeratuGeltokia extends JPanel {
 			int b = listHelmuga.getSelectedIndex();
 
 			if (a >= 0 && b >= 0) {// gausak seleksionatuta baditugu
-				System.out.println("entre");
+				
 				Geltokia jatorriGeltokia = Geltokiak.get(a);
 				Geltokia helmugaGeltokia = Geltokiak.get(b);
 				Autobusa autobus = Autobusak.get(comboBoxAutobus.getSelectedIndex());
 
-				dirua = Metodoak.kalkulatuPresioa(jatorriGeltokia, helmugaGeltokia, autobus,Geltokiak);
+				dirua = Metodoak.kalkulatuPresioa(jatorriGeltokia, helmugaGeltokia, autobus, Geltokiak);
+				dirua = Metodoak.redondearDecimales(dirua, 2);
 				if (chckbxJoanEtorria.isSelected()) {
 					dirua *= 2;
 				}
