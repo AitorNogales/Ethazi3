@@ -60,7 +60,7 @@ public class Ordainketa extends JPanel {
 		// itzul = Double.toString(Globals.dirua);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
-		this.setBounds(500, 500, 450, 320); // limiteak
+		this.setBounds(500, 500, 450, 360); // limiteak
 
 		txtpnFaltatsenDena = new JLabel();
 		txtpnFaltatsenDena.setForeground(new Color(255, 255, 255));
@@ -137,7 +137,7 @@ public class Ordainketa extends JPanel {
 		};
 		btn5.addActionListener(action5);
 
-		btn5.setBounds(30, 150, 70, 44);// limiteak
+		btn5.setBounds(30, 170, 70, 44);// limiteak
 		add(btn5);
 
 		btn2 = new JButton("2\u20AC");
@@ -223,6 +223,11 @@ public class Ordainketa extends JPanel {
 		add(btn1c);
 
 		btnBack = new JButton("");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnBack.setIcon(new ImageIcon(Ordainketa.class.getResource("/irudiak/flecha atras.jpg")));
 		btnBack.setBounds(11, 270, 47, 39);
 		add(btnBack);

@@ -26,7 +26,7 @@ public class InterfaseNagusia {
 	 */
 	private void initialize() { // Jframe-a sortzen du 
 		frame = new JFrame(); 
-		frame.setBounds(200, 200, 450, 300); //limiteak
+		frame.setBounds(200, 200, 450, 360); //limiteak
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);// Jframe-a izten tu X sakatzean
 	}
 	/**

@@ -118,11 +118,11 @@ public class AukeratuGeltokia extends JPanel {
 		lblAutobusa.setBounds(34, 268, 65, 14);
 		add(lblAutobusa);
 		JLabel lblZenbatekoa = new JLabel("ZENBATEKOA: ");
-		lblZenbatekoa.setBounds(253, 286, 72, 14);
+		lblZenbatekoa.setBounds(253, 286, 108, 14);
 		add(lblZenbatekoa);
 
 		lblDirua = new JLabel("dirua");
-		lblDirua.setBounds(327, 286, 46, 14);
+		lblDirua.setBounds(362, 286, 46, 14);
 		add(lblDirua);
 
 		ActionListener panelaAtzera = new ActionListener() { // panela aldatzen duen actionListenerra

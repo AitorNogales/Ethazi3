@@ -17,7 +17,7 @@ public class Imprimakia extends JPanel {
 	 * Create the panel.
 	 */
 	public Imprimakia(JFrame window) {
-		this.setBounds(500,500,450,300);//limiteak
+		this.setBounds(500,500,450,360);//limiteak
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		
