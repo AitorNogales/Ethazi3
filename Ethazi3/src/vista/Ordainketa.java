@@ -10,6 +10,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import controlador.Metodoak;
+import controlador.Txartela;
+
 import javax.swing.ImageIcon;
 
 //import General.Globals;
@@ -50,11 +54,14 @@ public class Ordainketa extends JPanel {
 	private double diru;
 	private JFrame window;
 	private JButton btnBack;
+	private Txartela txartela;
 
 	/**
 	 * Create the panel.
+	 * @param txartela 
 	 */
-	public Ordainketa(JFrame window, double dirua) {
+	public Ordainketa(JFrame window, double dirua, Txartela txartela) {
+		this.txartela=txartela;
 		diru = dirua;
 		this.window = window;
 		// itzul = Double.toString(Globals.dirua);
@@ -237,10 +244,12 @@ public class Ordainketa extends JPanel {
 	///////////// Methods//////////////
 	private void kenduDirua(double kendu) {
 		diru -= kendu;
+		diru=Metodoak.redondearDecimales(diru,2);
 		itzuliak.setText(diru + "\u20AC");
 		if (diru <= 0) {
 			diru = Math.abs(diru);
-			Bueltak buel = new Bueltak(window, diru);
+			
+			Bueltak buel = new Bueltak(window, diru, txartela);
 
 			InterfaseNagusia.changeScene(window, buel);
 		}

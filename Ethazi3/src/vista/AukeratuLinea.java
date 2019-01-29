@@ -15,6 +15,7 @@ import javax.swing.JTextPane;
 
 import controlador.Bitartekoa;
 import controlador.Linea;
+import controlador.Txartela;
 
 public class AukeratuLinea extends JPanel {
     private JList<String> list;
@@ -26,12 +27,14 @@ public class AukeratuLinea extends JPanel {
     private JButton btnAtzera;
     private JButton btnJarraitu;
     private JTextPane txtpnAukeratuLinea;
+    private ArrayList<Linea> Lineak ;
 	/**
 	 * Create the panel.
+	 * @param txartela imprimatuko den txartela
 	 */
-	public AukeratuLinea(JFrame window) {
+	public AukeratuLinea(JFrame window, Txartela txartela) {
 
-		ArrayList<Linea> Lineak = new ArrayList<Linea>();
+	 Lineak = new ArrayList<Linea>();
 
 		Lineak = Bitartekoa.artuLieneak();
 		this.setBounds(200, 200, 450, 400);
@@ -60,10 +63,12 @@ public class AukeratuLinea extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				if (!list.isSelectionEmpty()) {// Zerbait autatu badugu
 
+					int a =list.getSelectedIndex();
+					Linea lin = Lineak.get(a);
 					String autLinea = list.getSelectedValue().toString();// listaren balioa hartzen dugu
-
+					txartela.setLineak(lin);
 					autLinea = autLinea.substring(0, 2);// listaren lehenengo bi balioak hartzen ditugu
-					panGeltoki = new AukeratuGeltokia(window, autLinea);
+					panGeltoki = new AukeratuGeltokia(window, autLinea,txartela);
 					InterfaseNagusia.changeScene(window, panGeltoki);
 				}
 			}

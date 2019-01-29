@@ -5,10 +5,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Date;
-import java.util.ArrayList;
 
 public class Txartela {
 	private int txar_zenb;
+	private static int currentTxartela = 0;
 	private Date Datak;
 	private Autobusa Autobusak;
 	private Geltokia JatorriGeltokiak;
@@ -19,16 +19,24 @@ public class Txartela {
 
 ////////////Builders///////////////
 
-	public Txartela(int char_zenb, Date datak, Autobusa autobusak, Geltokia jatorrigeltokiak,Geltokia helmugageltokia,
-			Linea lineak, Bezeroa jabea) {
+	public Txartela(Date datak, Autobusa autobusak, Geltokia jatorrigeltokiak, Geltokia helmugageltokia, Linea lineak,
+			Bezeroa jabea) {
 
-		this.txar_zenb = char_zenb;
 		Datak = datak;
 		Autobusak = autobusak;
 		JatorriGeltokiak = jatorrigeltokiak;
 		HelmugaGeltokia = helmugageltokia;
 		Lineak = lineak;
 		Jabea = jabea;
+		currentTxartela++;
+		txar_zenb = currentTxartela;
+	}
+
+	public Txartela() {
+
+		currentTxartela++;
+		txar_zenb = currentTxartela;
+
 	}
 
 	public int getTxar_zenb() {
@@ -66,7 +74,7 @@ public class Txartela {
 	public Txartela(int char_zenb, Bezeroa jabea) {
 
 		this.txar_zenb = char_zenb;
-		
+
 		Jabea = jabea;
 	}
 
@@ -95,7 +103,6 @@ public class Txartela {
 		Autobusak = autobusak;
 	}
 
-
 	public Linea getLineak() {
 		return Lineak;
 	}
@@ -112,22 +119,19 @@ public class Txartela {
 		Jabea = jabea;
 	}
 
-	
-	
-	
-	//////////////Methods/////////////////
-	
-	//txartel honek dauzkan datuekin .txt fitxero bat sortzen du 
+	////////////// Methods/////////////////
+
+	// txartel honek dauzkan datuekin .txt fitxero bat sortzen du
 	public void printTxartela() {
-		String ruta = "/src/txartelenfitxategiak/Txartela"+txar_zenb;
+		String ruta = "/src/txartelenfitxategiak/Txartela" + txar_zenb;
 		try {
-		File archivo = new File(ruta);
-		BufferedWriter bw=null;
-	
-		      // fitxategia berridazten du existitxen bada
-			 bw = new BufferedWriter(new FileWriter(archivo));
-			 bw.write("El fichero de texto ya estaba creado.");
-		
+			File archivo = new File(ruta);
+			BufferedWriter bw = null;
+
+			// fitxategia berridazten du existitxen bada
+			bw = new BufferedWriter(new FileWriter(archivo));
+			bw.write("El fichero de texto ya estaba creado.");
+
 			bw.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -137,11 +141,10 @@ public class Txartela {
 
 	@Override
 	public String toString() {
-		return "Txartela \n txartel Zenbakia" + txar_zenb + "\n Datak" + Datak.toString() + "\n Autobusak=" + Autobusak
-				+ ", JatorriGeltokiak=" + JatorriGeltokiak + ", HelmugaGeltokia=" + HelmugaGeltokia + ", Lineak="
-				+ Lineak + ", Jabea=" + Jabea + ", prezioa=" + prezioa + "]";
+		return "Txartela \n txartel Zenbakia: " + txar_zenb + "\n Datak: " + Datak.toString() + "\n Autobusak: "
+				+ Autobusak.getKod_autobus() + "\n JatorriGeltokiak: " + JatorriGeltokiak.toString()
+				+ "\n HelmugaGeltokia: " + HelmugaGeltokia.toString() + "\n Lineak: " + Lineak.toString() + " Jabea:"
+				+ Jabea.getNAN() + "\t prezioa: " + prezioa + "€";
 	}
 
-	
-	
 }

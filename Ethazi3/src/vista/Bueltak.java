@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import controlador.Metodoak;
+import controlador.Txartela;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,8 +20,9 @@ public class Bueltak extends JPanel {
 
 	/**
 	 * Create the panel.
+	 * @param txartela 
 	 */
-	public Bueltak(JFrame window, double dirua) {
+	public Bueltak(JFrame window, double dirua, Txartela txartela) {
 		setBackground(Color.LIGHT_GRAY);
 
 			this.setBounds(500,500,450,360);//limiteak
@@ -41,7 +44,7 @@ public class Bueltak extends JPanel {
 			
 			ActionListener aldatuInprimakia = new ActionListener() { // panela aldatzen duen actionListenerra
 				public void actionPerformed(ActionEvent arg0) {
-					Imprimakia Loging = new Imprimakia(window);
+					Imprimakia Loging = new Imprimakia(window,txartela);
 					InterfaseNagusia.changeScene(window, Loging);
 				
 				}

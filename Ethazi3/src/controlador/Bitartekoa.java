@@ -1,6 +1,7 @@
 package controlador;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -58,6 +59,37 @@ public class Bitartekoa {
 		}
 		return Lineak;
 
+	}
+	
+	/**
+	 * 
+	 * @param dni erabiltzailearen dnia
+	 * @param pass erabiltzailearen pasahitza
+	 * @return bezero objetua
+	 */
+	public static Bezeroa artuBezeroa(String dni, String pass) {
+		
+		ResultSet rs = Selekzioak.kontsultaBiz(dni, pass, kon);
+	
+		String DNI="";
+		String izena="";
+		String abizena="" ;
+		Date fecha =new Date(0);
+		String sexo="";
+		String contra="";
+		try {
+			DNI =rs.getString(1);
+			izena=rs.getString(2);
+			abizena =rs.getString(3);
+			fecha =rs.getDate(4);
+			sexo =rs.getString(5);
+			contra = rs.getString(6);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Bezeroa bezero =new Bezeroa(DNI,izena,abizena,fecha,sexo,contra);
+		return bezero;
 	}
 
 	/**

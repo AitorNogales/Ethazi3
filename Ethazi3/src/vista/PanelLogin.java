@@ -12,9 +12,12 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import controlador.Bezeroa;
 import controlador.Bitartekoa;
+import controlador.Txartela;
 
 public class PanelLogin extends JPanel {
+	
 	private JTextField textField;
 	private JPasswordField passwordField;
 	private JLabel lblLogIn;
@@ -28,6 +31,7 @@ public class PanelLogin extends JPanel {
     private Agurra agurra;
     private JButton btnAtzera;
     private JButton btnJarraitu;
+    private Txartela txartela;
     
 	/**
 	 * Create the panel.
@@ -66,7 +70,10 @@ public class PanelLogin extends JPanel {
 				pass = new String(arrayC);// lortutako char arraya stringera pasatzen dugu
 				dni = textField.getText();//erabiltzailearen dnia lortzen dugu
 				if (Bitartekoa.ceckBezeroa(dni, pass)) {//dnia eta pasahitza DB badaude orduan lineak panelera aldatzen dugu
-					lineak= new AukeratuLinea(window);
+					Bezeroa beze= Bitartekoa.artuBezeroa(dni, pass);
+					txartela=new Txartela();
+					txartela.setJabea(beze);
+					lineak= new AukeratuLinea(window,txartela);
 					InterfaseNagusia.changeScene(window, lineak);
 				}
 			}

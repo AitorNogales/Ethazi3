@@ -11,7 +11,6 @@ public class Nagusia {
 		
 		new Konexioa(Bitartekoa.bdIzena);// zer datu baserekin konectatu behar den esaten diogui
 		Selekzioak.datuakBezeroa();
-		Bitartekoa.linearenGeltokiak("L1");
 		InterfaseNagusia window = new InterfaseNagusia();
 		Agurra agur = new Agurra(window.frame);
 		InterfaseNagusia.changeScene(window.frame, agur);

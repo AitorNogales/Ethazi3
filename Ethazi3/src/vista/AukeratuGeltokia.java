@@ -24,6 +24,7 @@ import controlador.Autobusa;
 import controlador.Bitartekoa;
 import controlador.Geltokia;
 import controlador.Metodoak;
+import controlador.Txartela;
 
 import javax.swing.JCheckBox;
 
@@ -42,14 +43,19 @@ public class AukeratuGeltokia extends JPanel {
 	private JDateChooser dateChooser;
 	private double dirua;
 	private Timer timer = new Timer();// denbora kontatzen du
+	private Autobusa autobus;
+	Geltokia helmugaGeltokia, jatorriGeltokia;
 
 	/**
 	 * Create the panel.
 	 * 
-	 * @param      window, String kodLinea zein da interfaseak erabiliko duen lehioa
-	 * @param zein lineako geltokiak agertuko diren panelean
+	 * @param txartela inprimatuko den txarela
+	 * 
+	 * @param          window, String kodLinea zein da interfaseak erabiliko duen
+	 *                 lehioa
+	 * @param zein     lineako geltokiak agertuko diren panelean
 	 */
-	public AukeratuGeltokia(JFrame window, String kodLinea) {
+	public AukeratuGeltokia(JFrame window, String kodLinea, Txartela txartela) {
 
 		Geltokiak = Bitartekoa.linearenGeltokiak(kodLinea);
 		Collections.sort(Geltokiak);// ordenamos el array por su distancia a termibus gracias a la racarga del
@@ -106,10 +112,10 @@ public class AukeratuGeltokia extends JPanel {
 
 		dateChooser = new JDateChooser();
 		dateChooser.setBounds(69, 317, 116, 20);
-		add(dateChooser); 
-		dateChooser.setDate(Date.valueOf(LocalDate.now())); //gaurko data jarri
-		dateChooser.setMinSelectableDate(Date.valueOf(LocalDate.now()));//gaur jarri data minimo moduan
-		
+		add(dateChooser);
+		dateChooser.setDate(Date.valueOf(LocalDate.now())); // gaurko data jarri
+		dateChooser.setMinSelectableDate(Date.valueOf(LocalDate.now()));// gaur jarri data minimo moduan
+
 		JLabel lblData = new JLabel("Data:");
 		lblData.setBounds(34, 314, 46, 23);
 		add(lblData);
@@ -127,7 +133,7 @@ public class AukeratuGeltokia extends JPanel {
 
 		ActionListener panelaAtzera = new ActionListener() { // panela aldatzen duen actionListenerra
 			public void actionPerformed(ActionEvent arg0) {
-				AukeratuLinea Linea = new AukeratuLinea(window);
+				AukeratuLinea Linea = new AukeratuLinea(window, txartela);
 				InterfaseNagusia.changeScene(window, Linea);
 				timer.cancel();
 			}
@@ -142,7 +148,12 @@ public class AukeratuGeltokia extends JPanel {
 
 				if (dirua > 0) {
 					Date bidaiDate = new Date(dateChooser.getDate().getTime());
-					Ordainketa ordain = new Ordainketa(window, dirua);
+					txartela.setHelmugaGeltokia(helmugaGeltokia);
+					txartela.setAutobusak(autobus);
+					txartela.setJatorriGeltokiak(jatorriGeltokia);
+					txartela.setPrezioa(dirua);
+					txartela.setDatak(bidaiDate);
+					Ordainketa ordain = new Ordainketa(window, dirua, txartela);
 					InterfaseNagusia.changeScene(window, ordain);
 					timer.cancel();
 				}
@@ -173,10 +184,10 @@ public class AukeratuGeltokia extends JPanel {
 			int b = listHelmuga.getSelectedIndex();
 
 			if (a >= 0 && b >= 0) {// gausak seleksionatuta baditugu
-				
-				Geltokia jatorriGeltokia = Geltokiak.get(a);
-				Geltokia helmugaGeltokia = Geltokiak.get(b);
-				Autobusa autobus = Autobusak.get(comboBoxAutobus.getSelectedIndex());
+
+				jatorriGeltokia = Geltokiak.get(a);
+				helmugaGeltokia = Geltokiak.get(b);
+				autobus = Autobusak.get(comboBoxAutobus.getSelectedIndex());
 
 				dirua = Metodoak.kalkulatuPresioa(jatorriGeltokia, helmugaGeltokia, autobus, Geltokiak);
 				dirua = Metodoak.redondearDecimales(dirua, 2);

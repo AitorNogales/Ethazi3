@@ -96,8 +96,7 @@ public class Selekzioak {
 
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
-			rs = sta.executeQuery(
-					"select * from autobus where Cod_bus in (select Cod_bus from linea_autobus where Cod_linea like '"+ kod_Linea +"')");
+			rs = sta.executeQuery("select * from autobus where Cod_bus in (select Cod_bus from linea_autobus where Cod_linea like '"+ kod_Linea +"')");
 			
 
 			// Se recorre el ResultSet, mostrando por pantalla los resultados.
@@ -110,7 +109,25 @@ public class Selekzioak {
 
 		return rs;
 	}
+	
 
+	public static int maxTxartelZenb(Connection kon) {
+		int num=0;
+		Statement sta = null;
+		ResultSet rs = null;
+
+		try {
+			// Se crea un Statement, para realizar la consulta
+			sta = kon.createStatement();
+			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
+			rs = sta.executeQuery("select MAX(Cod_Billete) from billete");
+			num=rs.getInt(1);
+		} catch (Exception e) {
+			e.getMessage();
+		}
+		
+		return num;
+	}
 	public static ResultSet kontsultaBiz(String dni, String pass, Connection kon) {
 		ResultSet rs = null;
 

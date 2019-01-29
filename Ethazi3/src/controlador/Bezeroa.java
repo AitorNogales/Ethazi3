@@ -10,14 +10,15 @@ private Date jaiotze_data;
 
 
 /////////Builders/////////////
-public Bezeroa(String NAN, String izen_abizen, String sexua, String pasahitza, Date jaiotze_data) {
+public Bezeroa(String NAN, String izen, String abizena, Date jaiotze_data, String sexua, String pasahitza) {
 	
 	this.NAN = NAN;
-	this.izen_abizen = izen_abizen;
+	this.izen_abizen = izen+abizena;
 	this.sexua = sexua;
 	this.pasahitza = pasahitza;
 	this.jaiotze_data = jaiotze_data;
 }
+
 /////////Getters && Setters//////////
 public String getNAN() {
 	return NAN;
