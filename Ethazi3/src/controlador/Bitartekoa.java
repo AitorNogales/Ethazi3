@@ -61,15 +61,9 @@ public class Bitartekoa {
 
 	}
 	
-	/**
-	 * 
-	 * @param dni erabiltzailearen dnia
-	 * @param pass erabiltzailearen pasahitza
-	 * @return bezero objetua
-	 */
 	public static Bezeroa artuBezeroa(String dni, String pass) {
 		
-		ResultSet rs = Selekzioak.kontsultaBiz(dni, pass, kon);
+		ResultSet rs = Selekzioak.kontsultaBiz(dni, pass,kon);
 	
 		String DNI="";
 		String izena="";
@@ -78,6 +72,7 @@ public class Bitartekoa {
 		String sexo="";
 		String contra="";
 		try {
+			rs.first();
 			DNI =rs.getString(1);
 			izena=rs.getString(2);
 			abizena =rs.getString(3);

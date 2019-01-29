@@ -128,6 +128,7 @@ public class Selekzioak {
 		
 		return num;
 	}
+	
 	public static ResultSet kontsultaBiz(String dni, String pass, Connection kon) {
 		ResultSet rs = null;
 
@@ -136,8 +137,7 @@ public class Selekzioak {
 		try {
 			// Se crea un Statement, para realizar la consulta
 			sta = kon.createStatement();
-			rs = sta.executeQuery(
-					"select * from cliente where DNI LIKE '" + dni + "' AND Contraseña LIKE  MD5('" + pass + "')");
+			rs = sta.executeQuery("select * from cliente where DNI LIKE '" + dni + "' AND Contraseña LIKE  MD5('" + pass + "')");
 		} catch (SQLException e) {
 
 			e.printStackTrace();
