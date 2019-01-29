@@ -22,6 +22,7 @@ public class Imprimakia extends JPanel {
 	 */
 	public Imprimakia(JFrame window, Txartela txartela) {
 		System.out.println(txartela.toString());//frogatxeko
+		txartela.printTxartela();
 		this.setBounds(500,500,450,360);//limiteak
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);

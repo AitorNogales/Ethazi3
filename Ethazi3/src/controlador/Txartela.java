@@ -2,9 +2,12 @@ package controlador;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class Txartela {
 	private int txar_zenb;
@@ -123,20 +126,36 @@ public class Txartela {
 
 	// txartel honek dauzkan datuekin .txt fitxero bat sortzen du
 	public void printTxartela() {
-		String ruta = "/src/txartelenfitxategiak/Txartela" + txar_zenb;
+		// String ruta = "\\src\\txartelenfitxategiak\\txartela" + txar_zenb+".txt";
+		String ruta = "txartela" + txar_zenb + ".txt";
 		try {
 			File archivo = new File(ruta);
+			
 			BufferedWriter bw = null;
 
 			// fitxategia berridazten du existitxen bada
-			bw = new BufferedWriter(new FileWriter(archivo));
-			bw.write("El fichero de texto ya estaba creado.");
-
+			bw = new BufferedWriter((new OutputStreamWriter(new FileOutputStream(archivo), "UTF-8")));
+			ArrayList<String >texto=this.subdividedString();
+			for(String li:texto) {
+			bw.write(li + "\n");
+			bw.newLine();
+			}
 			bw.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public ArrayList<String> subdividedString(){
+		ArrayList<String >texto=new ArrayList<String>();
+		texto.add("Txartela");
+		texto.add("txartel Zenbakia: " + txar_zenb);
+		texto.add("Data: " + Datak.toString());
+		texto.add("Autobusak: "+ Autobusak.getKod_autobus());
+		texto.add("JatorriGeltokia: " + JatorriGeltokiak.toString());
+		texto.add("HelmugaGeltokia: " + HelmugaGeltokia.toString() );
+		texto.add("Lineak: " + Lineak.toString() + " Jabea:"+ Jabea.getNAN() + "\t prezioa: " + prezioa + "€");
+		return texto;
 	}
 
 	@Override
@@ -146,5 +165,6 @@ public class Txartela {
 				+ "\n HelmugaGeltokia: " + HelmugaGeltokia.toString() + "\n Lineak: " + Lineak.toString() + " Jabea:"
 				+ Jabea.getNAN() + "\t prezioa: " + prezioa + "€";
 	}
+
 
 }
