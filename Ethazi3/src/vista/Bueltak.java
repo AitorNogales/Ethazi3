@@ -22,7 +22,7 @@ public class Bueltak extends JPanel {
 	public Bueltak(JFrame window, double dirua) {
 		setBackground(Color.LIGHT_GRAY);
 
-			this.setBounds(500,500,450,300);//limiteak
+			this.setBounds(500,500,450,360);//limiteak
 			setLayout(null);
 			String bueltas;
 			bueltas = Metodoak.itzuliakKalkulatu(dirua);

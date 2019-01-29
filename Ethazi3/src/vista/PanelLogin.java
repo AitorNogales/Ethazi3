@@ -33,7 +33,7 @@ public class PanelLogin extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelLogin(JFrame window) {
-		this.setBounds(200, 200, 450, 350); // limiteak
+		this.setBounds(200, 200, 450, 360); // limiteak
 		setBackground(Color.LIGHT_GRAY);
 
 		setLayout(null);
