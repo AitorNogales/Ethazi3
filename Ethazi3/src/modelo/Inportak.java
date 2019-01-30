@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.sql.Timestamp;
 
 import controlador.Txartela;
 
@@ -22,7 +23,7 @@ public class Inportak {
 			statement.setInt(5, txar.getJatorriGeltokiak().getKod_geltoki());
 			statement.setInt(6, txar.getHelmugaGeltokia().getKod_geltoki());
 			statement.setDate(7,txar.getDatak());
-			statement.setTime(8, new Time (0));
+			statement.setTimestamp(8,new Timestamp(System.currentTimeMillis()));
 			statement.setString(9, txar.getJabea().getNAN());
 			statement.setDouble(10, txar.getPrezioa());
 			

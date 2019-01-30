@@ -120,7 +120,8 @@ public class Selekzioak {
 			// Se crea un Statement, para realizar la consulta
 			sta = kon.createStatement();
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
-			rs = sta.executeQuery("select MAX(Cod_Billete) from billete");
+			rs = sta.executeQuery("select MAX(Cod_Billete) from billete ");
+			rs.first();
 			num=rs.getInt(1);
 		} catch (Exception e) {
 			e.getMessage();

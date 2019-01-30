@@ -3,7 +3,6 @@ package controlador;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.sql.Date;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 
 public class Txartela {
 	private int txar_zenb;
-	private static int currentTxartela = 0;
+	private static int currentTxartela = Bitartekoa.getMaxTxartel();
 	private Date Datak;
 	private Autobusa Autobusak;
 	private Geltokia JatorriGeltokiak;

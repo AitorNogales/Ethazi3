@@ -160,4 +160,13 @@ public class Bitartekoa {
 		return bool;
 		
 	}
+	/**
+	 * 
+	 * @return bueltatxen du txartel koderik altuena
+	 */
+	public static int getMaxTxartel() {
+	int num=Selekzioak.maxTxartelZenb(kon);
+	System.out.println(num);
+	return num;
+	}
 }
