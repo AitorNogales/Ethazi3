@@ -42,6 +42,14 @@ public class Txartela {
 
 	}
 
+	public Txartela(int char_zenb, Bezeroa jabea) {
+
+		this.txar_zenb = char_zenb;
+
+		Jabea = jabea;
+	}
+
+//////////////Getters && Setters/////////////////
 	public int getTxar_zenb() {
 		return txar_zenb;
 	}
@@ -64,30 +72,6 @@ public class Txartela {
 
 	public void setHelmugaGeltokia(Geltokia helmugaGeltokia) {
 		HelmugaGeltokia = helmugaGeltokia;
-	}
-
-	public double getPrezioa() {
-		return prezioa;
-	}
-
-	public void setPrezioa(double prezioa) {
-		this.prezioa = prezioa;
-	}
-
-	public Txartela(int char_zenb, Bezeroa jabea) {
-
-		this.txar_zenb = char_zenb;
-
-		Jabea = jabea;
-	}
-
-//////////////Getters && Setters/////////////////
-	public int getChar_zenb() {
-		return txar_zenb;
-	}
-
-	public void setChar_zenb(int char_zenb) {
-		this.txar_zenb = char_zenb;
 	}
 
 	public Date getDatak() {
@@ -121,7 +105,13 @@ public class Txartela {
 	public void setJabea(Bezeroa jabea) {
 		Jabea = jabea;
 	}
+	public double getPrezioa() {
+		return prezioa;
+	}
 
+	public void setPrezioa(double prezioa) {
+		this.prezioa = prezioa;
+	}
 	////////////// Methods/////////////////
 
 	// txartel honek dauzkan datuekin .txt fitxero bat sortzen du

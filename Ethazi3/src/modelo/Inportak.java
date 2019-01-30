@@ -1,25 +1,36 @@
 package modelo;
 
 import java.sql.Connection;
-import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.SimpleDateFormat;
+import java.sql.Time;
 
 import controlador.Txartela;
 
 public class Inportak {
  
 	public static void igoTxartela(Txartela txar, Connection kon) {
-		Statement sta = null;
+		
 
 		try {
-			// Se crea un Statement, para realizar la consulta
-			sta =kon.createStatement();
-			Date data =txar.getDatak();
+			PreparedStatement statement = kon.prepareStatement("INSERT INTO `billete` (`Cod_Billete`, `NTrayecto`, `Cod_Linea`, `Cod_Bus`, `Cod_Parada_Inicio`, `Cod_Parada_Fin`, `Fecha`, `Hora`, `DNI`, `Precio`)"
+					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+			statement.setInt(1, txar.getTxar_zenb());
+			statement.setInt(2, 1);
+			statement.setString(3, txar.getLineak().getKod_linea());
+			statement.setInt(4, txar.getAutobusak().getKod_autobus());
+			statement.setInt(5, txar.getJatorriGeltokiak().getKod_geltoki());
+			statement.setInt(6, txar.getHelmugaGeltokia().getKod_geltoki());
+			statement.setDate(7,txar.getDatak());
+			statement.setTime(8, new Time (0));
+			statement.setString(9, txar.getJabea().getNAN());
+			statement.setDouble(10, txar.getPrezioa());
 			
-			 sta.executeUpdate("INSERT INTO billete (Cod_Billete, NTrayecto,Cod_Linea, Cod_Bus, Cod_Parada_Inicio,Cod_Parada_Fin,Fecha,Hora,DNI,Precio) "
-			          +"VALUES ("+txar.getTxar_zenb()+",1, '"+txar.getLineak().getKod_linea()+"'," +txar.getAutobusak().getKod_autobus()+",'"+txar.getJatorriGeltokiak().getKod_geltoki()+"','"+txar.getHelmugaGeltokia().getKod_geltoki()+"',"+data+",00-00-00,'"+txar.getJabea().getNAN()+"',"+txar.getPrezioa()+")");
+			// execute the preparedstatement insert
+		    statement.executeUpdate();
+		    statement.close();
+			
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
