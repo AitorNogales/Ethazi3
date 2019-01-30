@@ -2,6 +2,7 @@ package vista;
 
 import javax.swing.JPanel;
 
+import controlador.Metodoak;
 import controlador.Txartela;
 
 import java.awt.Color;
@@ -9,6 +10,8 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Imprimakia extends JPanel {
 	
@@ -16,11 +19,15 @@ public class Imprimakia extends JPanel {
     private JLabel lblInprimatzen;
     private JLabel label;
     private JLabel lblEskerrikAsko;
+    private Timer timer =new Timer();
+    private Agurra agurra;
+    private JFrame window;
 	/**
 	 * Create the panel.
 	 * @param txartela 
 	 */
 	public Imprimakia(JFrame window, Txartela txartela) {
+		this.window=window;
 		System.out.println(txartela.toString());//frogatxeko
 		txartela.printTxartela();
 		this.setBounds(500,500,450,360);//limiteak
@@ -46,7 +53,25 @@ public class Imprimakia extends JPanel {
 		lblEskerrikAsko.setFont(new Font("DialogInput", Font.BOLD, 28));
 		lblEskerrikAsko.setBounds(109, 188, 241, 28);
 		add(lblEskerrikAsko);
+		timer.schedule(Task, (long) 5000, ((long) (500)));// segundu erdiro comprobatzen du billetearen presioa
 
 	}
-
+	
+	TimerTask Task = new TimerTask() // ahu egingo du denbora bat pasa ostean
+			{
+				@Override
+				public void run() {
+						 agurra = new Agurra(window);
+						InterfaseNagusia.changeScene(window, agurra);
+						timer.cancel();
+					};
+					
+			};		
 }
+					
+
+			
+				
+
+			
+	
