@@ -228,16 +228,20 @@ public class Ordainketa extends JPanel {
 		btn1c.addActionListener(action001);
 		btn1c.setBounds(311, 225, 70, 44);// limiteak
 		add(btn1c);
-
-		btnBack = new JButton("");
-		btnBack.addActionListener(new ActionListener() {
+		
+		ActionListener actionBack= new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				AukeratuLinea Linea = new AukeratuLinea(window, txartela);
+				InterfaseNagusia.changeScene(window, Linea);
 				
 			}
-		});
+		};
+		btnBack = new JButton("");
+		btnBack.addActionListener(actionBack);
 		btnBack.setIcon(new ImageIcon(Ordainketa.class.getResource("/irudiak/flecha atras.jpg")));
 		btnBack.setBounds(11, 270, 47, 39);
 		add(btnBack);
+	
 
 	}
 
