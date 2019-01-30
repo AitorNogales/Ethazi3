@@ -5,8 +5,6 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,19 +12,18 @@ import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JComboBox;
 import com.toedter.calendar.JDateChooser;
 import controlador.Autobusa;
 import controlador.Bitartekoa;
 import controlador.Geltokia;
 import controlador.Metodoak;
 import controlador.Txartela;
-
-import javax.swing.JCheckBox;
 
 public class AukeratuGeltokia extends JPanel {
 
@@ -111,6 +108,7 @@ public class AukeratuGeltokia extends JPanel {
 		add(lblHelmuga);
 
 		dateChooser = new JDateChooser();
+		dateChooser.setDateFormatString("dd-MM-yyyy");
 		dateChooser.setBounds(69, 317, 116, 20);
 		add(dateChooser);
 		dateChooser.setDate(Date.valueOf(LocalDate.now())); // gaurko data jarri

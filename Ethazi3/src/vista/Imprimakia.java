@@ -2,6 +2,7 @@ package vista;
 
 import javax.swing.JPanel;
 
+import controlador.Bitartekoa;
 import controlador.Metodoak;
 import controlador.Txartela;
 
@@ -30,6 +31,7 @@ public class Imprimakia extends JPanel {
 		this.window=window;
 		System.out.println(txartela.toString());//frogatxeko
 		txartela.printTxartela();
+		Bitartekoa.inportTxartela(txartela);
 		this.setBounds(500,500,450,360);//limiteak
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import modelo.Inportak;
 import modelo.Konexioa;
 import modelo.Selekzioak;
 
@@ -146,6 +147,17 @@ public class Bitartekoa {
 		}
 		return Autobusak;
 	}
-
-	
+/**
+ * 
+ * @param txar igoko den txartelaren balioa
+ * @return true bueltatxen du ondo ejekutatu bada false arasoak izan baditu
+ */
+	public static boolean inportTxartela(Txartela txar) {
+		boolean  bool=false;
+		
+		Inportak.igoTxartela( txar, kon);
+		
+		return bool;
+		
+	}
 }
