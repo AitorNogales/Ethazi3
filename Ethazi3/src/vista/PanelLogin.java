@@ -38,7 +38,7 @@ public class PanelLogin extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PanelLogin(JFrame window) {
+		public PanelLogin(JFrame window) {
 		this.setBounds(200, 200, 450, 360); // limiteak
 		setBackground(Color.LIGHT_GRAY);
 
@@ -110,6 +110,12 @@ public class PanelLogin extends JPanel {
 		add(lblErabiltzaileaEdoPasahitza);
 		
 		btnSingIn = new JButton("SING IN");
+		btnSingIn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			PanelSignIn Signin = new PanelSignIn(window);
+			InterfaseNagusia.changeScene(window, Signin);
+			}
+		});
 		btnSingIn.setBounds(177, 265, 97, 25);
 		add(btnSingIn);
 		btnJarraitu.addActionListener(panelaLineak);

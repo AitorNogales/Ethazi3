@@ -52,6 +52,7 @@ public class PanelSignIn extends JPanel {
 		this.window=window;
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
+		setBounds(200, 200, 450, 360);
 
 		lblSingIn = new JLabel("Sing in");
 		lblSingIn.setFont(new Font("Tahoma", Font.PLAIN, 18));
