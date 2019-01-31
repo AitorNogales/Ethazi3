@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -14,6 +15,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import com.toedter.calendar.JDateChooser;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PanelSignIn extends JPanel {
 	private JTextField tfIzena;
@@ -24,12 +27,29 @@ public class PanelSignIn extends JPanel {
 	private ButtonGroup sexuaRadioGroup;
 	private JRadioButton rdbtnEmakumezkoa;
 	private JRadioButton rdbtnGizonezkoa;
-	private JLabel lblSexua, lblJaiotzeData, lblPasahitza, lblNan, lblIzena, lblSingIn;
+	private JLabel lblSexua, lblJaiotzeData, lblPasahitza, lblNan, lblIzena, lblSingIn,lblAbizena;
+	private JButton btnAtzera, btnJarraitu;
+	private JFrame window;
+	private ActionListener atzera = new ActionListener() {
+	public void actionPerformed(ActionEvent e) {
+		PanelLogin Loging =new PanelLogin(window);
+		InterfaseNagusia.changeScene(window, Loging);
+	}};
+	private ActionListener jarraitu = new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			String izena=tfIzena.getText();
+			String nan=tfNAN.getText();
+		if (nan.matches("^[1-9]{8}[a-Z]$")) {
+				System.out.println("pera");
+			}
+		}};
+	
 
 	/**
 	 * Create the panel.
 	 */
-	public PanelSignIn() {
+	public PanelSignIn(JFrame window) {
+		this.window=window;
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 
@@ -57,7 +77,7 @@ public class PanelSignIn extends JPanel {
 		tfNAN.setBounds(132, 60, 193, 22);
 		add(tfNAN);
 
-		rdbtnGizonezkoa = new JRadioButton("Gizoneskoa");
+		rdbtnGizonezkoa = new JRadioButton("Gizonezkoa");
 		rdbtnGizonezkoa.setBounds(298, 210, 111, 24);
 
 		add(rdbtnGizonezkoa);
@@ -66,7 +86,7 @@ public class PanelSignIn extends JPanel {
 		rdbtnEmakumezkoa.setBounds(298, 235, 111, 25);
 		add(rdbtnEmakumezkoa);
 
-		JLabel lblAbizena = new JLabel("Abizena:");
+		 lblAbizena = new JLabel("Abizena:");
 		lblAbizena.setBounds(64, 121, 56, 16);
 		add(lblAbizena);
 
@@ -74,11 +94,12 @@ public class PanelSignIn extends JPanel {
 		lblNan.setBounds(64, 63, 56, 16);
 		add(lblNan);
 
-		JButton btnAtzera = new JButton("Atzera");
+		btnAtzera = new JButton("Atzera");
+		btnAtzera.addActionListener(atzera);
 		btnAtzera.setBounds(54, 269, 97, 25);
 		add(btnAtzera);
 
-		JButton btnJarraitu = new JButton("Jarraitu");
+		btnJarraitu = new JButton("Jarraitu");
 		btnJarraitu.setBounds(325, 269, 97, 25);
 		add(btnJarraitu);
 

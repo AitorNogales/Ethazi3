@@ -100,6 +100,7 @@ public class PanelLogin extends JPanel {
 		// jarraitu botoiaren parametroak
 		btnJarraitu = new JButton("JARRAITU");
 		btnJarraitu.setBounds(306, 266, 93, 23);
+		btnJarraitu.addActionListener(panelaLineak);
 		add(btnJarraitu);
 		
 		lblErabiltzaileaEdoPasahitza = new JLabel("Erabiltzailea edo pasahitza okerra da");
