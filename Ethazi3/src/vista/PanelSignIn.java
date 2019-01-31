@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -29,9 +30,10 @@ public class PanelSignIn extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PanelSignIn() {
+		public PanelSignIn(JFrame window) {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
+		setBounds(200, 200, 450, 360);
 
 		lblSingIn = new JLabel("Sing in");
 		lblSingIn.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -58,12 +60,12 @@ public class PanelSignIn extends JPanel {
 		add(tfNAN);
 
 		rdbtnGizonezkoa = new JRadioButton("Gizoneskoa");
-		rdbtnGizonezkoa.setBounds(298, 210, 111, 24);
+		rdbtnGizonezkoa.setBounds(286, 206, 111, 24);
 
 		add(rdbtnGizonezkoa);
 
 		rdbtnEmakumezkoa = new JRadioButton("Emakumezkoa");
-		rdbtnEmakumezkoa.setBounds(298, 235, 111, 25);
+		rdbtnEmakumezkoa.setBounds(286, 235, 111, 25);
 		add(rdbtnEmakumezkoa);
 
 		JLabel lblAbizena = new JLabel("Abizena:");
@@ -75,11 +77,11 @@ public class PanelSignIn extends JPanel {
 		add(lblNan);
 
 		JButton btnAtzera = new JButton("Atzera");
-		btnAtzera.setBounds(54, 269, 97, 25);
+		btnAtzera.setBounds(54, 291, 97, 25);
 		add(btnAtzera);
 
 		JButton btnJarraitu = new JButton("Jarraitu");
-		btnJarraitu.setBounds(325, 269, 97, 25);
+		btnJarraitu.setBounds(300, 291, 97, 25);
 		add(btnJarraitu);
 
 		pwd = new JPasswordField();
@@ -92,13 +94,13 @@ public class PanelSignIn extends JPanel {
 
 		dateChooser = new JDateChooser();
 		dateChooser.setDateFormatString("dd-MM-yyyy");
-		dateChooser.setBounds(64, 214, 116, 20);
+		dateChooser.setBounds(38, 206, 116, 20);
 		add(dateChooser);
 		dateChooser.setDate(Date.valueOf(LocalDate.now())); // gaurko data jarri
 		dateChooser.setMaxSelectableDate(Date.valueOf(LocalDate.now()));// gaur jarri data minimo moduan
 
 		lblJaiotzeData = new JLabel("Jaiotze data:");
-		lblJaiotzeData.setBounds(65, 193, 87, 16);
+		lblJaiotzeData.setBounds(38, 179, 87, 16);
 		add(lblJaiotzeData);
 
 		lblSexua = new JLabel("Sexua:");
