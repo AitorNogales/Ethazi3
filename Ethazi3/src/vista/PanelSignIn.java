@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.sql.Date;
 import java.time.LocalDate;
-
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,12 +12,17 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-
 import com.toedter.calendar.JDateChooser;
+
+import controlador.Bezeroa;
+import controlador.Bitartekoa;
+import controlador.Txartela;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class PanelSignIn extends JPanel {
+
 	private JTextField tfIzena;
 	private JTextField tfAbizena;
 	private JTextField tfNAN;
@@ -27,29 +31,67 @@ public class PanelSignIn extends JPanel {
 	private ButtonGroup sexuaRadioGroup;
 	private JRadioButton rdbtnEmakumezkoa;
 	private JRadioButton rdbtnGizonezkoa;
-	private JLabel lblSexua, lblJaiotzeData, lblPasahitza, lblNan, lblIzena, lblSingIn,lblAbizena;
+	private JLabel lblSexua, lblJaiotzeData, lblPasahitza, lblNan, lblIzena, lblSingIn, lblAbizena;
 	private JButton btnAtzera, btnJarraitu;
 	private JFrame window;
+
 	private ActionListener atzera = new ActionListener() {
-	public void actionPerformed(ActionEvent e) {
-		PanelLogin Loging =new PanelLogin(window);
-		InterfaseNagusia.changeScene(window, Loging);
-	}};
+		public void actionPerformed(ActionEvent e) {
+			PanelLogin Loging = new PanelLogin(window);
+			InterfaseNagusia.changeScene(window, Loging);
+		}
+	};
+
 	private ActionListener jarraitu = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			String izena=tfIzena.getText();
-			String nan=tfNAN.getText();
-		if (nan.matches("^[1-9]{8}[a-Z]$")) {
-				System.out.println("pera");
+			String izena = tfIzena.getText();
+			String nan = tfNAN.getText();
+			nan = nan.toUpperCase();
+			String abizena = tfAbizena.getText();
+
+			char[] arrayC = pwd.getPassword(); // pasahitzan dagoena hartzen dugu char array moduan
+			String pass = new String(arrayC);// lortutako char arraya stringera pasatzen dugu
+
+			if (nan.matches("^[1-9]{8}[A-Z]$") && izena.matches("^[a-zA-Z ]*$") && abizena.matches("^[a-zA-Z ]*$")
+					&& (rdbtnEmakumezkoa.isSelected() || rdbtnGizonezkoa.isSelected())) {
+				
+				if (pass.length() > 0) {
+					if(!Bitartekoa.bezeroaExistitu(nan)) {
+					String sex;
+					if (rdbtnEmakumezkoa.isSelected()) {
+						sex="M";
+					}
+					else {
+						sex="V";
+					}
+					
+					Date jaiotzeData = new Date(dateChooser.getDate().getTime());
+					Bezeroa clien =new Bezeroa(nan, izena, abizena, jaiotzeData, sex, pass);
+					
+					Bitartekoa.inportBezeroa(clien);
+					
+					Txartela txartela=new Txartela();
+					txartela.setJabea(clien);
+					AukeratuLinea lineak= new AukeratuLinea(window,txartela);
+					InterfaseNagusia.changeScene(window, lineak);
+					}else {
+						//el usuario esta en la base de datos
+					}
+				} else {
+					//cuando el pasword esta mal
+				}
+			} else {
+				System.out.println("manzana");
+					//el usuario esta mal o no hay sexo seleccionado
 			}
-		}};
-	
+		}
+	};
 
 	/**
 	 * Create the panel.
 	 */
 	public PanelSignIn(JFrame window) {
-		this.window=window;
+		this.window = window;
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 		setBounds(200, 200, 450, 360);
@@ -87,7 +129,7 @@ public class PanelSignIn extends JPanel {
 		rdbtnEmakumezkoa.setBounds(298, 235, 111, 25);
 		add(rdbtnEmakumezkoa);
 
-		 lblAbizena = new JLabel("Abizena:");
+		lblAbizena = new JLabel("Abizena:");
 		lblAbizena.setBounds(64, 121, 56, 16);
 		add(lblAbizena);
 
@@ -101,6 +143,7 @@ public class PanelSignIn extends JPanel {
 		add(btnAtzera);
 
 		btnJarraitu = new JButton("Jarraitu");
+		btnJarraitu.addActionListener(jarraitu);
 		btnJarraitu.setBounds(325, 269, 97, 25);
 		add(btnJarraitu);
 

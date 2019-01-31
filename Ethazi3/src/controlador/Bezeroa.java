@@ -3,7 +3,7 @@ package controlador;
 import java.sql.Date;
 
 public class Bezeroa {
-private String NAN,izen_abizen,sexua,pasahitza;
+private String NAN,izen,abizen,sexua,pasahitza;
 private Date jaiotze_data;
 
 
@@ -13,7 +13,8 @@ private Date jaiotze_data;
 public Bezeroa(String NAN, String izen, String abizena, Date jaiotze_data, String sexua, String pasahitza) {
 	
 	this.NAN = NAN;
-	this.izen_abizen = izen+abizena;
+	this.izen = izen;
+	this.abizen=abizena;
 	this.sexua = sexua;
 	this.pasahitza = pasahitza;
 	this.jaiotze_data = jaiotze_data;
@@ -26,12 +27,23 @@ public String getNAN() {
 public void setNAN(String NAN) {
 	this.NAN = NAN;
 }
-public String getIzen_abizen() {
-	return izen_abizen;
+
+public String getIzen() {
+	return izen;
 }
-public void setIzen_abizen(String izen_abizen) {
-	this.izen_abizen = izen_abizen;
+
+public void setIzen(String izen) {
+	this.izen = izen;
 }
+
+public String getAbizen() {
+	return abizen;
+}
+
+public void setAbizen(String abizen) {
+	this.abizen = abizen;
+}
+
 public String getSexua() {
 	return sexua;
 }

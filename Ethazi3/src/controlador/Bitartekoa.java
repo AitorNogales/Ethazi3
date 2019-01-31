@@ -39,6 +39,25 @@ public class Bitartekoa {
 		}
 		return badago;
 	}
+	/**
+	 * 
+	 * @param dni bezeroaren DNIa
+	 * @return existitxen bada true ez bada existitzen false
+	 */
+	public static boolean bezeroaExistitu(String dni) {
+		boolean badago = false;
+		ResultSet rs = Selekzioak.bezeroaBadago(dni, kon);// egiten dugu datu basean kontsulta bat
+		try {
+			if (rs.next()) {// zerbait bueltatzen badu erabiltzailea existitzen da
+				badago = true;
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return badago;
+	}
+	
 /**
  * linea gustiak hartzko resulseta bidaltzen diote modelotik result set horretatik linea objetuaen array lista egin eta bueltazen du
  * @return linea gustiak dauzkan array lista
@@ -153,9 +172,22 @@ public class Bitartekoa {
  * @return true bueltatxen du ondo ejekutatu bada false arasoak izan baditu
  */
 	public static boolean inportTxartela(Txartela txar) {
-		boolean  bool=false;
+		boolean  bool=true;
 		
 		Inportak.igoTxartela( txar, kon);
+		
+		return bool;
+		
+	}
+	/**
+	 * 
+	 * @param txar
+	 * @return
+	 */
+	public static boolean inportBezeroa(Bezeroa bezero) {
+		boolean  bool=true;
+		
+		Inportak.igoBezeroa(bezero, kon);
 		
 		return bool;
 		

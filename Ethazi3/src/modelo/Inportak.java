@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 
+import controlador.Bezeroa;
 import controlador.Txartela;
 
 public class Inportak {
@@ -39,5 +40,25 @@ public class Inportak {
 		}
 		
 	}
+	public static void igoBezeroa (Bezeroa bezero, Connection kon) {
+		try {
+			PreparedStatement st = kon.prepareStatement("INSERT INTO `cliente`(`DNI`, `Nombre`, `Apellidos`, `Fecha_nac`, `Sexo`, `Contraseña`) "
+					+ "VALUES( ?, ?, ?, ?, ?, MD5( ? ))");
+			st.setString(1, bezero.getNAN());
+			st.setString(2, bezero.getIzen());
+			st.setString(3, bezero.getAbizen());
+			st.setDate(4, bezero.getJaiotze_data());
+			st.setString(5, bezero.getSexua());
+			st.setString(6, bezero.getPasahitza());
+		
+			st.executeUpdate();
+			st.close();
+	
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
 
 }

@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+/**
+ * 
+ * @author Aitor
+ * datu basetik selekzioak egiteko
+ */
 public class Selekzioak {
 
 	public static ResultSet datuakBezeroa() {
@@ -42,9 +46,7 @@ public class Selekzioak {
 			// Se realiza la consulta. Los resultados se guardan en el ResultSet rs
 
 			rs = sta.executeQuery("select * from linea");
-			/*while (rs.next()) {
-				System.out.println(rs.getString(1) + "\t\t " + rs.getString(2));
-			}*/
+			
 			
 		} catch (Exception e) {
 			e.getMessage();
@@ -145,4 +147,20 @@ public class Selekzioak {
 		}
 		return rs;
 	}
+	public static ResultSet bezeroaBadago(String dni, Connection kon) {
+		ResultSet rs = null;
+
+		Statement sta = null;
+
+		try {
+			// Se crea un Statement, para realizar la consulta
+			sta = kon.createStatement();
+			rs = sta.executeQuery("select * from cliente where DNI LIKE '" + dni + "'");
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return rs;
+	}
+	
 }
