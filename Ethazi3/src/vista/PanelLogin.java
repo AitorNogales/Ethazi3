@@ -32,6 +32,8 @@ public class PanelLogin extends JPanel {
     private JButton btnAtzera;
     private JButton btnJarraitu;
     private Txartela txartela;
+    private JLabel lblErabiltzaileaEdoPasahitza;
+    private JButton btnSingIn;
     
 	/**
 	 * Create the panel.
@@ -52,16 +54,16 @@ public class PanelLogin extends JPanel {
 		add(lblErabiltzailea);
 
 		lblPasahitza = new JLabel("PASAHITZA");
-		lblPasahitza.setBounds(91, 135, 93, 14);
+		lblPasahitza.setBounds(91, 156, 93, 14);
 		add(lblPasahitza);
 
 		textField = new JTextField();
-		textField.setBounds(177, 104, 86, 20);
+		textField.setBounds(177, 104, 147, 20);
 		add(textField);
 		textField.setColumns(10);
 
 		passwordField = new JPasswordField();
-		passwordField.setBounds(177, 132, 86, 20);
+		passwordField.setBounds(177, 153, 147, 20);
 		add(passwordField);
 
 		panelaLineak = new ActionListener() { // panela aldatzen duen actionListenerra
@@ -76,6 +78,10 @@ public class PanelLogin extends JPanel {
 					lineak= new AukeratuLinea(window,txartela);
 					InterfaseNagusia.changeScene(window, lineak);
 				}
+				else {
+					passwordField.setText("");
+					lblErabiltzaileaEdoPasahitza.setVisible(true);
+				}
 			}
 		};
 
@@ -88,13 +94,23 @@ public class PanelLogin extends JPanel {
 
 		// atzera botoiaren parametroak
 		btnAtzera = new JButton("ATZERA");
-		btnAtzera.setBounds(95, 266, 89, 23);
+		btnAtzera.setBounds(54, 266, 89, 23);
 		add(btnAtzera);
 		btnAtzera.addActionListener(panelaAtzera);
 		// jarraitu botoiaren parametroak
 		btnJarraitu = new JButton("JARRAITU");
-		btnJarraitu.setBounds(222, 266, 93, 23);
+		btnJarraitu.setBounds(306, 266, 93, 23);
 		add(btnJarraitu);
+		
+		lblErabiltzaileaEdoPasahitza = new JLabel("Erabiltzailea edo pasahitza okerra da");
+		lblErabiltzaileaEdoPasahitza.setForeground(Color.RED);
+		lblErabiltzaileaEdoPasahitza.setBounds(111, 199, 260, 16);
+		lblErabiltzaileaEdoPasahitza.setVisible(false);
+		add(lblErabiltzaileaEdoPasahitza);
+		
+		btnSingIn = new JButton("SING IN");
+		btnSingIn.setBounds(177, 265, 97, 25);
+		add(btnSingIn);
 		btnJarraitu.addActionListener(panelaLineak);
 
 	}

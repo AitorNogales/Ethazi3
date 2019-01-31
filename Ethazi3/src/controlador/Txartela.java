@@ -18,6 +18,7 @@ public class Txartela {
 	private Linea Lineak;
 	private Bezeroa Jabea;
 	private double prezioa;
+	private int bidaiKop=1;
 
 ////////////Builders///////////////
 
@@ -33,6 +34,8 @@ public class Txartela {
 		currentTxartela++;
 		txar_zenb = currentTxartela;
 	}
+
+	
 
 	public Txartela() {
 
@@ -111,6 +114,14 @@ public class Txartela {
 	public void setPrezioa(double prezioa) {
 		this.prezioa = prezioa;
 	}
+	public int getBidaiKop() {
+		return bidaiKop;
+	}
+
+	public void setBidaiKop(int bidaiKop) {
+		this.bidaiKop = bidaiKop;
+	}
+	
 	////////////// Methods/////////////////
 
 	// txartel honek dauzkan datuekin .txt fitxero bat sortzen du

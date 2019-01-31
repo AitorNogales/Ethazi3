@@ -151,6 +151,10 @@ public class AukeratuGeltokia extends JPanel {
 					txartela.setJatorriGeltokiak(jatorriGeltokia);
 					txartela.setPrezioa(dirua);
 					txartela.setDatak(bidaiDate);
+					if(chckbxJoanEtorria.isSelected()) {
+						txartela.setBidaiKop(2);
+						
+					}
 					Ordainketa ordain = new Ordainketa(window, dirua, txartela);
 					InterfaseNagusia.changeScene(window, ordain);
 					timer.cancel();
