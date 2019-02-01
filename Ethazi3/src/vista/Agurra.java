@@ -26,6 +26,8 @@ public class Agurra extends JPanel {
 				InterfaseNagusia.changeScene(window, Loging);
 			}
 		};
+		btnNewButton.setSelectedIcon(new ImageIcon(Agurra.class.getResource("/irudiak/AgurraIrudia.png")));
+		btnNewButton.setIcon(new ImageIcon(Agurra.class.getResource("/irudiak/AgurraIrudia.png")));
 	//	btnNewButton.setIcon(new ImageIcon(Agurra.class.getResource("/images/Panel_1.jpg")));
 		
 		btnNewButton.addActionListener(panelaAldatu);
