@@ -15,6 +15,9 @@ import javax.swing.JTextField;
 import controlador.Bezeroa;
 import controlador.Bitartekoa;
 import controlador.Txartela;
+import javax.swing.ImageIcon;
+import javax.swing.border.BevelBorder;
+import javax.swing.UIManager;
 
 public class PanelLogin extends JPanel {
 	
@@ -39,6 +42,7 @@ public class PanelLogin extends JPanel {
 	 * Create the panel.
 	 */
 		public PanelLogin(JFrame window) {
+		setBorder(UIManager.getBorder("InternalFrame.border"));
 		this.setBounds(200, 200, 450, 360); // limiteak
 		setBackground(Color.LIGHT_GRAY);
 
@@ -118,6 +122,11 @@ public class PanelLogin extends JPanel {
 		});
 		btnSingIn.setBounds(177, 265, 97, 25);
 		add(btnSingIn);
+		
+		JLabel Fondo = new JLabel("");
+		Fondo.setIcon(new ImageIcon(PanelLogin.class.getResource("/irudiak/FondoTermibus.png")));
+		Fondo.setBounds(0, 0, 450, 360);
+		add(Fondo);
 		btnJarraitu.addActionListener(panelaLineak);
 
 	}
