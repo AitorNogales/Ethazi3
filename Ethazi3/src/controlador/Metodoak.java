@@ -86,12 +86,12 @@ public class Metodoak {
 	}
 	/**
 	 * 
-	 * @param num asiaerako double balioa
+	 * @param num hasiaerako double balioa
 	 * @param cant hamartar zenbaki kopurua
-	 * @return asierako zenbakia hamartear zenbaki kopuruarekin
+	 * @return hasierako zenbakia hamartear zenbaki kopuruarekin
 	 */
 	public static double redondearDecimales(double num, int cant ) {
-		int a =10*cant;
+		double a =Math.pow(10, cant);
 		num=(double)Math.round(num * a) / a;
 		return num;
 	}
