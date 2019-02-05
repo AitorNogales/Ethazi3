@@ -41,7 +41,9 @@ public class AukeratuGeltokia extends JPanel {
 	private double dirua;
 	private Timer timer = new Timer();// denbora kontatzen du
 	private Autobusa autobus;
-	Geltokia helmugaGeltokia, jatorriGeltokia;
+	private Geltokia helmugaGeltokia, jatorriGeltokia;
+	private JDateChooser dateChooser_etorrera;
+	private JLabel lblEtorreraData;
 
 	/**
 	 * Create the panel.
@@ -59,7 +61,7 @@ public class AukeratuGeltokia extends JPanel {
 									// metodo compare To()
 		Autobusak = Bitartekoa.linearenAutobusak(kodLinea);
 
-		this.setBounds(200, 200, 450, 425);
+		this.setBounds(200, 200, 439, 425);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 
@@ -109,7 +111,7 @@ public class AukeratuGeltokia extends JPanel {
 
 		dateChooser = new JDateChooser();
 		dateChooser.setDateFormatString("dd-MM-yyyy");
-		dateChooser.setBounds(69, 317, 116, 20);
+		dateChooser.setBounds(123, 319, 116, 20);
 		add(dateChooser);
 		dateChooser.setDate(Date.valueOf(LocalDate.now())); // gaurko data jarri
 		dateChooser.setMinSelectableDate(Date.valueOf(LocalDate.now()));// gaur jarri data minimo moduan
@@ -138,7 +140,7 @@ public class AukeratuGeltokia extends JPanel {
 		};
 
 		chckbxJoanEtorria = new JCheckBox("Joan Etorria");
-		chckbxJoanEtorria.setBounds(247, 314, 97, 23);
+		chckbxJoanEtorria.setBounds(294, 329, 97, 23);
 		add(chckbxJoanEtorria);
 
 		ActionListener panelaJarraitu = new ActionListener() { // panela aldatzen duen actionListenerra
@@ -164,12 +166,25 @@ public class AukeratuGeltokia extends JPanel {
 
 		btnAtzera = new JButton("ATZERA");
 		btnAtzera.addActionListener(panelaAtzera);
-		btnAtzera.setBounds(34, 348, 89, 23);
+		btnAtzera.setBounds(34, 377, 89, 23);
 		add(btnAtzera);
 
 		btnJarraitu = new JButton("JARRAITU");
-		btnJarraitu.setBounds(310, 348, 98, 23);
+		btnJarraitu.setBounds(310, 377, 98, 23);
 		add(btnJarraitu);
+		
+	 lblEtorreraData = new JLabel("Etorrera data:");
+		lblEtorreraData.setBounds(34, 348, 116, 16);
+		add(lblEtorreraData);
+		lblEtorreraData.setVisible(false);//okultatu
+		
+		dateChooser_etorrera = new JDateChooser();
+		dateChooser_etorrera.setDateFormatString("dd-MM-yyyy");
+		dateChooser_etorrera.setBounds(123, 344, 116, 20);
+		add(dateChooser_etorrera);
+		dateChooser_etorrera.setDate(Date.valueOf(LocalDate.now())); // gaurko data jarri
+		dateChooser_etorrera.setMinSelectableDate(Date.valueOf(LocalDate.now()));// gaur jarri data minimo moduan
+		dateChooser_etorrera.setVisible(false);//okultatu
 		btnJarraitu.addActionListener(panelaJarraitu);
 
 		timer.schedule(Task, (long) 500, ((long) (500)));// segundu erdiro comprobatzen du billetearen presioa
@@ -194,7 +209,7 @@ public class AukeratuGeltokia extends JPanel {
 				dirua = Metodoak.kalkulatuPresioa(jatorriGeltokia, helmugaGeltokia, autobus, Geltokiak);
 				dirua = Metodoak.redondearDecimales(dirua, 2);
 				if (chckbxJoanEtorria.isSelected()) {
-					dirua *= 2;
+					dirua +=Metodoak.kalkulatuPresioa( helmugaGeltokia,jatorriGeltokia, autobus, Geltokiak);;//falta movidita de q se vean etorria
 				}
 				lblDirua.setText(dirua + "€");
 			}
