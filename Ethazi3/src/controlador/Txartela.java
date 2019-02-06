@@ -11,7 +11,9 @@ import java.util.ArrayList;
 public class Txartela {
 	private int txar_zenb;
 	private static int currentTxartela = Bitartekoa.getMaxTxartel();
-	private Date Datak;
+	private Date Datak, Etorrera_Data;
+	
+
 	private Autobusa Autobusak;
 	private Geltokia JatorriGeltokiak;
 	private Geltokia HelmugaGeltokia;
@@ -31,7 +33,7 @@ public class Txartela {
 		HelmugaGeltokia = helmugageltokia;
 		Lineak = lineak;
 		Jabea = jabea;
-		currentTxartela++;
+		currentTxartela++;//asignasio automatiko
 		txar_zenb = currentTxartela;
 	}
 
@@ -39,19 +41,21 @@ public class Txartela {
 
 	public Txartela() {
 
-		currentTxartela++;
+		currentTxartela++;//asignasio automatiko
 		txar_zenb = currentTxartela;
 
 	}
 
-	public Txartela(int char_zenb, Bezeroa jabea) {
-
-		this.txar_zenb = char_zenb;
-
-		Jabea = jabea;
-	}
+	
 
 //////////////Getters && Setters/////////////////
+	public Date getEtorrera_Data() {
+		return Etorrera_Data;
+	}
+
+	public void setEtorrera_Data(Date etorrera_Data) {
+		Etorrera_Data = etorrera_Data;
+	}
 	public int getTxar_zenb() {
 		return txar_zenb;
 	}
@@ -126,8 +130,8 @@ public class Txartela {
 
 	// txartel honek dauzkan datuekin .txt fitxero bat sortzen du
 	public void printTxartela() {
-		// String ruta = "\\src\\txartelenfitxategiak\\txartela" + txar_zenb+".txt";
-		String ruta = "txartela" + txar_zenb + ".txt";
+		 String ruta = "src\\txartelenfitxategiak\\txartela" + txar_zenb+".txt";
+		//String ruta = "txartela" + txar_zenb + ".txt";
 		try {
 			File archivo = new File(ruta);
 			
@@ -150,7 +154,11 @@ public class Txartela {
 		ArrayList<String >texto=new ArrayList<String>();
 		texto.add("Txartela");
 		texto.add("txartel Zenbakia: " + txar_zenb);
-		texto.add("Data: " + Datak.toString());
+		if (Etorrera_Data != null) {
+		texto.add("Data: " + Datak.toString() + " Etorrera Data:"+ Etorrera_Data.toString());
+		}else{
+			texto.add("Data: " + Datak.toString());
+		}
 		texto.add("Autobusak: "+ Autobusak.getKod_autobus());
 		texto.add("JatorriGeltokia: " + JatorriGeltokiak.toString());
 		texto.add("HelmugaGeltokia: " + HelmugaGeltokia.toString() );
@@ -160,10 +168,21 @@ public class Txartela {
 
 	@Override
 	public String toString() {
-		return "Txartela \n txartel Zenbakia: " + txar_zenb + "\n Datak: " + Datak.toString() + "\n Autobusak: "
+		
+		String stringa="Txartela \n txartel Zenbakia: " + txar_zenb + "\n Datak: " + Datak.toString()+"\n Autobusak: "
 				+ Autobusak.getKod_autobus() + "\n JatorriGeltokiak: " + JatorriGeltokiak.toString()
 				+ "\n HelmugaGeltokia: " + HelmugaGeltokia.toString() + "\n Lineak: " + Lineak.toString() + " Jabea:"
 				+ Jabea.getNAN() + "\t prezioa: " + prezioa + "€";
+		if (Etorrera_Data != null){
+			stringa="Txartela \n txartel Zenbakia: " + txar_zenb + "\n Datak: " + Datak.toString() + " Etorrera Data:"+ Etorrera_Data.toString()+"\n Autobusak: "
+					+ Autobusak.getKod_autobus() + "\n JatorriGeltokiak: " + JatorriGeltokiak.toString()
+					+ "\n HelmugaGeltokia: " + HelmugaGeltokia.toString() + "\n Lineak: " + Lineak.toString() + " Jabea:"
+					+ Jabea.getNAN() + "\t prezioa: " + prezioa + "€";
+		
+		}
+		
+		
+		return stringa;
 	}
 
 

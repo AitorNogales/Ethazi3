@@ -27,6 +27,10 @@ import controlador.Txartela;
 
 public class AukeratuGeltokia extends JPanel {
 
+	/**
+	 * 
+	 */
+	
 	private JButton btnJarraitu;
 	private JButton btnAtzera;
 	private JLabel lblDirua;
@@ -61,7 +65,7 @@ public class AukeratuGeltokia extends JPanel {
 									// metodo compare To()
 		Autobusak = Bitartekoa.linearenAutobusak(kodLinea);
 
-		this.setBounds(200, 200, 439, 425);
+		this.setBounds(200, 200, 440, 450);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 
@@ -148,6 +152,7 @@ public class AukeratuGeltokia extends JPanel {
 
 				if (dirua > 0) {
 					Date bidaiDate = new Date(dateChooser.getDate().getTime());
+					Date etorreraData= new Date (dateChooser_etorrera.getDate().getTime());
 					txartela.setHelmugaGeltokia(helmugaGeltokia);
 					txartela.setAutobusak(autobus);
 					txartela.setJatorriGeltokiak(jatorriGeltokia);
@@ -155,6 +160,7 @@ public class AukeratuGeltokia extends JPanel {
 					txartela.setDatak(bidaiDate);
 					if(chckbxJoanEtorria.isSelected()) {
 						txartela.setBidaiKop(2);
+						txartela.setEtorrera_Data(etorreraData);
 						
 					}
 					Ordainketa ordain = new Ordainketa(window, dirua, txartela);
@@ -173,7 +179,7 @@ public class AukeratuGeltokia extends JPanel {
 		btnJarraitu.setBounds(310, 377, 98, 23);
 		add(btnJarraitu);
 		
-	 lblEtorreraData = new JLabel("Etorrera data:");
+	    lblEtorreraData = new JLabel("Etorrera data:");
 		lblEtorreraData.setBounds(34, 348, 116, 16);
 		add(lblEtorreraData);
 		lblEtorreraData.setVisible(false);//okultatu
@@ -182,6 +188,7 @@ public class AukeratuGeltokia extends JPanel {
 		dateChooser_etorrera.setDateFormatString("dd-MM-yyyy");
 		dateChooser_etorrera.setBounds(123, 344, 116, 20);
 		add(dateChooser_etorrera);
+		
 		dateChooser_etorrera.setDate(Date.valueOf(LocalDate.now())); // gaurko data jarri
 		dateChooser_etorrera.setMinSelectableDate(Date.valueOf(LocalDate.now()));// gaur jarri data minimo moduan
 		dateChooser_etorrera.setVisible(false);//okultatu
@@ -199,20 +206,36 @@ public class AukeratuGeltokia extends JPanel {
 
 			int a = listJatorria.getSelectedIndex();
 			int b = listHelmuga.getSelectedIndex();
-
+			Date bidaiDate = new Date(dateChooser.getDate().getTime());
 			if (a >= 0 && b >= 0) {// gausak seleksionatuta baditugu
 
 				jatorriGeltokia = Geltokiak.get(a);
 				helmugaGeltokia = Geltokiak.get(b);
-				autobus = Autobusak.get(comboBoxAutobus.getSelectedIndex());
+				autobus = Autobusak.get(comboBoxAutobus.getSelectedIndex());//Autobusen zerrndatik hartzen dugu 
 
 				dirua = Metodoak.kalkulatuPresioa(jatorriGeltokia, helmugaGeltokia, autobus, Geltokiak);
-				dirua = Metodoak.redondearDecimales(dirua, 2);
-				if (chckbxJoanEtorria.isSelected()) {
-					dirua +=Metodoak.kalkulatuPresioa( helmugaGeltokia,jatorriGeltokia, autobus, Geltokiak);;//falta movidita de q se vean etorria
+				
+				if (chckbxJoanEtorria.isSelected()) {//joan etorri bidaia bada 
+					dirua +=Metodoak.kalkulatuPresioa( helmugaGeltokia,jatorriGeltokia, autobus, Geltokiak);//falta movidita de q se vean etorria
+					Date etorreraDate = new Date(dateChooser_etorrera.getDate().getTime());
+					if (etorreraDate.before(bidaiDate)) {
+						dateChooser_etorrera.setDate(bidaiDate);
+					}
+					dateChooser_etorrera.setMinSelectableDate(bidaiDate);
+					
+					 dateChooser_etorrera.setVisible(true);
+					 lblEtorreraData.setVisible(true);
+					
 				}
+				else {
+					 dateChooser_etorrera.setVisible(false);
+					 lblEtorreraData.setVisible(false);
+				}
+				
+				dirua = Metodoak.redondearDecimales(dirua, 2);
 				lblDirua.setText(dirua + "€");
 			}
+			
 
 		};
 

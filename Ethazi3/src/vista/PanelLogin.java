@@ -36,7 +36,7 @@ public class PanelLogin extends JPanel {
     private JButton btnJarraitu;
     private Txartela txartela;
     private JLabel lblErabiltzaileaEdoPasahitza;
-    private JButton btnSingIn;
+    private JButton btnSignIn;
     
 	/**
 	 * Create the panel.
@@ -113,15 +113,15 @@ public class PanelLogin extends JPanel {
 		lblErabiltzaileaEdoPasahitza.setVisible(false);
 		add(lblErabiltzaileaEdoPasahitza);
 		
-		btnSingIn = new JButton("SING IN");
-		btnSingIn.addActionListener(new ActionListener() {
+		btnSignIn = new JButton("SIGN IN");
+		btnSignIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			PanelSignIn Signin = new PanelSignIn(window);
 			InterfaseNagusia.changeScene(window, Signin);
 			}
 		});
-		btnSingIn.setBounds(177, 265, 97, 25);
-		add(btnSingIn);
+		btnSignIn.setBounds(177, 265, 97, 25);
+		add(btnSignIn);
 		
 		JLabel Fondo = new JLabel("");
 		Fondo.setIcon(new ImageIcon(PanelLogin.class.getResource("/irudiak/FondoTermibus.png")));
