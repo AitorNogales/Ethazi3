@@ -23,10 +23,10 @@ public class Bueltak extends JPanel {
 	private JButton btnJarraitu;
 	private JTextArea txtItzuliak;
 	/**
-	 * 
-	 * @param window
-	 * @param dirua
-	 * @param txartela
+	 * ordainu ostean zein diren bueltak aurkesten duen panela 
+	 * @param window sein Jframean sabaldu behar den innprimakiak panela 
+	 * @param dirua zenbat diruren bueltak kalkulatu behar diren 
+	 * @param txartela bueltak ijusi ostean zein txartel inprimatu behar den
 	 */
 	public Bueltak(JFrame window, double dirua, Txartela txartela) {
 		setBackground(Color.LIGHT_GRAY);
@@ -47,6 +47,9 @@ public class Bueltak extends JPanel {
 			lblZureBueltak.setBounds(141, 14, 184, 20);//limiteak
 			add(lblZureBueltak);
 			
+			/**
+			 * hurrengo pantailara pasaatzeko botoiaren action listenerra
+			 */
 			ActionListener aldatuInprimakia = new ActionListener() { // panela aldatzen duen actionListenerra
 				public void actionPerformed(ActionEvent arg0) {
 					Imprimakia Loging = new Imprimakia(window,txartela);

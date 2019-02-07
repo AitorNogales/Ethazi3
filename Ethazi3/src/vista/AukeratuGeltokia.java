@@ -51,14 +51,12 @@ public class AukeratuGeltokia extends JPanel {
 	private JLabel lblEtorreraData, labelFondo, lblZenbatekoa, lblAutobusa,lblData,lblHelmuga,lblJatorria ;
 
 	/**
-	 * Create the panel.
-	 * 
-	 * @param txartela inprimatuko den txarela
-	 * 
-	 * @param          window, String kodLinea zein da interfaseak erabiliko duen
-	 *                 lehioa
-	 * @param zein     lineako geltokiak agertuko diren panelean
+	 * bidaiaren esaugarriak ahutatzeko panela 
+	 * @param window zein leihoan irekiko den urrengo panela
+	 * @param kodLinea zein lineako geltokiak agetu behar diren panelean 
+	 * @param txartela askenean inprimatuk den txartela 
 	 */
+	//////constructor//////////
 	public AukeratuGeltokia(JFrame window, String kodLinea, Txartela txartela) {
 
 		Geltokiak = Bitartekoa.linearenGeltokiak(kodLinea);
@@ -208,7 +206,7 @@ public class AukeratuGeltokia extends JPanel {
 	{
 
 		@Override
-		public void run() {
+		public void run() {///panelaren aktualisasioa
 
 			int a = listJatorria.getSelectedIndex();
 			int b = listHelmuga.getSelectedIndex();

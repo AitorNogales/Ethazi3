@@ -42,7 +42,7 @@ public class PanelSignIn extends JPanel {
 			InterfaseNagusia.changeScene(window, Loging);
 		}
 	};
-
+//erabiltxaileak sartutako datuak egokiak diren konprobatxen du eta badira datu basera igotzen du eta lineak panelera aldatzen du 
 	private ActionListener jarraitu = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			String izena = tfIzena.getText();
@@ -82,16 +82,18 @@ public class PanelSignIn extends JPanel {
 					//cuando el pasword esta mal
 				}
 			} else {
-				System.out.println("manzana");
+				
 					//el usuario esta mal o no hay sexo seleccionado
 			}
 		}
 	};
-	private final JLabel labelFondo = new JLabel("");
+	private  JLabel labelFondo = new JLabel("");
 
 	/**
-	 * Create the panel.
+	 * panel honek erabiltzaile berriak sortzeko erabiltxen da 
+	 * @param window
 	 */
+	 
 	public PanelSignIn(JFrame window) {
 		this.window = window;
 		setBackground(Color.LIGHT_GRAY);
@@ -177,6 +179,6 @@ public class PanelSignIn extends JPanel {
 		labelFondo.setIcon(new ImageIcon(PanelSignIn.class.getResource("/irudiak/FondoTermibus.png")));
 		labelFondo.setBounds(0, 0, 450, 360);
 		add(labelFondo);
-		// rdbtnEmakumezkoa.isSelected();
+		
 	}
 }

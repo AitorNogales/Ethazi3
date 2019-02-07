@@ -11,10 +11,13 @@ import controlador.Bezeroa;
 import controlador.Txartela;
 
 public class Inportak {
- 
+ /**
+  * datu basera txartel baten datuak igotzeko metodoa
+  * @param txar zein txartel
+  * @param kon zein konexio erabilita
+  */
 	public static void igoTxartela(Txartela txar, Connection kon) {
 		
-
 		try {
 			PreparedStatement statement = kon.prepareStatement("INSERT INTO `billete` (`Cod_Billete`, `NTrayecto`, `Cod_Linea`, `Cod_Bus`, `Cod_Parada_Inicio`, `Cod_Parada_Fin`, `Fecha`, `Hora`, `DNI`, `Precio`)"
 					+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
@@ -40,6 +43,11 @@ public class Inportak {
 		}
 		
 	}
+	/**
+	 * 
+	 * @param bezero
+	 * @param kon
+	 */
 	public static void igoBezeroa (Bezeroa bezero, Connection kon) {
 		try {
 			PreparedStatement st = kon.prepareStatement("INSERT INTO `cliente`(`DNI`, `Nombre`, `Apellidos`, `Fecha_nac`, `Sexo`, `Contraseña`) "

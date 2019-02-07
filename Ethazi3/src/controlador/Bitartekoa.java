@@ -80,7 +80,12 @@ public class Bitartekoa {
 		return Lineak;
 
 	}
-	
+	/**
+	 * bezero baten dnia eta pasahitza sartuz besero objetua bueltzatzen dizu datu basetik lortutako datuekin
+	 * @param dni bezeroaren dnia
+	 * @param pass beseroaren pasahitza 
+	 * @return bezeroa objetua 
+	 */
 	public static Bezeroa artuBezeroa(String dni, String pass) {
 		
 		ResultSet rs = Selekzioak.kontsultaBiz(dni, pass,kon);
@@ -100,7 +105,6 @@ public class Bitartekoa {
 			sexo =rs.getString(5);
 			contra = rs.getString(6);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Bezeroa bezero =new Bezeroa(DNI,izena,abizena,fecha,sexo,contra);

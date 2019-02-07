@@ -25,9 +25,11 @@ public class Imprimakia extends JPanel {
     private Agurra agurra;
     private JFrame window;
 	/**
-	 * Create the panel.
-	 * @param txartela 
+	 * panel hau agertxen dad  fitxeroa inprimatxen dagoen bitartean 5 segundu ostean aldatu egiten da 
+	 * @param window zein leihoa zbaldu behar dfen hurrengo panela 
+	 * @param txartela inprimatu behar den txartela 
 	 */
+	 
 	public Imprimakia(JFrame window, Txartela txartela) {
 		this.window=window;
 		System.out.println(txartela.toString());//frogatxeko

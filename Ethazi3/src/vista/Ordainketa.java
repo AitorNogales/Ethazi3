@@ -58,7 +58,7 @@ public class Ordainketa extends JPanel {
 	private JLabel labelFondo;
 
 	/**
-	 *  
+	 *  txartelaren presioa pasata txanponak zartzen dizkiogu presio gustia sartu arte
 	 * @param window zein jotaframean agertzen den 
 	 * @param dirua zenbat diru kostatxen duen txartela
 	 * @param txartela bidaia txartela gero imprimatuko dena 
