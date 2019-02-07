@@ -23,8 +23,10 @@ public class Bueltak extends JPanel {
 	private JButton btnJarraitu;
 	private JTextArea txtItzuliak;
 	/**
-	 * Create the panel.
-	 * @param txartela 
+	 * 
+	 * @param window
+	 * @param dirua
+	 * @param txartela
 	 */
 	public Bueltak(JFrame window, double dirua, Txartela txartela) {
 		setBackground(Color.LIGHT_GRAY);

@@ -58,8 +58,10 @@ public class Ordainketa extends JPanel {
 	private JLabel labelFondo;
 
 	/**
-	 * Create the panel.
-	 * @param txartela 
+	 *  
+	 * @param window zein jotaframean agertzen den 
+	 * @param dirua zenbat diru kostatxen duen txartela
+	 * @param txartela bidaia txartela gero imprimatuko dena 
 	 */
 	public Ordainketa(JFrame window, double dirua, Txartela txartela) {
 		this.txartela=txartela;
@@ -252,6 +254,11 @@ public class Ordainketa extends JPanel {
 	}
 
 	///////////// Methods//////////////
+	/**
+	 * botoia sakatzean dirua kentzen da ordaindu beharreko diruari dirua 0 baino txikiagoa bada 
+	 * pantaias aldatzen da 
+	 * @param kendu zenbat diru kendu behar dion 
+	 */
 	private void kenduDirua(double kendu) {
 		diru -= kendu;
 		diru=Metodoak.redondearDecimales(diru,2);
