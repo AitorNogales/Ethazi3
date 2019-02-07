@@ -19,7 +19,7 @@ public class Agurra extends JPanel {
 	 */
 	public Agurra( JFrame window) {
 		setLayout(null);
-		this.setBounds(0,0,425,300); //limiteak
+		this.setBounds(0,0,430,300); //limiteak
 		panelaAldatu = new ActionListener() { //panela aldatzen duen actionListenerra
 			public void actionPerformed(ActionEvent arg0) {
 			Loging =new PanelLogin(window);

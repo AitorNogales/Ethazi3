@@ -13,11 +13,15 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.ImageIcon;
 
 
 
 public class Bueltak extends JPanel {
-
+	private JLabel lblNewLabel,lblZureBueltak, labelFondo;
+	private String bueltas;
+	private JButton btnJarraitu;
+	private JTextArea txtItzuliak;
 	/**
 	 * Create the panel.
 	 * @param txartela 
@@ -27,15 +31,14 @@ public class Bueltak extends JPanel {
 
 			this.setBounds(500,500,450,360);//limiteak
 			setLayout(null);
-			String bueltas;
 			bueltas = Metodoak.itzuliakKalkulatu(dirua);
-			JTextArea txtItzuliak = new JTextArea(); 
+			txtItzuliak = new JTextArea(); 
 			txtItzuliak.setEditable(false);
 			txtItzuliak.setText(bueltas);
 			txtItzuliak.setBounds(70, 45, 300, 161);//limiteak
 			add(txtItzuliak);
 			
-			JLabel lblZureBueltak = new JLabel("ZURE BUELTAK: ");
+			 lblZureBueltak = new JLabel("ZURE BUELTAK: ");
 			lblZureBueltak.setFont(new Font("Tahoma", Font.PLAIN, 20));
 			lblZureBueltak.setBackground(Color.BLACK);
 			lblZureBueltak.setForeground(Color.BLACK);
@@ -50,14 +53,19 @@ public class Bueltak extends JPanel {
 				}
 			};
 			
-			JLabel lblNewLabel = new JLabel("");
+			 lblNewLabel = new JLabel("");
 			//lblNewLabel.setIcon(new ImageIcon(Bueltak.class.getResource("/images/image.jpg")));
 			lblNewLabel.setBounds(0, 0, 450, 300);//limiteak
 			add(lblNewLabel);
 			
-			JButton btnJarraitu = new JButton("Jarraitu");
+			btnJarraitu = new JButton("Jarraitu");
 			btnJarraitu.setBounds(170, 242, 89, 23);
 			add(btnJarraitu);
+			
+			labelFondo = new JLabel("");
+			labelFondo.setIcon(new ImageIcon(Bueltak.class.getResource("/irudiak/FondoTermibus.png")));
+			labelFondo.setBounds(0, 0, 450, 360);
+			add(labelFondo);
 			btnJarraitu.addActionListener(aldatuInprimakia);
 			
 		}

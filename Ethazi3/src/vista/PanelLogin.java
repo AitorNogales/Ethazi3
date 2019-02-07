@@ -25,7 +25,7 @@ public class PanelLogin extends JPanel {
 	private JPasswordField passwordField;
 	private JLabel lblLogIn;
 	private JLabel lblErabiltzailea;
-	private JLabel lblPasahitza;
+	private JLabel lblPasahitza, Fondo ;
 	private ActionListener panelaLineak; 
     private String pass;
     private String dni;
@@ -123,7 +123,7 @@ public class PanelLogin extends JPanel {
 		btnSignIn.setBounds(177, 265, 97, 25);
 		add(btnSignIn);
 		
-		JLabel Fondo = new JLabel("");
+		Fondo = new JLabel("");
 		Fondo.setIcon(new ImageIcon(PanelLogin.class.getResource("/irudiak/FondoTermibus.png")));
 		Fondo.setBounds(0, 0, 450, 360);
 		add(Fondo);

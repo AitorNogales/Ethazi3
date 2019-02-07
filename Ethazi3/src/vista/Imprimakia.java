@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.util.Timer;
 import java.util.TimerTask;
+import javax.swing.ImageIcon;
 
 public class Imprimakia extends JPanel {
 	
@@ -55,6 +56,11 @@ public class Imprimakia extends JPanel {
 		lblEskerrikAsko.setFont(new Font("DialogInput", Font.BOLD, 28));
 		lblEskerrikAsko.setBounds(109, 188, 241, 28);
 		add(lblEskerrikAsko);
+		
+		label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon(Imprimakia.class.getResource("/irudiak/FondoTermibus.png")));
+		label_1.setBounds(0, 0, 450, 360);
+		add(label_1);
 		timer.schedule(Task, (long) 5000, ((long) (500)));// segundu erdiro comprobatzen du billetearen presioa
 
 	}
@@ -69,6 +75,7 @@ public class Imprimakia extends JPanel {
 					};
 					
 			};		
+	private JLabel label_1;
 }
 					
 

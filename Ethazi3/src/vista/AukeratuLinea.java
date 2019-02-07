@@ -16,6 +16,8 @@ import javax.swing.JTextPane;
 import controlador.Bitartekoa;
 import controlador.Linea;
 import controlador.Txartela;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class AukeratuLinea extends JPanel {
 	private JList<String> list;
@@ -28,6 +30,7 @@ public class AukeratuLinea extends JPanel {
 	private JButton btnJarraitu;
 	private JTextPane txtpnAukeratuLinea;
 	private ArrayList<Linea> Lineak;
+	private JLabel labelFondo;
 
 	/**
 	 * Create the panel.
@@ -93,6 +96,11 @@ public class AukeratuLinea extends JPanel {
 		txtpnAukeratuLinea.setText("AUKERATU LINEA");
 		txtpnAukeratuLinea.setBounds(130, 10, 170, 30);
 		add(txtpnAukeratuLinea);
+		
+		labelFondo = new JLabel("");
+		labelFondo.setIcon(null);
+		labelFondo.setBounds(0, 0, 450, 400);
+		add(labelFondo);
 		btnJarraitu.addActionListener(panelaJarraitu);
 
 	}

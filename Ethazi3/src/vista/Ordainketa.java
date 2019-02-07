@@ -55,6 +55,7 @@ public class Ordainketa extends JPanel {
 	private JFrame window;
 	private JButton btnBack;
 	private Txartela txartela;
+	private JLabel labelFondo;
 
 	/**
 	 * Create the panel.
@@ -241,6 +242,11 @@ public class Ordainketa extends JPanel {
 		btnBack.setIcon(new ImageIcon(Ordainketa.class.getResource("/irudiak/flecha atras.jpg")));
 		btnBack.setBounds(11, 270, 47, 39);
 		add(btnBack);
+		
+		labelFondo = new JLabel("");
+		labelFondo.setIcon(new ImageIcon(Ordainketa.class.getResource("/irudiak/FondoTermibus.png")));
+		labelFondo.setBounds(0, 0, 450, 360);
+		add(labelFondo);
 	
 
 	}

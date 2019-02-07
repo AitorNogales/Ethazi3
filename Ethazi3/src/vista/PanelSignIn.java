@@ -20,6 +20,7 @@ import controlador.Txartela;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class PanelSignIn extends JPanel {
 
@@ -86,6 +87,7 @@ public class PanelSignIn extends JPanel {
 			}
 		}
 	};
+	private final JLabel labelFondo = new JLabel("");
 
 	/**
 	 * Create the panel.
@@ -96,7 +98,7 @@ public class PanelSignIn extends JPanel {
 		setLayout(null);
 		setBounds(200, 200, 450, 360);
 
-		lblSingIn = new JLabel("Sing in");
+		lblSingIn = new JLabel("Sign in");
 		lblSingIn.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblSingIn.setBounds(200, 13, 88, 34);
 		add(lblSingIn);
@@ -172,6 +174,9 @@ public class PanelSignIn extends JPanel {
 		sexuaRadioGroup = new ButtonGroup();
 		sexuaRadioGroup.add(rdbtnGizonezkoa);
 		sexuaRadioGroup.add(rdbtnEmakumezkoa);
+		labelFondo.setIcon(new ImageIcon(PanelSignIn.class.getResource("/irudiak/FondoTermibus.png")));
+		labelFondo.setBounds(0, 0, 450, 360);
+		add(labelFondo);
 		// rdbtnEmakumezkoa.isSelected();
 	}
 }

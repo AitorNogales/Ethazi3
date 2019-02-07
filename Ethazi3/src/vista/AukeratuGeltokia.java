@@ -24,6 +24,7 @@ import controlador.Bitartekoa;
 import controlador.Geltokia;
 import controlador.Metodoak;
 import controlador.Txartela;
+import javax.swing.ImageIcon;
 
 public class AukeratuGeltokia extends JPanel {
 
@@ -47,7 +48,7 @@ public class AukeratuGeltokia extends JPanel {
 	private Autobusa autobus;
 	private Geltokia helmugaGeltokia, jatorriGeltokia;
 	private JDateChooser dateChooser_etorrera;
-	private JLabel lblEtorreraData;
+	private JLabel lblEtorreraData, labelFondo, lblZenbatekoa, lblAutobusa,lblData,lblHelmuga,lblJatorria ;
 
 	/**
 	 * Create the panel.
@@ -103,12 +104,12 @@ public class AukeratuGeltokia extends JPanel {
 			comboBoxAutobus.addItem(aut.toString());
 		}
 
-		JLabel lblJatorria = new JLabel("Jatorria");
+		lblJatorria = new JLabel("Jatorria");
 		lblJatorria.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblJatorria.setBounds(36, 43, 87, 14);
 		add(lblJatorria);
 
-		JLabel lblHelmuga = new JLabel("Helmuga");
+		lblHelmuga = new JLabel("Helmuga");
 		lblHelmuga.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblHelmuga.setBounds(242, 45, 87, 14);
 		add(lblHelmuga);
@@ -120,14 +121,14 @@ public class AukeratuGeltokia extends JPanel {
 		dateChooser.setDate(Date.valueOf(LocalDate.now())); // gaurko data jarri
 		dateChooser.setMinSelectableDate(Date.valueOf(LocalDate.now()));// gaur jarri data minimo moduan
 
-		JLabel lblData = new JLabel("Data:");
+		lblData = new JLabel("Data:");
 		lblData.setBounds(34, 314, 46, 23);
 		add(lblData);
 
-		JLabel lblAutobusa = new JLabel("Autobusa:");
+		 lblAutobusa = new JLabel("Autobusa:");
 		lblAutobusa.setBounds(34, 268, 65, 14);
 		add(lblAutobusa);
-		JLabel lblZenbatekoa = new JLabel("ZENBATEKOA: ");
+		 lblZenbatekoa = new JLabel("ZENBATEKOA: ");
 		lblZenbatekoa.setBounds(253, 286, 108, 14);
 		add(lblZenbatekoa);
 
@@ -191,6 +192,11 @@ public class AukeratuGeltokia extends JPanel {
 		
 		dateChooser_etorrera.setDate(Date.valueOf(LocalDate.now())); // gaurko data jarri
 		dateChooser_etorrera.setMinSelectableDate(Date.valueOf(LocalDate.now()));// gaur jarri data minimo moduan
+		
+		labelFondo = new JLabel("");
+		labelFondo.setIcon(null);
+		labelFondo.setBounds(0, 0, 440, 450);
+		add(labelFondo);
 		dateChooser_etorrera.setVisible(false);//okultatu
 		btnJarraitu.addActionListener(panelaJarraitu);
 
