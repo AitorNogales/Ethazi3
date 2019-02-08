@@ -2,9 +2,13 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.time.LocalDate;
+
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,15 +16,12 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+
 import com.toedter.calendar.JDateChooser;
 
 import controlador.Bezeroa;
 import controlador.Bitartekoa;
 import controlador.Txartela;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.ImageIcon;
 
 public class PanelSignIn extends JPanel {
 
@@ -32,10 +33,10 @@ public class PanelSignIn extends JPanel {
 	private ButtonGroup sexuaRadioGroup;
 	private JRadioButton rdbtnEmakumezkoa;
 	private JRadioButton rdbtnGizonezkoa;
-	private JLabel lblSexua, lblJaiotzeData, lblPasahitza, lblNan, lblIzena, lblSingIn, lblAbizena;
+	private JLabel lblSexua, lblJaiotzeData, lblPasahitza, lblNan, lblIzena, lblSingIn, lblAbizena, lblErroreMesua;
 	private JButton btnAtzera, btnJarraitu;
 	private JFrame window;
-
+//atzera joteko aktion listenerra
 	private ActionListener atzera = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			PanelLogin Loging = new PanelLogin(window);
@@ -53,9 +54,8 @@ public class PanelSignIn extends JPanel {
 			char[] arrayC = pwd.getPassword(); // pasahitzan dagoena hartzen dugu char array moduan
 			String pass = new String(arrayC);// lortutako char arraya stringera pasatzen dugu
 
-			if (nan.matches("^[1-9]{8}[A-Z]$") && izena.matches("^[a-zA-Z ]*$") && abizena.matches("^[a-zA-Z ]*$")
-					&& (rdbtnEmakumezkoa.isSelected() || rdbtnGizonezkoa.isSelected())) {
-				
+			if (nan.matches("^[1-9]{8}[A-Z]$") && izena.matches("^[a-zA-Z ]*$") && abizena.matches("^[a-zA-Z ]*$")) {
+				if(rdbtnEmakumezkoa.isSelected() || rdbtnGizonezkoa.isSelected()) {
 				if (pass.length() > 0) {
 					if(!Bitartekoa.bezeroaExistitu(nan)) {
 					String sex;
@@ -77,13 +77,24 @@ public class PanelSignIn extends JPanel {
 					InterfaseNagusia.changeScene(window, lineak);
 					}else {
 						//el usuario esta en la base de datos
+						lblErroreMesua.setText("Erabiltzailea lehendik existitzen  da");
+						lblErroreMesua.setVisible(true);
 					}
 				} else {
 					//cuando el pasword esta mal
+					lblErroreMesua.setText("Ez duzu pasahitzik sartu");
+					lblErroreMesua.setVisible(true);
+				}
+				}else{
+					//no hay sexo seleccionado
+					lblErroreMesua.setText("Ez duzu sexua sartu");
+					lblErroreMesua.setVisible(true);
 				}
 			} else {
 				
-					//el usuario esta mal o no hay sexo seleccionado
+					//el usuario esta mal  
+				lblErroreMesua.setText("Erabiltzaile datuak txarto daude");
+				lblErroreMesua.setVisible(true);
 			}
 		}
 	};
@@ -91,7 +102,7 @@ public class PanelSignIn extends JPanel {
 
 	/**
 	 * panel honek erabiltzaile berriak sortzeko erabiltxen da 
-	 * @param window
+	 * @param window zein lehiotan zabaldu behar den hurrenggo leihoa 
 	 */
 	 
 	public PanelSignIn(JFrame window) {
@@ -154,6 +165,12 @@ public class PanelSignIn extends JPanel {
 		pwd = new JPasswordField();
 		pwd.setBounds(132, 148, 193, 22);
 		add(pwd);
+		
+		lblErroreMesua = new JLabel("Errore mesua");
+		lblErroreMesua.setForeground(Color.RED);
+		lblErroreMesua.setBounds(54, 239, 234, 16);
+		add(lblErroreMesua);
+		lblErroreMesua.setVisible(false);
 
 		lblPasahitza = new JLabel("Pasahitza");
 		lblPasahitza.setBounds(64, 150, 56, 16);
@@ -164,7 +181,7 @@ public class PanelSignIn extends JPanel {
 		dateChooser.setBounds(64, 214, 116, 20);
 		add(dateChooser);
 		dateChooser.setDate(Date.valueOf(LocalDate.now())); // gaurko data jarri
-		dateChooser.setMaxSelectableDate(Date.valueOf(LocalDate.now()));// gaur jarri data minimo moduan
+		dateChooser.setMaxSelectableDate(Date.valueOf(LocalDate.now()));
 
 		lblJaiotzeData = new JLabel("Jaiotze data:");
 		lblJaiotzeData.setBounds(65, 193, 87, 16);

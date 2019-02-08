@@ -41,7 +41,7 @@ public class Bitartekoa {
 	}
 	/**
 	 * 
-	 * @param dni bezeroaren DNIa
+	 * @param dni bezeroaren NANa
 	 * @return existitxen bada true ez bada existitzen false
 	 */
 	public static boolean bezeroaExistitu(String dni) {
@@ -171,9 +171,9 @@ public class Bitartekoa {
 		return Autobusak;
 	}
 /**
- * 
+ * txartel baten datuak datu basera igotzeko
  * @param txar igoko den txartelaren balioa
- * @return true bueltatxen du ondo ejekutatu bada false arasoak izan baditu
+ * @return true bueltatzen du ondo ejekutatu bada false arasoak izan baditu
  */
 	public static boolean inportTxartela(Txartela txar) {
 		boolean  bool=true;
@@ -184,10 +184,10 @@ public class Bitartekoa {
 		
 	}
 	/**
-	 * 
-	 * @param txar
-	 * @return
-	 */
+	 * besero baten datuak datu basera igotzeko
+	 * @param bezero zein bezeroren datuak igo behar den datu basera
+	 * @return true bueltatzen du ondo ejekutatu bada
+	 */ 
 	public static boolean inportBezeroa(Bezeroa bezero) {
 		boolean  bool=true;
 		
@@ -197,7 +197,7 @@ public class Bitartekoa {
 		
 	}
 	/**
-	 * 
+	 * datu basean txartelen kode altuena zein den jakiteko 
 	 * @return bueltatxen du txartel koderik altuena
 	 */
 	public static int getMaxTxartel() {

@@ -23,7 +23,15 @@ public class Txartela {
 	private int bidaiKop=1;
 
 ////////////Builders///////////////
-
+/**
+ * txartelaren sortxaile handia datu gustiak sartuta 
+ * @param datak bidaia egin den data 
+ * @param autobusak zein autobusetan egingo den bidaia 
+ * @param jatorrigeltokiak zein geltokitik hrtuko duen bezeroa autobusa
+ * @param helmugageltokia zein geltokiraino joango den bezeroa 
+ * @param lineak zein lineatan dauden geltokiak 
+ * @param jabea zein da bezeroa 
+ */
 	public Txartela(Date datak, Autobusa autobusak, Geltokia jatorrigeltokiak, Geltokia helmugageltokia, Linea lineak,
 			Bezeroa jabea) {
 
@@ -38,7 +46,9 @@ public class Txartela {
 	}
 
 	
-
+/**
+ * txaratelaren sortxailea bakarrk txartelaren zenbakia ezleitzen dio
+ */
 	public Txartela() {
 
 		currentTxartela++;//asignasio automatiko
@@ -128,7 +138,9 @@ public class Txartela {
 	
 	////////////// Methods/////////////////
 
-	// txartel honek dauzkan datuekin .txt fitxero bat sortzen du
+	/**
+	 * Txartel honek dauzkan datuekin .txt fitxero bat sortzen du
+	 */
 	public void printTxartela() {
 		 String ruta = "src\\txartelenfitxategiak\\txartela" + txar_zenb+".txt";
 		//String ruta = "txartela" + txar_zenb + ".txt";
@@ -146,10 +158,14 @@ public class Txartela {
 			}
 			bw.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * To String antxekoa baina arraya satituta emanda lineatan Attay list baten barruan 
+	 * @return textua array lista txartelaren datuekin
+	 */
 	public ArrayList<String> subdividedString(){
 		ArrayList<String >texto=new ArrayList<String>();
 		texto.add("Txartela");

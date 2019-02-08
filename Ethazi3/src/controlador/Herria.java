@@ -8,6 +8,11 @@ public class Herria {
 	private ArrayList<Geltokia>Geltokiak;
 	
 /////////Builders/////////////
+	/**
+	 * Herria objetuaren sortzailea 
+	 * @param pK herriaren posta kodea
+	 * @param izena herriearen izena 
+	 */ 
 	public Herria(int pK, String izena) {
 		
 		PK = pK;

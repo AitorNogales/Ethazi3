@@ -44,9 +44,9 @@ public class Inportak {
 		
 	}
 	/**
-	 * 
-	 * @param bezero
-	 * @param kon
+	 * bezeroa jasota datu basera igotzen du 
+	 * @param bezero zein bezero igo behart den 
+	 * @param kon zen konexio erabilita
 	 */
 	public static void igoBezeroa (Bezeroa bezero, Connection kon) {
 		try {

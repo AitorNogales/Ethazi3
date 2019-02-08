@@ -38,9 +38,10 @@ public class PanelLogin extends JPanel {
     private JLabel lblErabiltzaileaEdoPasahitza;
     private JButton btnSignIn;
     
-	/**
-	 * Create the panel.
-	 */
+/**
+ * Login panelaren sortzaila
+ * @param window zein lehiotan zabaldu behar den hurrengo leihoa 
+ */
 		public PanelLogin(JFrame window) {
 		setBorder(UIManager.getBorder("InternalFrame.border"));
 		this.setBounds(200, 200, 450, 360); // limiteak

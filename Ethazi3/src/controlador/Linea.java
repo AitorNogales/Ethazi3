@@ -10,6 +10,13 @@ private ArrayList<Autobusa> Autobusak;
 private ArrayList<Herria>Herriak;
 
 //////Builders///////
+/**
+ * Linea objetuaren sortzailea 
+ * @param kod_linea linearen kodea 
+ * @param nombre_linea linearen izena 
+ * @param autobusak zein autobus joango diren lineatik
+ * @param herriak zein herrietatk pasatzen den linea 
+ */
 public Linea(String kod_linea, String nombre_linea, ArrayList<Autobusa> autobusak, ArrayList<Herria> herriak) {
 	
 	this.kod_linea = kod_linea;
@@ -17,6 +24,11 @@ public Linea(String kod_linea, String nombre_linea, ArrayList<Autobusa> autobusa
 	Autobusak = autobusak;
 	Herriak = herriak;
 }
+/**
+ * Linea objetuaren sotzailea 
+ * @param kod_linea linearen kodea 
+ * @param nombre_linea linearen izena 
+ */
 public Linea(String kod_linea, String nombre_linea) {
 	
 	this.kod_linea = kod_linea;

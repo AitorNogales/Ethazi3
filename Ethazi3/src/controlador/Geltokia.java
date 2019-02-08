@@ -8,6 +8,14 @@ public class Geltokia implements Comparable<Geltokia> {
 	private double latitudea, longitudea, disTerm;
 
 	///////// Builders/////////////
+	/**
+	 * geltoki objetuaren sortzailea
+	 * @param kod_geltoki geltokiaren kodea 
+	 * @param kalea zein kaleetan dagoen geltokia
+	 * @param gel_izena ein da geltokiaren izena
+	 * @param latitudea zein da geltokiaren latitudea 
+	 * @param longitudea zein da geltokiaren longitudea 
+	 */ 
 	public Geltokia(int kod_geltoki, String kalea, String gel_izena, double latitudea, double longitudea) {
 
 		this.kod_geltoki = kod_geltoki;
@@ -64,6 +72,10 @@ public class Geltokia implements Comparable<Geltokia> {
 	}
 
 	///////////////////// Methods/////////////////
+	/**
+	 * geqltoki honek termibuserainoko distantzia 
+	 * @return termibus eta geltoki honen arteko distantzia kilometrotan 
+	 */
 	private double distantziaKalkulatu() {
 		double lurrarenRadioa = 6371;// kilometrotan Lurraren radioa
 		double dLat = Math.toRadians(terLat - latitudea); //
@@ -77,7 +89,11 @@ public class Geltokia implements Comparable<Geltokia> {
 
 		return distancia;
 	}
-	
+	/**
+	 * geltoki onetik beste geltoki baterainoko distantzia kalkulatzen du 
+	 * @param gel zen geltokiraino
+	 * @return bi geltokien arteko distantzia kolometrotan 
+	 */
 	public double geltokiArtekoDistantzia(Geltokia gel) {
 		
 		double lurrarenRadioa = 6371;// kilometrotan Lurraren radioa
@@ -98,7 +114,9 @@ public class Geltokia implements Comparable<Geltokia> {
 	}
 
 	
-	
+	/**
+	 * geltokiak termibusera distantziaren arabera ordenatzeko compare.sort baten bidez
+	 */
 	@Override
 	 public int compareTo(Geltokia o) {
          if (disTerm < o.disTerm) {
