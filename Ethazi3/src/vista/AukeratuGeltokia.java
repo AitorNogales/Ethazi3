@@ -217,10 +217,10 @@ public class AukeratuGeltokia extends JPanel {
 				helmugaGeltokia = Geltokiak.get(b);
 				autobus = Autobusak.get(comboBoxAutobus.getSelectedIndex());//Autobusen zerrndatik hartzen dugu 
 
-				dirua = Metodoak.kalkulatuPresioa(jatorriGeltokia, helmugaGeltokia, autobus, Geltokiak);
+				dirua = Metodoak.kalkulatuPrezioa(jatorriGeltokia, helmugaGeltokia, autobus, Geltokiak);
 				
 				if (chckbxJoanEtorria.isSelected()) {//joan etorri bidaia bada 
-					dirua +=Metodoak.kalkulatuPresioa( helmugaGeltokia,jatorriGeltokia, autobus, Geltokiak);//falta movidita de q se vean etorria
+					dirua +=Metodoak.kalkulatuPrezioa( helmugaGeltokia,jatorriGeltokia, autobus, Geltokiak);//falta movidita de q se vean etorria
 					Date etorreraDate = new Date(dateChooser_etorrera.getDate().getTime());
 					if (etorreraDate.before(bidaiDate)) {
 						dateChooser_etorrera.setDate(bidaiDate);

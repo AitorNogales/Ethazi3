@@ -16,7 +16,7 @@ public class Metodoak {
 	 * @param lineakoGelt lineako geltokiak ordenaturik distantziaren arabera 
 	 * @return zenbat diru kostatzen duen jatorri geltokitk helmuga geltokiraino joatea
 	 */
-	public static double kalkulatuPresioa(Geltokia jatorriGelt, Geltokia helmugaGelt, Autobusa auto,
+	public static double kalkulatuPrezioa(Geltokia jatorriGelt, Geltokia helmugaGelt, Autobusa auto,
 			ArrayList<Geltokia> lineakoGelt) {
 		double diru = 0, dist = 0;
 		int a, b;
