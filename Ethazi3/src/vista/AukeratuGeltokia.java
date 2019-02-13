@@ -125,7 +125,7 @@ public class AukeratuGeltokia extends JPanel {
 		lblZenbatekoa.setBounds(253, 286, 108, 14);
 		add(lblZenbatekoa);
 
-		lblDirua = new JLabel("dirua");
+		lblDirua = new JLabel("0.0€");
 		lblDirua.setBounds(362, 286, 46, 14);
 		add(lblDirua);
 
