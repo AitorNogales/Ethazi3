@@ -15,11 +15,12 @@ public class Agurra extends JPanel {
 	private ActionListener panelaAldatu;
 	private PanelLogin	Loging;
 	/**
-	 * Create the panel.
+	 * lehenengo panela clicatzean  hurrengo pànelara aldatzen da 
+	 * @param window zein JFramean ireki behar den hurrengo JPanla
 	 */
 	public Agurra( JFrame window) {
 		setLayout(null);
-		this.setBounds(0,0,425,300); //limiteak
+		this.setBounds(0,0,430,300); //limiteak
 		panelaAldatu = new ActionListener() { //panela aldatzen duen actionListenerra
 			public void actionPerformed(ActionEvent arg0) {
 			Loging =new PanelLogin(window);
@@ -28,7 +29,6 @@ public class Agurra extends JPanel {
 		};
 		btnNewButton.setSelectedIcon(new ImageIcon(Agurra.class.getResource("/irudiak/AgurraIrudia.png")));
 		btnNewButton.setIcon(new ImageIcon(Agurra.class.getResource("/irudiak/AgurraIrudia.png")));
-	//	btnNewButton.setIcon(new ImageIcon(Agurra.class.getResource("/images/Panel_1.jpg")));
 		
 		btnNewButton.addActionListener(panelaAldatu);
 		btnNewButton.setBounds(0, 0, 427, 300);

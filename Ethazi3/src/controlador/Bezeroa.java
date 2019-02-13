@@ -10,6 +10,15 @@ private Date jaiotze_data;
 
 
 /////////Builders/////////////
+/**
+ * bezeroa objetuaren sortzailea 
+ * @param NAN bezeroaren NANa
+ * @param izen bezeroaren izena 
+ * @param abizena bezeroaren abizena 
+ * @param jaiotze_data bezeroa noiz jaio zen 
+ * @param sexua zein sexukoa den bezeroa 
+ * @param pasahitza beseroak autatu duen pasahitza
+ */
 public Bezeroa(String NAN, String izen, String abizena, Date jaiotze_data, String sexua, String pasahitza) {
 	
 	this.NAN = NAN;

@@ -1,8 +1,5 @@
 package vista;
 
-//import java.util.Timer;
-import java.util.TimerTask;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -47,27 +44,5 @@ public class InterfaseNagusia {
 
 		frame.setPreferredSize(null);
 	}
-	public static void timer() {
-
-		//Timer timer = new Timer();
-
-		TimerTask Task = new TimerTask() {
-
-			@Override
-			public void run() {
-
-				//Globals.time++;
-				//if (Globals.time > 0) {
-					//timer.cancel();
-				}
-				//metodoak.Reset();
-				//InterfaceMethods.changeScene(Globals.window.frame, Globals.panelAgurra);
-
-			//}
-
-		};
-
-		//timer.schedule(Task, (long) 5000, ((long) (500)));
-
-	}
+	
 }

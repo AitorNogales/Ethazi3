@@ -1,28 +1,22 @@
 package controlador;
 
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 
 /**
- * 
- * @author Aitor zenbait metodo statiko kalkiluak egiteko
+ * zenbait metodo statiko kalkiluak egiteko
+ * @author Aitor 
  */
 public class Metodoak {
 	/**
 	 * bidaiaren datuak emanda zenbat balioko duen tiketa buelktatzen du
-	 * 
-	 * @param jatorriGelt bidiaraan jatorrisko geltokia
-	 * @param helmugaGelt bidaiaren helmuga geltokia
-	 * @param auto        zein autobuzean egingo da bidaia
-	 * @param linean      dauden geltokien arraya geltokien ordena adierasten du
-	 * @return zenbatekoa izango da bidaiaren prezioa
+	 * @param jatorriGelt  jatorri geltokia 
+	 * @param helmugaGelt helmuga geltokia 
+	 * @param auto zein autobus erabuliko den bidaia egiteko 
+	 * @param lineakoGelt lineako geltokiak ordenaturik distantziaren arabera 
+	 * @return zenbat diru kostatzen duen jatorri geltokitk helmuga geltokiraino joatea
 	 */
-	public static double kalkulatuPresioa(Geltokia jatorriGelt, Geltokia helmugaGelt, Autobusa auto,
+	public static double kalkulatuPrezioa(Geltokia jatorriGelt, Geltokia helmugaGelt, Autobusa auto,
 			ArrayList<Geltokia> lineakoGelt) {
 		double diru = 0, dist = 0;
 		int a, b;
@@ -44,7 +38,7 @@ public class Metodoak {
 	}
 
 	/**
-	 * 
+	 * diru kantitate bat emanda txanpon eta billete kantitate txikiena buetatxen du String bezala
 	 * @param Money diru kantitatea sartzen diogu
 	 * @return itzultzen digu zartutako dirua zenbat txanpon eta billete textu
 	 *         moduan
@@ -85,10 +79,10 @@ public class Metodoak {
 		return zerrenda;// itzulien textu zerrenda bueltatu
 	}
 	/**
-	 * 
+	 * balio hamartar baten biribilketa egiten du nahi bezte zenbaki hamartarrekin 
 	 * @param num hasiaerako double balioa
 	 * @param cant hamartar zenbaki kopurua
-	 * @return hasierako zenbakia hamartear zenbaki kopuruarekin
+	 * @return hasierako zenbakia hamartar zenbaki kopuruarekin biribilduta
 	 */
 	public static double redondearDecimales(double num, int cant ) {
 		double a =Math.pow(10, cant);

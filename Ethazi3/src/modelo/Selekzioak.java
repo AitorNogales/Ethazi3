@@ -10,6 +10,11 @@ import java.sql.Statement;
  * datu basetik selekzioak egiteko
  */
 public class Selekzioak {
+	
+	/**
+	 * datu basean dauden bezeroen datuak kontzolan inprimatzen ditu 
+	 * @return bezeroen datuen result seta 
+	 */
 
 	public static ResultSet datuakBezeroa() {
 		Statement sta = null;
@@ -55,7 +60,12 @@ public class Selekzioak {
 		return rs;
 	}
 
-	
+	/**
+	 * linea batean dauden geltokien datuak dituen result seta bueltatzen du 
+	 * @param kon zein konexioan 
+	 * @param kod_Linea zein linean 
+	 * @return geltokien datuak dituen result seta
+	 */
 
 	public static ResultSet datuakGeltokiak(Connection kon, String kod_Linea) {
 		Statement sta = null;
@@ -112,7 +122,11 @@ public class Selekzioak {
 		return rs;
 	}
 	
-
+/**
+ *  zein den txartelkodeen artean zenbakirik handiena duena bueltatzen bu
+ * @param kon zein konexioan
+ * @return zenbakirik handiena txartel kodeen artean 
+ */
 	public static int maxTxartelZenb(Connection kon) {
 		int num=0;
 		Statement sta = null;
@@ -131,7 +145,13 @@ public class Selekzioak {
 		
 		return num;
 	}
-	
+	/**
+	 * erabiltzailearen NANa eta pasahitza emanda erabiltzailearen result seta bueltatzen da 
+	 * @param dni erabiltzailearen NANa 
+	 * @param pass erabiltza ilearen pasahitza 
+	 * @param kon zein konexioan 
+	 * @return erabiltzailearen pasahitza 
+	 */
 	public static ResultSet kontsultaBiz(String dni, String pass, Connection kon) {
 		ResultSet rs = null;
 
@@ -147,6 +167,13 @@ public class Selekzioak {
 		}
 		return rs;
 	}
+	
+	/**
+	 * bezero baten datuak artuz bezero horren resul seta bueltatzen du
+	 * @param dni bezeroaren dnia
+	 * @param kon zein konexioan bilatu behar den 
+	 * @return bezeroaren result seta
+	 */
 	public static ResultSet bezeroaBadago(String dni, Connection kon) {
 		ResultSet rs = null;
 

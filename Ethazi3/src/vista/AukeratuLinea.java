@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
@@ -28,12 +29,14 @@ public class AukeratuLinea extends JPanel {
 	private JButton btnJarraitu;
 	private JTextPane txtpnAukeratuLinea;
 	private ArrayList<Linea> Lineak;
+	private JLabel labelFondo;
 
 	/**
-	 * Create the panel.
 	 * 
-	 * @param txartela imprimatuko den txartela
+	 * @param window zein JFrame an sabladu behar den hurrengo panela
+	 * @param txartela erosten gauden txartela
 	 */
+	
 	public AukeratuLinea(JFrame window, Txartela txartela) {
 
 		Lineak = new ArrayList<Linea>();
@@ -93,6 +96,11 @@ public class AukeratuLinea extends JPanel {
 		txtpnAukeratuLinea.setText("AUKERATU LINEA");
 		txtpnAukeratuLinea.setBounds(130, 10, 170, 30);
 		add(txtpnAukeratuLinea);
+		
+		labelFondo = new JLabel("");
+		labelFondo.setIcon(null);
+		labelFondo.setBounds(0, 0, 450, 400);
+		add(labelFondo);
 		btnJarraitu.addActionListener(panelaJarraitu);
 
 	}

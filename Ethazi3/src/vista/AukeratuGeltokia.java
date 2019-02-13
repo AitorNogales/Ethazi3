@@ -24,9 +24,14 @@ import controlador.Bitartekoa;
 import controlador.Geltokia;
 import controlador.Metodoak;
 import controlador.Txartela;
+import javax.swing.ImageIcon;
 
 public class AukeratuGeltokia extends JPanel {
 
+	/**
+	 * 
+	 */
+	
 	private JButton btnJarraitu;
 	private JButton btnAtzera;
 	private JLabel lblDirua;
@@ -41,17 +46,17 @@ public class AukeratuGeltokia extends JPanel {
 	private double dirua;
 	private Timer timer = new Timer();// denbora kontatzen du
 	private Autobusa autobus;
-	Geltokia helmugaGeltokia, jatorriGeltokia;
+	private Geltokia helmugaGeltokia, jatorriGeltokia;
+	private JDateChooser dateChooser_etorrera;
+	private JLabel lblEtorreraData, labelFondo, lblZenbatekoa, lblAutobusa,lblData,lblHelmuga,lblJatorria ;
 
 	/**
-	 * Create the panel.
-	 * 
-	 * @param txartela inprimatuko den txarela
-	 * 
-	 * @param          window, String kodLinea zein da interfaseak erabiliko duen
-	 *                 lehioa
-	 * @param zein     lineako geltokiak agertuko diren panelean
+	 * bidaiaren esaugarriak ahutatzeko panela 
+	 * @param window zein leihoan irekiko den urrengo panela
+	 * @param kodLinea zein lineako geltokiak agetu behar diren panelean 
+	 * @param txartela askenean inprimatuk den txartela 
 	 */
+	//////constructor//////////
 	public AukeratuGeltokia(JFrame window, String kodLinea, Txartela txartela) {
 
 		Geltokiak = Bitartekoa.linearenGeltokiak(kodLinea);
@@ -59,7 +64,7 @@ public class AukeratuGeltokia extends JPanel {
 									// metodo compare To()
 		Autobusak = Bitartekoa.linearenAutobusak(kodLinea);
 
-		this.setBounds(200, 200, 450, 425);
+		this.setBounds(200, 200, 440, 450);
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(null);
 
@@ -97,31 +102,31 @@ public class AukeratuGeltokia extends JPanel {
 			comboBoxAutobus.addItem(aut.toString());
 		}
 
-		JLabel lblJatorria = new JLabel("Jatorria");
+		lblJatorria = new JLabel("Jatorria");
 		lblJatorria.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblJatorria.setBounds(36, 43, 87, 14);
 		add(lblJatorria);
 
-		JLabel lblHelmuga = new JLabel("Helmuga");
+		lblHelmuga = new JLabel("Helmuga");
 		lblHelmuga.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblHelmuga.setBounds(242, 45, 87, 14);
 		add(lblHelmuga);
 
 		dateChooser = new JDateChooser();
 		dateChooser.setDateFormatString("dd-MM-yyyy");
-		dateChooser.setBounds(69, 317, 116, 20);
+		dateChooser.setBounds(123, 319, 116, 20);
 		add(dateChooser);
 		dateChooser.setDate(Date.valueOf(LocalDate.now())); // gaurko data jarri
 		dateChooser.setMinSelectableDate(Date.valueOf(LocalDate.now()));// gaur jarri data minimo moduan
 
-		JLabel lblData = new JLabel("Data:");
+		lblData = new JLabel("Data:");
 		lblData.setBounds(34, 314, 46, 23);
 		add(lblData);
 
-		JLabel lblAutobusa = new JLabel("Autobusa:");
+		 lblAutobusa = new JLabel("Autobusa:");
 		lblAutobusa.setBounds(34, 268, 65, 14);
 		add(lblAutobusa);
-		JLabel lblZenbatekoa = new JLabel("ZENBATEKOA: ");
+		 lblZenbatekoa = new JLabel("ZENBATEKOA: ");
 		lblZenbatekoa.setBounds(253, 286, 108, 14);
 		add(lblZenbatekoa);
 
@@ -138,7 +143,7 @@ public class AukeratuGeltokia extends JPanel {
 		};
 
 		chckbxJoanEtorria = new JCheckBox("Joan Etorria");
-		chckbxJoanEtorria.setBounds(247, 314, 97, 23);
+		chckbxJoanEtorria.setBounds(294, 329, 97, 23);
 		add(chckbxJoanEtorria);
 
 		ActionListener panelaJarraitu = new ActionListener() { // panela aldatzen duen actionListenerra
@@ -146,6 +151,7 @@ public class AukeratuGeltokia extends JPanel {
 
 				if (dirua > 0) {
 					Date bidaiDate = new Date(dateChooser.getDate().getTime());
+					Date etorreraData= new Date (dateChooser_etorrera.getDate().getTime());
 					txartela.setHelmugaGeltokia(helmugaGeltokia);
 					txartela.setAutobusak(autobus);
 					txartela.setJatorriGeltokiak(jatorriGeltokia);
@@ -153,6 +159,7 @@ public class AukeratuGeltokia extends JPanel {
 					txartela.setDatak(bidaiDate);
 					if(chckbxJoanEtorria.isSelected()) {
 						txartela.setBidaiKop(2);
+						txartela.setEtorrera_Data(etorreraData);
 						
 					}
 					Ordainketa ordain = new Ordainketa(window, dirua, txartela);
@@ -164,12 +171,31 @@ public class AukeratuGeltokia extends JPanel {
 
 		btnAtzera = new JButton("ATZERA");
 		btnAtzera.addActionListener(panelaAtzera);
-		btnAtzera.setBounds(34, 348, 89, 23);
+		btnAtzera.setBounds(34, 377, 89, 23);
 		add(btnAtzera);
 
 		btnJarraitu = new JButton("JARRAITU");
-		btnJarraitu.setBounds(310, 348, 98, 23);
+		btnJarraitu.setBounds(310, 377, 98, 23);
 		add(btnJarraitu);
+		
+	    lblEtorreraData = new JLabel("Etorrera data:");
+		lblEtorreraData.setBounds(34, 348, 116, 16);
+		add(lblEtorreraData);
+		lblEtorreraData.setVisible(false);//okultatu
+		
+		dateChooser_etorrera = new JDateChooser();
+		dateChooser_etorrera.setDateFormatString("dd-MM-yyyy");
+		dateChooser_etorrera.setBounds(123, 344, 116, 20);
+		add(dateChooser_etorrera);
+		
+		dateChooser_etorrera.setDate(Date.valueOf(LocalDate.now())); // gaurko data jarri
+		dateChooser_etorrera.setMinSelectableDate(Date.valueOf(LocalDate.now()));// gaur jarri data minimo moduan
+		
+		labelFondo = new JLabel("");
+		labelFondo.setIcon(null);
+		labelFondo.setBounds(0, 0, 440, 450);
+		add(labelFondo);
+		dateChooser_etorrera.setVisible(false);//okultatu
 		btnJarraitu.addActionListener(panelaJarraitu);
 
 		timer.schedule(Task, (long) 500, ((long) (500)));// segundu erdiro comprobatzen du billetearen presioa
@@ -180,24 +206,40 @@ public class AukeratuGeltokia extends JPanel {
 	{
 
 		@Override
-		public void run() {
+		public void run() {///panelaren aktualisasioa
 
 			int a = listJatorria.getSelectedIndex();
 			int b = listHelmuga.getSelectedIndex();
-
+			Date bidaiDate = new Date(dateChooser.getDate().getTime());
 			if (a >= 0 && b >= 0) {// gausak seleksionatuta baditugu
 
 				jatorriGeltokia = Geltokiak.get(a);
 				helmugaGeltokia = Geltokiak.get(b);
-				autobus = Autobusak.get(comboBoxAutobus.getSelectedIndex());
+				autobus = Autobusak.get(comboBoxAutobus.getSelectedIndex());//Autobusen zerrndatik hartzen dugu 
 
-				dirua = Metodoak.kalkulatuPresioa(jatorriGeltokia, helmugaGeltokia, autobus, Geltokiak);
-				dirua = Metodoak.redondearDecimales(dirua, 2);
-				if (chckbxJoanEtorria.isSelected()) {
-					dirua *= 2;
+				dirua = Metodoak.kalkulatuPrezioa(jatorriGeltokia, helmugaGeltokia, autobus, Geltokiak);
+				
+				if (chckbxJoanEtorria.isSelected()) {//joan etorri bidaia bada 
+					dirua +=Metodoak.kalkulatuPrezioa( helmugaGeltokia,jatorriGeltokia, autobus, Geltokiak);//falta movidita de q se vean etorria
+					Date etorreraDate = new Date(dateChooser_etorrera.getDate().getTime());
+					if (etorreraDate.before(bidaiDate)) {
+						dateChooser_etorrera.setDate(bidaiDate);
+					}
+					dateChooser_etorrera.setMinSelectableDate(bidaiDate);
+					
+					 dateChooser_etorrera.setVisible(true);
+					 lblEtorreraData.setVisible(true);
+					
 				}
+				else {
+					 dateChooser_etorrera.setVisible(false);
+					 lblEtorreraData.setVisible(false);
+				}
+				
+				dirua = Metodoak.redondearDecimales(dirua, 2);
 				lblDirua.setText(dirua + "€");
 			}
+			
 
 		};
 

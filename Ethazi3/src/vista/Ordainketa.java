@@ -55,10 +55,13 @@ public class Ordainketa extends JPanel {
 	private JFrame window;
 	private JButton btnBack;
 	private Txartela txartela;
+	private JLabel labelFondo;
 
 	/**
-	 * Create the panel.
-	 * @param txartela 
+	 *  txartelaren presioa pasata txanponak zartzen dizkiogu presio gustia sartu arte
+	 * @param window zein jotaframean agertzen den 
+	 * @param dirua zenbat diru kostatxen duen txartela
+	 * @param txartela bidaia txartela gero imprimatuko dena 
 	 */
 	public Ordainketa(JFrame window, double dirua, Txartela txartela) {
 		this.txartela=txartela;
@@ -241,11 +244,21 @@ public class Ordainketa extends JPanel {
 		btnBack.setIcon(new ImageIcon(Ordainketa.class.getResource("/irudiak/flecha atras.jpg")));
 		btnBack.setBounds(11, 270, 47, 39);
 		add(btnBack);
+		
+		labelFondo = new JLabel("");
+		labelFondo.setIcon(new ImageIcon(Ordainketa.class.getResource("/irudiak/FondoTermibus.png")));
+		labelFondo.setBounds(0, 0, 450, 360);
+		add(labelFondo);
 	
 
 	}
 
 	///////////// Methods//////////////
+	/**
+	 * botoia sakatzean dirua kentzen da ordaindu beharreko diruari dirua 0 baino txikiagoa bada 
+	 * pantaias aldatzen da 
+	 * @param kendu zenbat diru kendu behar dion 
+	 */
 	private void kenduDirua(double kendu) {
 		diru -= kendu;
 		diru=Metodoak.redondearDecimales(diru,2);

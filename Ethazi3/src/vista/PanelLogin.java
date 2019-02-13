@@ -25,7 +25,7 @@ public class PanelLogin extends JPanel {
 	private JPasswordField passwordField;
 	private JLabel lblLogIn;
 	private JLabel lblErabiltzailea;
-	private JLabel lblPasahitza;
+	private JLabel lblPasahitza, Fondo ;
 	private ActionListener panelaLineak; 
     private String pass;
     private String dni;
@@ -36,11 +36,12 @@ public class PanelLogin extends JPanel {
     private JButton btnJarraitu;
     private Txartela txartela;
     private JLabel lblErabiltzaileaEdoPasahitza;
-    private JButton btnSingIn;
+    private JButton btnSignIn;
     
-	/**
-	 * Create the panel.
-	 */
+/**
+ * Login panelaren sortzaila
+ * @param window zein lehiotan zabaldu behar den hurrengo leihoa 
+ */
 		public PanelLogin(JFrame window) {
 		setBorder(UIManager.getBorder("InternalFrame.border"));
 		this.setBounds(200, 200, 450, 360); // limiteak
@@ -113,17 +114,17 @@ public class PanelLogin extends JPanel {
 		lblErabiltzaileaEdoPasahitza.setVisible(false);
 		add(lblErabiltzaileaEdoPasahitza);
 		
-		btnSingIn = new JButton("SING IN");
-		btnSingIn.addActionListener(new ActionListener() {
+		btnSignIn = new JButton("SIGN IN");
+		btnSignIn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			PanelSignIn Signin = new PanelSignIn(window);
 			InterfaseNagusia.changeScene(window, Signin);
 			}
 		});
-		btnSingIn.setBounds(177, 265, 97, 25);
-		add(btnSingIn);
+		btnSignIn.setBounds(177, 265, 97, 25);
+		add(btnSignIn);
 		
-		JLabel Fondo = new JLabel("");
+		Fondo = new JLabel("");
 		Fondo.setIcon(new ImageIcon(PanelLogin.class.getResource("/irudiak/FondoTermibus.png")));
 		Fondo.setBounds(0, 0, 450, 360);
 		add(Fondo);
